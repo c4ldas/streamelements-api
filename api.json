@@ -576,358 +576,7 @@
                 },
                 "examples": {
                   "default": {
-                    "value": [
-                      {
-                        "data": {
-                          "username": "Toy Bosco",
-                          "amount": 33,
-                          "message": "",
-                          "tier": "3000",
-                          "avatar": "https://cdn.streamelements.com/static/default-avatar.png"
-                        },
-                        "provider": "twitch",
-                        "_id": "5c09463bde9a4cebcca14be8",
-                        "type": "merch",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-06T01:28:27.648Z"
-                      },
-                      {
-                        "data": {
-                          "username": "Hellen Rohan",
-                          "amount": 28,
-                          "message": "",
-                          "tier": "2000",
-                          "avatar": "https://cdn.streamelements.com/static/default-avatar.png"
-                        },
-                        "provider": "twitch",
-                        "_id": "5c09463bde9a4c2d6ea14b81",
-                        "type": "cheer",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-06T01:03:03.148Z"
-                      },
-                      {
-                        "data": {
-                          "username": "Katelynn Runolfsson V",
-                          "amount": 43,
-                          "message": "",
-                          "tier": "3000",
-                          "avatar": "https://cdn.streamelements.com/static/default-avatar.png"
-                        },
-                        "provider": "twitch",
-                        "_id": "5c09463bde9a4cd73da14c0c",
-                        "type": "subscriber",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-05T19:59:50.002Z"
-                      },
-                      {
-                        "data": {
-                          "username": "Pinkie Lowe",
-                          "amount": 45,
-                          "message": "",
-                          "tier": "prime",
-                          "avatar": "https://cdn.streamelements.com/static/default-avatar.png"
-                        },
-                        "provider": "twitch",
-                        "_id": "5c09463bde9a4c7a54a14cf5",
-                        "type": "cheer",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-05T17:50:59.294Z"
-                      },
-                      {
-                        "data": {
-                          "username": "Velma Langosh",
-                          "amount": 8,
-                          "message": "",
-                          "tier": "3000",
-                          "avatar": "https://cdn.streamelements.com/static/default-avatar.png"
-                        },
-                        "provider": "twitch",
-                        "_id": "5c09463bde9a4c2ae4a14b68",
-                        "type": "raid",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-05T17:32:09.468Z"
-                      },
-                      {
-                        "data": {
-                          "username": "Amya Kilback",
-                          "amount": 35,
-                          "message": "",
-                          "tier": "1000",
-                          "avatar": "https://cdn.streamelements.com/static/default-avatar.png"
-                        },
-                        "provider": "twitch",
-                        "_id": "5c09463bde9a4c49b2a14c65",
-                        "type": "raid",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-05T16:12:40.253Z"
-                      },
-                      {
-                        "data": {
-                          "username": "Rosemary Beatty",
-                          "amount": 22,
-                          "message": "",
-                          "tier": "3000",
-                          "avatar": "https://cdn.streamelements.com/static/default-avatar.png"
-                        },
-                        "provider": "twitch",
-                        "_id": "5c09463bde9a4c0ddaa14bcd",
-                        "type": "redemption",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-05T14:16:44.503Z"
-                      },
-                      {
-                        "data": {
-                          "username": "Emma O'Connell PhD",
-                          "amount": 8,
-                          "message": "",
-                          "tier": "prime",
-                          "avatar": "https://cdn.streamelements.com/static/default-avatar.png"
-                        },
-                        "provider": "twitch",
-                        "_id": "5c09463bde9a4c18b5a14d1b",
-                        "type": "tip",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-05T14:01:16.581Z"
-                      },
-                      {
-                        "data": {
-                          "username": "Halie Hamill",
-                          "amount": 20,
-                          "message": "",
-                          "tier": "1000",
-                          "avatar": "https://cdn.streamelements.com/static/default-avatar.png"
-                        },
-                        "provider": "twitch",
-                        "_id": "5c09463bde9a4c78efa14b65",
-                        "type": "merch",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-05T13:58:26.849Z"
-                      },
-                      {
-                        "data": {
-                          "username": "Gretchen Koepp",
-                          "amount": 6,
-                          "message": "",
-                          "tier": "2000",
-                          "avatar": "https://cdn.streamelements.com/static/default-avatar.png"
-                        },
-                        "provider": "twitch",
-                        "_id": "5c09463bde9a4cf882a14c15",
-                        "type": "merch",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-05T12:02:09.516Z"
-                      },
-                      {
-                        "data": {
-                          "username": "Kayli Greenholt",
-                          "amount": 37,
-                          "message": "",
-                          "tier": "prime",
-                          "avatar": "https://cdn.streamelements.com/static/default-avatar.png"
-                        },
-                        "provider": "twitch",
-                        "_id": "5c09463bde9a4c3c2da14bb8",
-                        "type": "host",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-05T10:21:32.894Z"
-                      },
-                      {
-                        "data": {
-                          "username": "Aniyah Cronin",
-                          "amount": 2,
-                          "message": "",
-                          "tier": "1000",
-                          "avatar": "https://cdn.streamelements.com/static/default-avatar.png"
-                        },
-                        "provider": "twitch",
-                        "_id": "5c09463bde9a4c0e5ea14ce8",
-                        "type": "merch",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-05T08:01:05.618Z"
-                      },
-                      {
-                        "data": {
-                          "username": "Chester Beer",
-                          "amount": 39,
-                          "message": "",
-                          "tier": "prime",
-                          "avatar": "https://cdn.streamelements.com/static/default-avatar.png"
-                        },
-                        "provider": "twitch",
-                        "_id": "5c09463bde9a4c02daa14bc3",
-                        "type": "cheer",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-05T03:55:39.572Z"
-                      },
-                      {
-                        "data": {
-                          "username": "Jeramy Stark V",
-                          "amount": 21,
-                          "message": "",
-                          "tier": "3000",
-                          "avatar": "https://cdn.streamelements.com/static/default-avatar.png"
-                        },
-                        "provider": "twitch",
-                        "_id": "5c09463bde9a4c8737a14beb",
-                        "type": "merch",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-04T17:33:30.369Z"
-                      },
-                      {
-                        "data": {
-                          "username": "Augustus Crona DVM",
-                          "amount": 9,
-                          "message": "",
-                          "tier": "1000",
-                          "avatar": "https://cdn.streamelements.com/static/default-avatar.png"
-                        },
-                        "provider": "twitch",
-                        "_id": "5c09463bde9a4c6e75a14c86",
-                        "type": "tip",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-04T17:16:39.223Z"
-                      },
-                      {
-                        "data": {
-                          "username": "Max Jakubowski",
-                          "amount": 11,
-                          "message": "",
-                          "tier": "1000",
-                          "avatar": "https://cdn.streamelements.com/static/default-avatar.png"
-                        },
-                        "provider": "twitch",
-                        "_id": "5c09463bde9a4c719ea14b9e",
-                        "type": "host",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-04T16:06:41.439Z"
-                      },
-                      {
-                        "data": {
-                          "username": "Junius Tremblay",
-                          "amount": 3,
-                          "message": "",
-                          "tier": "1000",
-                          "avatar": "https://cdn.streamelements.com/static/default-avatar.png"
-                        },
-                        "provider": "twitch",
-                        "_id": "5c09463bde9a4c3caba14c55",
-                        "type": "follow",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-04T16:03:53.523Z"
-                      },
-                      {
-                        "data": {
-                          "username": "Kali Swift",
-                          "amount": 3,
-                          "message": "",
-                          "tier": "prime",
-                          "avatar": "https://cdn.streamelements.com/static/default-avatar.png"
-                        },
-                        "provider": "twitch",
-                        "_id": "5c09463bde9a4c3ccca14d30",
-                        "type": "tip",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-04T15:28:19.542Z"
-                      },
-                      {
-                        "data": {
-                          "username": "Patrick Kohler",
-                          "amount": 19,
-                          "message": "",
-                          "tier": "2000",
-                          "avatar": "https://cdn.streamelements.com/static/default-avatar.png"
-                        },
-                        "provider": "twitch",
-                        "_id": "5c09463bde9a4c2d71a14c28",
-                        "type": "redemption",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-04T14:37:28.669Z"
-                      },
-                      {
-                        "data": {
-                          "username": "Sydni Kemmer MD",
-                          "amount": 19,
-                          "message": "",
-                          "tier": "2000",
-                          "avatar": "https://cdn.streamelements.com/static/default-avatar.png"
-                        },
-                        "provider": "twitch",
-                        "_id": "5c09463bde9a4c347ea14d0e",
-                        "type": "tip",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-04T09:50:17.756Z"
-                      },
-                      {
-                        "data": {
-                          "username": "Jordi Johns",
-                          "amount": 3,
-                          "message": "",
-                          "tier": "prime",
-                          "avatar": "https://cdn.streamelements.com/static/default-avatar.png"
-                        },
-                        "provider": "twitch",
-                        "_id": "5c09463bde9a4c486ca14b7f",
-                        "type": "redemption",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-04T01:34:12.037Z"
-                      },
-                      {
-                        "data": {
-                          "username": "Mr. Rachael Bergstrom",
-                          "amount": 45,
-                          "message": "",
-                          "tier": "3000",
-                          "avatar": "https://cdn.streamelements.com/static/default-avatar.png"
-                        },
-                        "provider": "twitch",
-                        "_id": "5c09463bde9a4c2001a14c7f",
-                        "type": "host",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-03T23:46:26.492Z"
-                      },
-                      {
-                        "data": {
-                          "username": "Osbaldo Medhurst",
-                          "amount": 49,
-                          "message": "",
-                          "tier": "2000",
-                          "avatar": "https://cdn.streamelements.com/static/default-avatar.png"
-                        },
-                        "provider": "twitch",
-                        "_id": "5c09463bde9a4cab54a14c63",
-                        "type": "merch",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-03T22:02:52.622Z"
-                      },
-                      {
-                        "data": {
-                          "username": "Emily Russel",
-                          "amount": 21,
-                          "message": "",
-                          "tier": "1000",
-                          "avatar": "https://cdn.streamelements.com/static/default-avatar.png"
-                        },
-                        "provider": "twitch",
-                        "_id": "5c09463bde9a4cf0f0a14c21",
-                        "type": "host",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-03T19:12:54.925Z"
-                      },
-                      {
-                        "data": {
-                          "username": "Marco Keeling",
-                          "amount": 35,
-                          "message": "",
-                          "tier": "3000",
-                          "avatar": "https://cdn.streamelements.com/static/default-avatar.png"
-                        },
-                        "provider": "twitch",
-                        "_id": "5c09463bde9a4c62d5a14d3d",
-                        "type": "tip",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-03T18:45:38.679Z"
-                      }
-                    ]
+                    "$ref": "#/components/examples/default"
                   }
                 }
               }
@@ -1234,7 +883,7 @@
                 },
                 "examples": {
                   "default": {
-                    "value": "Created"
+                    "$ref": "#/components/examples/default"
                   }
                 }
               }
@@ -1638,108 +1287,7 @@
                 },
                 "examples": {
                   "default": {
-                    "value": [
-                      {
-                        "total": 50,
-                        "username": "Thurman Borer"
-                      },
-                      {
-                        "total": 50,
-                        "username": "Demarco Okuneva"
-                      },
-                      {
-                        "total": 49,
-                        "username": "Mr. Emile Sawayn"
-                      },
-                      {
-                        "total": 49,
-                        "username": "Ilene Wiegand"
-                      },
-                      {
-                        "total": 49,
-                        "username": "Dr. Macey Lakin"
-                      },
-                      {
-                        "total": 48,
-                        "username": "Quinten Ondricka"
-                      },
-                      {
-                        "total": 48,
-                        "username": "Audrey Heidenreich"
-                      },
-                      {
-                        "total": 48,
-                        "username": "Reymundo Mueller"
-                      },
-                      {
-                        "total": 47,
-                        "username": "Bradford Erdman"
-                      },
-                      {
-                        "total": 47,
-                        "username": "Jakayla Littel"
-                      },
-                      {
-                        "total": 47,
-                        "username": "Samanta Jacobson"
-                      },
-                      {
-                        "total": 46,
-                        "username": "Mr. Melyssa Block"
-                      },
-                      {
-                        "total": 46,
-                        "username": "Ana Erdman"
-                      },
-                      {
-                        "total": 45,
-                        "username": "Monserrat Streich"
-                      },
-                      {
-                        "total": 45,
-                        "username": "Emilie Bartell"
-                      },
-                      {
-                        "total": 45,
-                        "username": "Kellen Robel"
-                      },
-                      {
-                        "total": 45,
-                        "username": "Eleanore Reinger"
-                      },
-                      {
-                        "total": 45,
-                        "username": "Linda Homenick"
-                      },
-                      {
-                        "total": 44,
-                        "username": "Mylene Daugherty"
-                      },
-                      {
-                        "total": 44,
-                        "username": "Ashly Okuneva"
-                      },
-                      {
-                        "total": 44,
-                        "username": "Rocio Goodwin"
-                      },
-                      {
-                        "total": 44,
-                        "username": "Stacy O'Keefe"
-                      },
-                      {
-                        "total": 44,
-                        "username": "Emelie Tremblay"
-                      },
-                      {
-                        "total": 44,
-                        "username": "Pearline Nienow"
-                      },
-                      {
-                        "total": 44,
-                        "username": "Keely Hauck"
-                      }
-                    ]
+                    "$ref": "#/components/examples/default"
                   }
                 }
               }
@@ -1984,7 +1532,7 @@
                 },
                 "examples": {
                   "default": {
-                    "value": "Created"
+                    "$ref": "#/components/examples/default"
                   },
                   "Example 1": {
                     "value": "Created"
@@ -9184,7 +8732,7 @@
                 },
                 "examples": {
                   "default": {
-                    "value": "OK"
+                    "$ref": "#/components/examples/default"
                   }
                 }
               }
@@ -9278,7 +8826,7 @@
                 },
                 "examples": {
                   "default": {
-                    "value": "Created"
+                    "$ref": "#/components/examples/default"
                   }
                 }
               }
@@ -9377,7 +8925,7 @@
                 },
                 "examples": {
                   "default": {
-                    "value": "OK"
+                    "$ref": "#/components/examples/default"
                   }
                 }
               }
@@ -10567,30 +10115,7 @@
                 },
                 "examples": {
                   "default": {
-                    "value": [
-                      {
-                        "cooldown": {
-                          "user": 15,
-                          "global": 5
-                        },
-                        "aliases": [],
-                        "keywords": [],
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "hidden": false,
-                        "cost": 0,
-                        "type": "say",
-                        "accessLevel": 100,
-                        "_id": "5c0a5172de9a4c5b7da14d8a",
-                        "regex": "test[0-9]{3}",
-                        "reply": "test response",
-                        "command": "test",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-07T10:54:42.594Z",
-                        "updatedAt": "2018-12-07T10:54:42.594Z"
-                      }
-                    ]
+                    "$ref": "#/components/examples/default"
                   }
                 }
               }
@@ -10936,52 +10461,7 @@
                 },
                 "examples": {
                   "default": {
-                    "value": [
-                      {
-                        "cooldown": {
-                          "user": 15,
-                          "global": 5
-                        },
-                        "aliases": [],
-                        "keywords": [],
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "hidden": false,
-                        "cost": 0,
-                        "type": "say",
-                        "accessLevel": 100,
-                        "_id": "5c0a5172de9a4c5b7da14d8a",
-                        "regex": "test[0-9]{3}",
-                        "reply": "test response",
-                        "command": "test",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-07T10:54:42.594Z",
-                        "updatedAt": "2018-12-07T10:54:42.594Z"
-                      },
-                      {
-                        "cooldown": {
-                          "user": 15,
-                          "global": 5
-                        },
-                        "aliases": [],
-                        "keywords": [],
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "hidden": false,
-                        "cost": 0,
-                        "type": "say",
-                        "accessLevel": 100,
-                        "_id": "5c0a52dcde9a4c1de1a14d8d",
-                        "regex": "test[0-9]{3}",
-                        "reply": "test response",
-                        "command": "test2",
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-07T11:00:44.538Z",
-                        "updatedAt": "2018-12-07T11:01:37.758Z"
-                      }
-                    ]
+                    "$ref": "#/components/examples/default"
                   }
                 }
               }
@@ -12157,1088 +11637,7 @@
                 },
                 "examples": {
                   "default": {
-                    "value": [
-                      {
-                        "commandId": "raffle_join",
-                        "command": "join",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "raffle",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 0,
-                          "global": 0
-                        },
-                        "aliases": [],
-                        "regex": "",
-                        "description": "Join an active raffle"
-                      },
-                      {
-                        "commandId": "emotes",
-                        "command": "emotes",
-                        "subCommands": [
-                          "ffz",
-                          "bttv",
-                          "update"
-                        ],
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 15,
-                          "global": 5
-                        },
-                        "aliases": [],
-                        "regex": "",
-                        "description": "Active BTTV emotes in chat: Clap KKaper gachiBASS gachiGASM monkaS"
-                      },
-                      {
-                        "commandId": "srpause",
-                        "command": "pause",
-                        "accessLevel": 500,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 0,
-                          "global": 0
-                        },
-                        "aliases": [],
-                        "regex": "",
-                        "description": "Pause songrequest playback."
-                      },
-                      {
-                        "commandId": "leaderboard",
-                        "command": "leaderboard",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 15,
-                          "global": 5
-                        },
-                        "aliases": [
-                          "ranklist"
-                        ],
-                        "regex": "",
-                        "description": "Check out the $(pointsname) Leaderboard here https://StreamElements.com/${channel.alias}/leaderboard"
-                      },
-                      {
-                        "commandId": "srqueue",
-                        "command": "songqueue",
-                        "accessLevel": 500,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 0,
-                          "global": 10
-                        },
-                        "aliases": [
-                          "songlist"
-                        ],
-                        "regex": "",
-                        "description": "you can see the songrequest queue here https://StreamElements.com/${channel.alias}/songrequest"
-                      },
-                      {
-                        "commandId": "srplay",
-                        "command": "play",
-                        "accessLevel": 500,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 0,
-                          "global": 0
-                        },
-                        "aliases": [
-                          "resume"
-                        ],
-                        "regex": "",
-                        "description": "Resume songrequest playback."
-                      },
-                      {
-                        "commandId": "level",
-                        "command": "level",
-                        "accessLevel": 1000,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 15,
-                          "global": 5
-                        },
-                        "aliases": [],
-                        "regex": "",
-                        "description": "Set a viewers access level. Reset with !level <username> reset."
-                      },
-                      {
-                        "commandId": "givepoints",
-                        "command": "givepoints",
-                        "accessLevel": 100,
-                        "enabled": false,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 15,
-                          "global": 5
-                        },
-                        "aliases": [
-                          "transfer",
-                          "give"
-                        ],
-                        "regex": "",
-                        "description": "Transfer points to another user."
-                      },
-                      {
-                        "commandId": "commands",
-                        "command": "commands",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 15,
-                          "global": 5
-                        },
-                        "aliases": [
-                          "cmds"
-                        ],
-                        "regex": "",
-                        "description": "You can find a list of all Commands here https://StreamElements.com/${channel.alias}/commands"
-                      },
-                      {
-                        "commandId": "slotmachine",
-                        "command": "slots",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "slotmachine",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 10,
-                          "global": 0
-                        },
-                        "aliases": [
-                          "slotmachine",
-                          "slot",
-                          "sm",
-                          "smp"
-                        ],
-                        "regex": "",
-                        "description": "Play the slot machine"
-                      },
-                      {
-                        "commandId": "hypecup",
-                        "command": "hypecup",
-                        "subCommands": [
-                          "clear"
-                        ],
-                        "accessLevel": 1000,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 1,
-                          "global": 1
-                        },
-                        "aliases": [],
-                        "regex": "",
-                        "description": "Control the HypeCup."
-                      },
-                      {
-                        "commandId": "contest_bet",
-                        "command": "bet",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 5,
-                          "global": 0
-                        },
-                        "aliases": [],
-                        "regex": "",
-                        "description": "Bet on a contest."
-                      },
-                      {
-                        "commandId": "accountage",
-                        "command": "accountage",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 15,
-                          "global": 5
-                        },
-                        "aliases": [
-                          "accage",
-                          "created"
-                        ],
-                        "regex": "",
-                        "description": "${user} was created 1 year 5 months 27 days 1 hour ago."
-                      },
-                      {
-                        "commandId": "srremove",
-                        "command": "removesong",
-                        "accessLevel": 500,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 0,
-                          "global": 10
-                        },
-                        "aliases": [
-                          "songs.pop()"
-                        ],
-                        "regex": "",
-                        "description": "Remove a users songs, or a single song from the queue."
-                      },
-                      {
-                        "commandId": "raffle_singleraffle",
-                        "command": "sraffle",
-                        "accessLevel": 500,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "raffle",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 0,
-                          "global": 0
-                        },
-                        "aliases": [
-                          "singleraffle"
-                        ],
-                        "regex": "",
-                        "description": "Start a raffle with a single winner"
-                      },
-                      {
-                        "commandId": "top",
-                        "command": "top",
-                        "subCommands": [
-                          "points",
-                          "alltime",
-                          "online",
-                          "offline"
-                        ],
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 5,
-                          "global": 2
-                        },
-                        "aliases": [],
-                        "regex": "",
-                        "description": "Show the top of the leaderboard."
-                      },
-                      {
-                        "commandId": "giveaway",
-                        "command": "giveaway",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 15,
-                          "global": 5
-                        },
-                        "aliases": [],
-                        "regex": "",
-                        "description": "Show the currently active giveaway."
-                      },
-                      {
-                        "commandId": "followage",
-                        "command": "followage",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 15,
-                          "global": 5
-                        },
-                        "aliases": [
-                          "howlong"
-                        ],
-                        "regex": "",
-                        "description": "${user1} has been following ${user2} for 1 year 5 months 27 days 1 hour"
-                      },
-                      {
-                        "commandId": "srskip",
-                        "command": "skip",
-                        "accessLevel": 500,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 0,
-                          "global": 10
-                        },
-                        "aliases": [
-                          "skipsong"
-                        ],
-                        "regex": "",
-                        "description": "Skip the current song"
-                      },
-                      {
-                        "commandId": "wrongsong",
-                        "command": "wrongsong",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 10,
-                          "global": 0
-                        },
-                        "aliases": [
-                          "ctrl-z",
-                          "heybuddyithinkyougotthewrongsong"
-                        ],
-                        "regex": "",
-                        "description": "Removes your last song from the queue"
-                      },
-                      {
-                        "commandId": "eightball",
-                        "command": "8ball",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "eightball",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 10,
-                          "global": 3
-                        },
-                        "aliases": [
-                          "eightball",
-                          "69ball",
-                          "420ball"
-                        ],
-                        "regex": "",
-                        "description": "Ask the magic 8-ball a question"
-                      },
-                      {
-                        "commandId": "store_redeem",
-                        "command": "redeem",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 5,
-                          "global": 1
-                        },
-                        "aliases": [
-                          "buy"
-                        ],
-                        "regex": "",
-                        "description": "You successfully redeemed item1 for 420 points."
-                      },
-                      {
-                        "commandId": "permit",
-                        "command": "permit",
-                        "accessLevel": 500,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 0,
-                          "global": 0
-                        },
-                        "aliases": [],
-                        "regex": "",
-                        "description": "Prevent a viewer from getting timed out for 60 seconds."
-                      },
-                      {
-                        "commandId": "roulette",
-                        "command": "roulette",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "roulette",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 60,
-                          "global": 0
-                        },
-                        "aliases": [
-                          "gamble"
-                        ],
-                        "regex": "",
-                        "description": "gamble your life away"
-                      },
-                      {
-                        "commandId": "editpoints",
-                        "command": "addpoints",
-                        "accessLevel": 1000,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 0,
-                          "global": 0
-                        },
-                        "aliases": [
-                          "editpoints",
-                          "bonus"
-                        ],
-                        "regex": "",
-                        "description": "Give points to viewers. Use 'all' for all chatters"
-                      },
-                      {
-                        "commandId": "module",
-                        "command": "module",
-                        "accessLevel": 1000,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 0,
-                          "global": 5
-                        },
-                        "aliases": [],
-                        "regex": "",
-                        "description": "Enable or disable modules via chat."
-                      },
-                      {
-                        "commandId": "next",
-                        "command": "next",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 10,
-                          "global": 0
-                        },
-                        "aliases": [
-                          "nextsong",
-                          "whatisthenextsonghomie"
-                        ],
-                        "regex": "",
-                        "description": "next song: MrSuicideSheep - WE WON ZULUL [2m3s] requested by LordFluffyButt https://youtu.be/9OG-Qr1qAe4"
-                      },
-                      {
-                        "commandId": "store_items",
-                        "command": "items",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 15,
-                          "global": 5
-                        },
-                        "aliases": [
-                          "store"
-                        ],
-                        "regex": "",
-                        "description": "Available items are: item1, item2, item3 https://StreamElements.com/${channel.alias}/store"
-                      },
-                      {
-                        "commandId": "srsongrequest",
-                        "command": "songrequest",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "songrequest",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 15,
-                          "global": 3
-                        },
-                        "aliases": [
-                          "sr"
-                        ],
-                        "regex": "",
-                        "description": "Request a song by youtube id, url or video title."
-                      },
-                      {
-                        "commandId": "srwhen",
-                        "command": "when",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 0,
-                          "global": 15
-                        },
-                        "aliases": [
-                          "mysong"
-                        ],
-                        "regex": "",
-                        "description": "\"My Summer Car - Radio Chill\" is at #2 in the queue and is playing 2 mins 3 secs"
-                      },
-                      {
-                        "commandId": "srvolume",
-                        "command": "volume",
-                        "accessLevel": 1000,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 0,
-                          "global": 0
-                        },
-                        "aliases": [],
-                        "regex": "",
-                        "description": "Change the songrequest volume."
-                      },
-                      {
-                        "commandId": "kappagen",
-                        "command": "kappagen",
-                        "accessLevel": 500,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 15,
-                          "global": 5
-                        },
-                        "aliases": [
-                          "emotesplosion"
-                        ],
-                        "regex": "",
-                        "description": "KappaGen emotesplosions."
-                      },
-                      {
-                        "commandId": "command",
-                        "command": "command",
-                        "subCommands": [
-                          "add",
-                          "remove",
-                          "edit",
-                          "options",
-                          "show"
-                        ],
-                        "accessLevel": 500,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 3,
-                          "global": 0
-                        },
-                        "aliases": [
-                          "cmd"
-                        ],
-                        "regex": "",
-                        "description": "Add, edit and delete chat commands."
-                      },
-                      {
-                        "commandId": "ping",
-                        "command": "ping",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleEnabled": true,
-                        "moduleId": "admin",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 0,
-                          "global": 15
-                        },
-                        "aliases": [],
-                        "regex": "",
-                        "description": "streamelements has been running for 13 hours 47 mins!"
-                      },
-                      {
-                        "commandId": "duel_accept",
-                        "command": "accept",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "duel",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 10,
-                          "global": 0
-                        },
-                        "aliases": [],
-                        "regex": "",
-                        "description": "Accept a duel request from another chatter"
-                      },
-                      {
-                        "commandId": "bot",
-                        "command": "bot",
-                        "subCommands": [
-                          "mute",
-                          "unmute",
-                          "part"
-                        ],
-                        "accessLevel": 1000,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 0,
-                          "global": 0
-                        },
-                        "aliases": [],
-                        "regex": "",
-                        "description": "Mute, unmute or remove the bot."
-                      },
-                      {
-                        "commandId": "raffle_cancel",
-                        "command": "cancelraffle",
-                        "accessLevel": 500,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "raffle",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 0,
-                          "global": 0
-                        },
-                        "aliases": [
-                          "rafflecancel"
-                        ],
-                        "regex": "",
-                        "description": "Cancel an active raffle"
-                      },
-                      {
-                        "commandId": "bingo",
-                        "command": "bingo",
-                        "subCommands": [
-                          "bttv",
-                          "ffz",
-                          "twitch",
-                          "all",
-                          "cancel"
-                        ],
-                        "accessLevel": 500,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "bingo",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 0,
-                          "global": 0
-                        },
-                        "aliases": [],
-                        "regex": "",
-                        "description": "Play a game of emote-bingo"
-                      },
-                      {
-                        "commandId": "pepes",
-                        "command": "pepes",
-                        "accessLevel": 1000,
-                        "enabled": false,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 0,
-                          "global": 5
-                        },
-                        "aliases": [],
-                        "regex": "",
-                        "description": "Enable or disable pepes in bot responses."
-                      },
-                      {
-                        "commandId": "edit_counter",
-                        "command": "editcounter",
-                        "accessLevel": 500,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 0,
-                          "global": 0
-                        },
-                        "aliases": [
-                          "editcount"
-                        ],
-                        "regex": "",
-                        "description": "Edit a custom ${count <name>}/${getcount <name>} counter"
-                      },
-                      {
-                        "commandId": "voteskip",
-                        "command": "voteskip",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "songrequest",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 10,
-                          "global": 0
-                        },
-                        "aliases": [],
-                        "regex": "",
-                        "description": "Vote to skip the current song"
-                      },
-                      {
-                        "commandId": "raffle_multiraffle",
-                        "command": "raffle",
-                        "accessLevel": 500,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "raffle",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 0,
-                          "global": 0
-                        },
-                        "aliases": [
-                          "mraffle",
-                          "multiraffle"
-                        ],
-                        "regex": "",
-                        "description": "Start a raffle with multiple winners"
-                      },
-                      {
-                        "commandId": "duel",
-                        "command": "duel",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "duel",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 10,
-                          "global": 0
-                        },
-                        "aliases": [],
-                        "regex": "",
-                        "description": "Duel another chatter for points"
-                      },
-                      {
-                        "commandId": "setpoints",
-                        "command": "setpoints",
-                        "accessLevel": 1000,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 0,
-                          "global": 0
-                        },
-                        "aliases": [],
-                        "regex": "",
-                        "description": "Set the points of a viewer."
-                      },
-                      {
-                        "commandId": "watchtime",
-                        "command": "watchtime",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 15,
-                          "global": 1
-                        },
-                        "aliases": [
-                          "viewtime"
-                        ],
-                        "regex": "",
-                        "description": "${user} has spent ${user.time_online|'0 seconds'} watching ${channel}"
-                      },
-                      {
-                        "commandId": "duel_cancel",
-                        "command": "cancelduel",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "duel",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 0,
-                          "global": 0
-                        },
-                        "aliases": [],
-                        "regex": "",
-                        "description": "Cancel a duel request to another chatter"
-                      },
-                      {
-                        "commandId": "quote",
-                        "command": "quote",
-                        "subCommands": [
-                          "add",
-                          "remove"
-                        ],
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 0,
-                          "global": 0
-                        },
-                        "aliases": [],
-                        "regex": "",
-                        "description": "Add, remove and show quotes."
-                      },
-                      {
-                        "commandId": "points",
-                        "command": "points",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 5,
-                          "global": 1
-                        },
-                        "aliases": [],
-                        "regex": "",
-                        "description": "$(user) has $(user.points) $(pointsname) and is rank $(user.points_rank) on the leaderboard."
-                      },
-                      {
-                        "commandId": "chatstats",
-                        "command": "chatstats",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 15,
-                          "global": 5
-                        },
-                        "aliases": [
-                          "twitchstats"
-                        ],
-                        "regex": "",
-                        "description": "https://stats.StreamElements.com/c/$(channel) PogChamp"
-                      },
-                      {
-                        "commandId": "srsong",
-                        "command": "song",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 0,
-                          "global": 15
-                        },
-                        "aliases": [],
-                        "regex": "",
-                        "description": "current song: harambe.waw - WE WON ZULUL [2m3s] requested by nuuls https://youtu.be/9OG-Qr1qAe4"
-                      },
-                      {
-                        "commandId": "settitle",
-                        "command": "settitle",
-                        "accessLevel": 1000,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 0,
-                          "global": 15
-                        },
-                        "aliases": [
-                          "setitle"
-                        ],
-                        "regex": "",
-                        "description": "Update the stream title."
-                      },
-                      {
-                        "commandId": "duel_deny",
-                        "command": "deny",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "duel",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 10,
-                          "global": 0
-                        },
-                        "aliases": [],
-                        "regex": "",
-                        "description": "Deny a duel request from another chatter"
-                      },
-                      {
-                        "commandId": "giveaway_enter",
-                        "command": "enter",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 10,
-                          "global": 0
-                        },
-                        "aliases": [
-                          "ticket"
-                        ],
-                        "regex": "",
-                        "description": "Buy tickets for a giveaway."
-                      },
-                      {
-                        "commandId": "uptime",
-                        "command": "uptime",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 15,
-                          "global": 5
-                        },
-                        "aliases": [
-                          "downtime"
-                        ],
-                        "regex": "",
-                        "description": "${channel} has been streaming for 2 hours 20 mins"
-                      },
-                      {
-                        "commandId": "contest_contest",
-                        "command": "contest",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 15,
-                          "global": 5
-                        },
-                        "aliases": [],
-                        "regex": "",
-                        "description": "Show the currently active contest."
-                      },
-                      {
-                        "commandId": "tip",
-                        "command": "tip",
-                        "accessLevel": 100,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 15,
-                          "global": 5
-                        },
-                        "aliases": [
-                          "donate"
-                        ],
-                        "regex": "",
-                        "description": "You can Tip to $(channel) using this link https://StreamElements.com/${channel.alias}/tip"
-                      },
-                      {
-                        "commandId": "setgame",
-                        "command": "setgame",
-                        "accessLevel": 1000,
-                        "enabled": true,
-                        "enabledOnline": true,
-                        "enabledOffline": true,
-                        "moduleId": "",
-                        "cost": 0,
-                        "cooldown": {
-                          "user": 0,
-                          "global": 15
-                        },
-                        "aliases": [],
-                        "regex": "",
-                        "description": "Update the channels game."
-                      }
-                    ]
+                    "$ref": "#/components/examples/default"
                   }
                 }
               }
@@ -19257,7 +17656,7 @@
               },
               "examples": {
                 "default": {
-                  "value": "{\"filter\":}"
+                  "$ref": "#/components/examples/default"
                 }
               }
             }
@@ -20829,7 +19228,7 @@
               },
               "examples": {
                 "default": {
-                  "value": {}
+                  "$ref": "#/components/examples/default"
                 }
               }
             }
@@ -21852,7 +20251,7 @@
                 },
                 "examples": {
                   "default": {
-                    "value": "Created"
+                    "$ref": "#/components/examples/default"
                   }
                 }
               }
@@ -21970,7 +20369,7 @@
                 },
                 "examples": {
                   "default": {
-                    "value": "Created"
+                    "$ref": "#/components/examples/default"
                   }
                 }
               }
@@ -22088,7 +20487,7 @@
                 },
                 "examples": {
                   "default": {
-                    "value": "Created"
+                    "$ref": "#/components/examples/default"
                   }
                 }
               }
@@ -22302,7 +20701,7 @@
                 },
                 "examples": {
                   "default": {
-                    "value": "Created"
+                    "$ref": "#/components/examples/default"
                   }
                 }
               }
@@ -22747,7 +21146,7 @@
                 },
                 "examples": {
                   "default": {
-                    "value": []
+                    "$ref": "#/components/examples/default"
                   }
                 }
               }
@@ -25697,7 +24096,7 @@
                 },
                 "examples": {
                   "default": {
-                    "value": "Created"
+                    "$ref": "#/components/examples/default"
                   }
                 }
               }
@@ -26908,7 +25307,7 @@
                 },
                 "examples": {
                   "default": {
-                    "value": "Created"
+                    "$ref": "#/components/examples/default"
                   }
                 }
               }
@@ -30909,33 +29308,7 @@
                 },
                 "examples": {
                   "default": {
-                    "value": [
-                      {
-                        "videoId": "dQw4w9WgXcQ",
-                        "thumbnail": "https://i.ytimg.com/vi/dQw4w9WgXcQ/default.jpg",
-                        "title": "Rick Astley - Never Gonna Give You Up (Video)"
-                      },
-                      {
-                        "videoId": "6_b7RDuLwcI",
-                        "thumbnail": "https://i.ytimg.com/vi/6_b7RDuLwcI/default.jpg",
-                        "title": "Rick Astley Never gonna give you up lyrics!!!"
-                      },
-                      {
-                        "videoId": "X9NOzYMLfmM",
-                        "thumbnail": "https://i.ytimg.com/vi/X9NOzYMLfmM/default.jpg",
-                        "title": "Never Gonna Give You Up By Rick Astley (AKA The Rick Roll Song) Lyrics"
-                      },
-                      {
-                        "videoId": "IO9XlQrEt2Y",
-                        "thumbnail": "https://i.ytimg.com/vi/IO9XlQrEt2Y/default.jpg",
-                        "title": "Rick Astley - Never Gonna Give You Up (The Roxy 1987)"
-                      },
-                      {
-                        "videoId": "p1tMZ50s2Oo",
-                        "thumbnail": "https://i.ytimg.com/vi/p1tMZ50s2Oo/default.jpg",
-                        "title": "Rick Astley - Never Gonna Give You Up (Live @ V Festival 2016 + Interview, HD)"
-                      }
-                    ]
+                    "$ref": "#/components/examples/default"
                   }
                 }
               }
@@ -31607,7 +29980,7 @@
                 },
                 "examples": {
                   "default": {
-                    "value": "Created"
+                    "$ref": "#/components/examples/default"
                   }
                 }
               }
@@ -31735,20 +30108,7 @@
                 },
                 "examples": {
                   "default": {
-                    "value": [
-                      {
-                        "duration": 213,
-                        "_id": "5c0ba7b3de9a4c7036a15040",
-                        "videoId": "dQw4w9WgXcQ",
-                        "title": "Rick Astley - Never Gonna Give You Up (Video)",
-                        "channel": "RickAstleyVEVO",
-                        "source": "site",
-                        "user": {
-                          "username": "leeeeex",
-                          "providerId": "85827806"
-                        }
-                      }
-                    ]
+                    "$ref": "#/components/examples/default"
                   }
                 }
               }
@@ -32422,7 +30782,7 @@
                 },
                 "examples": {
                   "default": {
-                    "value": "Created"
+                    "$ref": "#/components/examples/default"
                   }
                 }
               }
@@ -36541,7 +34901,7 @@
                 },
                 "examples": {
                   "default": {
-                    "value": "Created"
+                    "$ref": "#/components/examples/default"
                   }
                 }
               }
@@ -36903,82 +35263,7 @@
                 },
                 "examples": {
                   "default": {
-                    "value": [
-                      {
-                        "bot": {
-                          "enabled": true,
-                          "identifier": "testitem"
-                        },
-                        "cooldown": {
-                          "user": 5,
-                          "global": 0
-                        },
-                        "quantity": {
-                          "total": -1
-                        },
-                        "alert": {
-                          "graphics": {
-                            "duration": 8
-                          },
-                          "audio": {
-                            "volume": 0.5,
-                            "src": null
-                          },
-                          "enabled": true
-                        },
-                        "subscriberOnly": false,
-                        "userInput": [],
-                        "_id": "5c0bb2aede9a4c4402a15056",
-                        "enabled": true,
-                        "featured": false,
-                        "name": "Test item",
-                        "description": "Test description",
-                        "type": "perk",
-                        "cost": 1,
-                        "public": false,
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-08T12:01:50.208Z",
-                        "updatedAt": "2018-12-08T12:02:47.902Z"
-                      },
-                      {
-                        "bot": {
-                          "enabled": true,
-                          "identifier": "super_item"
-                        },
-                        "cooldown": {
-                          "user": 10,
-                          "global": 0
-                        },
-                        "quantity": {
-                          "total": 3,
-                          "current": 3
-                        },
-                        "alert": {
-                          "graphics": {
-                            "duration": 8
-                          },
-                          "audio": {
-                            "volume": 0.5,
-                            "src": "https://cdn.streamelements.com/uploads/08e58dd8-b750-4113-a496-2b5817fd8031.mp3"
-                          },
-                          "enabled": true
-                        },
-                        "subscriberOnly": false,
-                        "userInput": [],
-                        "_id": "5c0bb3b0de9a4c40a3a1505d",
-                        "enabled": true,
-                        "featured": false,
-                        "name": "Super item",
-                        "description": "Super description",
-                        "type": "code",
-                        "cost": 100,
-                        "preview": "https://cdn.streamelements.com/uploads/dbf6ff1f-3d03-4db7-a4bd-43d30e22461a.gif",
-                        "public": false,
-                        "channel": "5b2e2007760aeb7729487dab",
-                        "createdAt": "2018-12-08T12:06:08.435Z",
-                        "updatedAt": "2018-12-08T12:06:08.435Z"
-                      }
-                    ]
+                    "$ref": "#/components/examples/default"
                   }
                 }
               }
@@ -37460,7 +35745,7 @@
         ],
         "summary": "/:channel/items/:itemId",
         "description": "Get item details",
-        "operationId": "Get/:channel/items/:itemId",
+        "operationId": "Get/store/:channel/items/:itemId",
         "parameters": [
           {
             "name": "channel",
@@ -37627,7 +35912,7 @@
         ],
         "summary": "/:channel/items/:itemId",
         "description": "Update item",
-        "operationId": "Put/:channel/items/:itemId",
+        "operationId": "Put/store/:channel/items/:itemId",
         "parameters": [
           {
             "name": "channel",
@@ -37658,11 +35943,249 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "example": {}
+                "properties": {
+                  "bot": {
+                    "type": "object",
+                    "properties": {
+                      "identifier": {
+                        "type": "string"
+                      },
+                      "sendResponse": {
+                        "type": "boolean"
+                      }
+                    }
+                  },
+                  "cooldown": {
+                    "type": "object",
+                    "properties": {
+                      "user": {
+                        "type": "integer"
+                      },
+                      "global": {
+                        "type": "integer"
+                      },
+                      "category": {
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  "quantity": {
+                    "type": "object",
+                    "properties": {
+                      "current": {
+                        "type": "integer"
+                      },
+                      "total": {
+                        "type": "integer"
+                      }
+                    }
+                  },
+                  "accessCodes": {
+                    "type": "object",
+                    "properties": {
+                      "mode": {
+                        "type": "string"
+                      },
+                      "random": {
+                        "type": "boolean"
+                      },
+                      "keys": {
+                        "type": "array",
+                        "items": {
+                          "type": "object"
+                        }
+                      }
+                    }
+                  },
+                  "alert": {
+                    "type": "object",
+                    "properties": {
+                      "graphics": {
+                        "type": "object",
+                        "properties": {
+                          "duration": {
+                            "type": "integer"
+                          },
+                          "type": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "audio": {
+                        "type": "object",
+                        "properties": {
+                          "src": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "volume": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "enabled": {
+                        "type": "boolean"
+                      }
+                    }
+                  },
+                  "_id": {
+                    "type": "string"
+                  },
+                  "subscriberOnly": {
+                    "type": "boolean"
+                  },
+                  "sources": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "userInput": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  },
+                  "order": {
+                    "type": "integer"
+                  },
+                  "enabled": {
+                    "type": "boolean"
+                  },
+                  "featured": {
+                    "type": "boolean"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "cost": {
+                    "type": "integer"
+                  },
+                  "allowMessages": {
+                    "type": "boolean"
+                  },
+                  "categoryName": {
+                    "type": "string"
+                  },
+                  "public": {
+                    "type": "boolean"
+                  },
+                  "channel": {
+                    "type": "string"
+                  },
+                  "thumbnail": {
+                    "type": "string"
+                  }
+                },
+                "x-examples": {
+                  "Example 1": {
+                    "bot": {
+                      "identifier": "itemcommand",
+                      "sendResponse": false
+                    },
+                    "cooldown": {
+                      "user": 1,
+                      "global": 1,
+                      "category": 0
+                    },
+                    "quantity": {
+                      "current": -1,
+                      "total": -1
+                    },
+                    "accessCodes": {
+                      "mode": "multi",
+                      "random": false,
+                      "keys": []
+                    },
+                    "alert": {
+                      "graphics": {
+                        "duration": 8,
+                        "type": "image"
+                      },
+                      "audio": {
+                        "src": "",
+                        "volume": 0.5
+                      },
+                      "enabled": true
+                    },
+                    "_id": "64fe4286be5cb0835e9a2eb1",
+                    "subscriberOnly": false,
+                    "sources": [
+                      "website"
+                    ],
+                    "userInput": [],
+                    "order": 3,
+                    "enabled": true,
+                    "featured": false,
+                    "name": "Test Item",
+                    "description": "Item description",
+                    "type": "perk",
+                    "cost": 1,
+                    "allowMessages": true,
+                    "categoryName": "",
+                    "public": false,
+                    "channel": "5f2de5dd9a474a2c2aaaaaaa",
+                    "thumbnail": "https://cdn.streamelements.com/uploads/6590a161-9f0c-432b-9629-48ba8c5b10f4.gif"
+                  }
+                }
               },
               "examples": {
                 "default": {
-                  "value": {}
+                  "value": {
+                    "bot": {
+                      "identifier": "itemcommand",
+                      "sendResponse": false
+                    },
+                    "cooldown": {
+                      "user": 1,
+                      "global": 1,
+                      "category": 0
+                    },
+                    "quantity": {
+                      "current": -1,
+                      "total": -1
+                    },
+                    "accessCodes": {
+                      "mode": "multi",
+                      "random": false,
+                      "keys": []
+                    },
+                    "alert": {
+                      "graphics": {
+                        "duration": 8,
+                        "type": "image"
+                      },
+                      "audio": {
+                        "src": null,
+                        "volume": 0.5
+                      },
+                      "enabled": true
+                    },
+                    "_id": "64fe4286be5cb0835e9a2eb1",
+                    "subscriberOnly": false,
+                    "sources": [
+                      "website"
+                    ],
+                    "userInput": [],
+                    "order": 3,
+                    "enabled": true,
+                    "featured": false,
+                    "name": "Test Item",
+                    "description": "Item description",
+                    "type": "perk",
+                    "cost": 1,
+                    "allowMessages": true,
+                    "categoryName": "",
+                    "public": false,
+                    "channel": "5f2de5dd9a474a2c2aaaaaaa",
+                    "thumbnail": "https://cdn.streamelements.com/uploads/example-image.gif"
+                  }
                 }
               }
             }
@@ -37799,7 +36322,7 @@
         ],
         "summary": "/:channel/items/:itemId",
         "description": "Delete item from store",
-        "operationId": "Delete/:channel/items/:itemId",
+        "operationId": "Delete/store/:channel/items/:itemId",
         "parameters": [
           {
             "name": "channel",
@@ -37834,7 +36357,7 @@
                 },
                 "examples": {
                   "default": {
-                    "value": "Created"
+                    "$ref": "#/components/examples/default"
                   }
                 }
               }
@@ -39022,17 +37545,7 @@
                 },
                 "examples": {
                   "default": {
-                    "value": [
-                      {
-                        "username": "StreamElements",
-                        "first": "2018-12-07T17:19:01.957Z",
-                        "last": "2018-12-07T17:19:01.957Z",
-                        "count": 1,
-                        "total": 100,
-                        "email": "streamelements@streamelements.com",
-                        "average": 100
-                      }
-                    ]
+                    "$ref": "#/components/examples/default"
                   }
                 }
               }
@@ -39930,15 +38443,7 @@
                 },
                 "examples": {
                   "default": {
-                    "value": [
-                      {
-                        "channelId": "5b2e2007760aeb7729487dab",
-                        "username": "leeeeex",
-                        "avatar": "https://static-cdn.jtvnw.net/jtv_user_pictures/b21a7fa5-4f3f-4402-b68f-3545dcc68b90-profile_image-300x300.jpg",
-                        "provider": "twitch",
-                        "role": "owner"
-                      }
-                    ]
+                    "$ref": "#/components/examples/default"
                   }
                 }
               }
@@ -40023,8 +38528,7 @@
             "content": {
               "audio/mp3": {
                 "schema": {
-                  "type": "string",
-                  "contentMediaType": "application/octet-stream"
+                  "type": "string"
                 }
               }
             },
@@ -41455,9 +39959,27 @@
           "widgets"
         ],
         "summary": "/:channel/youtube-chat",
-        "description": "List youtube chat messages from public livestream",
+        "description": "List youtube chat messages from public livestream\r\n\r\nNotes: *On first request you get `id` and `nextPage`, so you can them to do the next requests.*",
         "operationId": "Get/widgets/:channel/youtube-chat",
         "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "description": "string - id of the request",
+            "schema": {
+              "type": "string",
+              "example": "KicKGFVDT2p0eVFPaTNNUjhYT3lzFMdZOmtKZxILZloyMUNMY0RhNUE"
+            }
+          },
+          {
+            "name": "nextPage",
+            "in": "query",
+            "description": "string - next page for new requests",
+            "schema": {
+              "type": "string",
+              "example": "GJ-RpabGvooDIKuIp5jWvooD"
+            }
+          },
           {
             "name": "channel",
             "in": "path",
@@ -41470,11 +39992,275 @@
         ],
         "responses": {
           "200": {
-            "description": "OK\r\n\r\n*Pending response*",
+            "description": "OK\r\n",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "nextPage": {
+                      "type": "string"
+                    },
+                    "messages": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "kind": {
+                            "type": "string"
+                          },
+                          "etag": {
+                            "type": "string"
+                          },
+                          "id": {
+                            "type": "string"
+                          },
+                          "snippet": {
+                            "type": "object",
+                            "properties": {
+                              "type": {
+                                "type": "string"
+                              },
+                              "liveChatId": {
+                                "type": "string"
+                              },
+                              "authorChannelId": {
+                                "type": "string"
+                              },
+                              "publishedAt": {
+                                "type": "string"
+                              },
+                              "hasDisplayContent": {
+                                "type": "boolean"
+                              },
+                              "displayMessage": {
+                                "type": "string"
+                              },
+                              "textMessageDetails": {
+                                "type": "object",
+                                "properties": {
+                                  "messageText": {
+                                    "type": "string"
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "authorDetails": {
+                            "type": "object",
+                            "properties": {
+                              "channelId": {
+                                "type": "string"
+                              },
+                              "channelUrl": {
+                                "type": "string"
+                              },
+                              "displayName": {
+                                "type": "string"
+                              },
+                              "profileImageUrl": {
+                                "type": "string"
+                              },
+                              "isVerified": {
+                                "type": "boolean"
+                              },
+                              "isChatOwner": {
+                                "type": "boolean"
+                              },
+                              "isChatSponsor": {
+                                "type": "boolean"
+                              },
+                              "isChatModerator": {
+                                "type": "boolean"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "nextPage",
+                    "messages"
+                  ],
+                  "x-examples": {
+                    "Example 1": {
+                      "id": "KJcKGF123456789PaTN0000003lzMFdOZmtKZxILZloyMU123456789",
+                      "nextPage": "AbCdEfy7vooDIJr987654321",
+                      "messages": [
+                        {
+                          "kind": "youtube#liveChatMessage",
+                          "etag": "m6nKmd0EdUw-W3ydrXOe2z4esJs",
+                          "id": "LCC.EhwKGkNMVEdyTE94dm9vREZUWER3Z1Fkcaaaaaaa",
+                          "snippet": {
+                            "type": "textMessageEvent",
+                            "liveChatId": "KicKGFVDT2p0eVFPaTNNUjhYT3lzMFdOZmtKZxILZloyMUNMY0RhNEU",
+                            "authorChannelId": "UCss9Po8aL0sVqKFhaaaaaaa",
+                            "publishedAt": "2024-12-23T17:11:30.17726+00:00",
+                            "hasDisplayContent": true,
+                            "displayMessage": "Chat message example",
+                            "textMessageDetails": {
+                              "messageText": "Chat message example"
+                            }
+                          },
+                          "authorDetails": {
+                            "channelId": "UCss9Po8aL0sVqKFhiaaaaaaa",
+                            "channelUrl": "http://www.youtube.com/channel/UCss9Po8aL0sVqKFhaaaaaaa",
+                            "displayName": "Example Name",
+                            "profileImageUrl": "https://yt3.ggpht.com/example-image=s88-c-k-c0x00ffffff-no-rj",
+                            "isVerified": false,
+                            "isChatOwner": false,
+                            "isChatSponsor": false,
+                            "isChatModerator": false
+                          }
+                        },
+                        {
+                          "kind": "youtube#liveChatMessage",
+                          "etag": "3gWLgQijoZJS_ooZ5EeSpXjiwHQ",
+                          "id": "LCC.EhwKGkNJamRwUFd4dm9vREZjTGV3Z1Fkd0000000",
+                          "snippet": {
+                            "type": "textMessageEvent",
+                            "liveChatId": "KicKGFVDT2p0eVFPaTNNUjhYT3lzMFdOZmtKZxILZloyMUNMY0RhNEU",
+                            "authorChannelId": "UCw_FpDJgUaxFRzef1111111",
+                            "publishedAt": "2024-12-23T17:13:48.46128+00:00",
+                            "hasDisplayContent": true,
+                            "displayMessage": "Another chat message",
+                            "textMessageDetails": {
+                              "messageText": "Another chat message"
+                            }
+                          },
+                          "authorDetails": {
+                            "channelId": "UCw_FpDJgUaxFRzef1111111",
+                            "channelUrl": "http://www.youtube.com/channel/UCw_FpDJgUaxFRzef1111111",
+                            "displayName": "Test Name",
+                            "profileImageUrl": "https://yt3.ggpht.com/ytc/example-image=s88-c-k-c0x00ffffff-no-rj",
+                            "isVerified": false,
+                            "isChatOwner": false,
+                            "isChatSponsor": false,
+                            "isChatModerator": false
+                          }
+                        },
+                        {
+                          "kind": "youtube#liveChatMessage",
+                          "etag": "HvpQjat4-K_lUatrzAEfEoQm9zs",
+                          "id": "LCC.EhwKGkNNekNvSTIwdm9vREZYM0N3Z1FkY2222222",
+                          "snippet": {
+                            "type": "textMessageEvent",
+                            "liveChatId": "KicKGFVDT2p0eVFPaTNNUjhYT3lzMFdOZmtKZxILZloyMUNMY0RhNEU",
+                            "authorChannelId": "UCpjctZQgYjVA3qDA2222222",
+                            "publishedAt": "2024-12-23T17:23:35.594661+00:00",
+                            "hasDisplayContent": true,
+                            "displayMessage": "This is a test message sent on chat",
+                            "textMessageDetails": {
+                              "messageText": "This is a test message sent on chat"
+                            }
+                          },
+                          "authorDetails": {
+                            "channelId": "UCpjctZQgYjVA3qDA2222222",
+                            "channelUrl": "http://www.youtube.com/channel/UCpjctZQgYjVA3qDA2222222",
+                            "displayName": "User Display Name",
+                            "profileImageUrl": "https://yt3.ggpht.com/example-image=s88-c-k-c0x00ffffff-no-rj",
+                            "isVerified": false,
+                            "isChatOwner": false,
+                            "isChatSponsor": false,
+                            "isChatModerator": false
+                          }
+                        }
+                      ]
+                    }
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "id": "KJcKGF123456789PaTN0000003lzMFdOZmtKZxILZloyMU123456789",
+                      "nextPage": "AbCdEfy7vooDIJr987654321",
+                      "messages": [
+                        {
+                          "kind": "youtube#liveChatMessage",
+                          "etag": "m6nKmd0EdUw-W3ydrXOe2z4esJs",
+                          "id": "LCC.EhwKGkNMVEdyTE94dm9vREZUWER3Z1Fkcaaaaaaa",
+                          "snippet": {
+                            "type": "textMessageEvent",
+                            "liveChatId": "KicKGFVDT2p0eVFPaTNNUjhYT3lzMFdOZmtKZxILZloyMUNMY0RhNEU",
+                            "authorChannelId": "UCss9Po8aL0sVqKFhaaaaaaa",
+                            "publishedAt": "2024-12-23T17:11:30.17726+00:00",
+                            "hasDisplayContent": true,
+                            "displayMessage": "Chat message example",
+                            "textMessageDetails": {
+                              "messageText": "Chat message example"
+                            }
+                          },
+                          "authorDetails": {
+                            "channelId": "UCss9Po8aL0sVqKFhiaaaaaaa",
+                            "channelUrl": "http://www.youtube.com/channel/UCss9Po8aL0sVqKFhaaaaaaa",
+                            "displayName": "Example Name",
+                            "profileImageUrl": "https://yt3.ggpht.com/example-image=s88-c-k-c0x00ffffff-no-rj",
+                            "isVerified": false,
+                            "isChatOwner": false,
+                            "isChatSponsor": false,
+                            "isChatModerator": false
+                          }
+                        },
+                        {
+                          "kind": "youtube#liveChatMessage",
+                          "etag": "3gWLgQijoZJS_ooZ5EeSpXjiwHQ",
+                          "id": "LCC.EhwKGkNJamRwUFd4dm9vREZjTGV3Z1Fkd0000000",
+                          "snippet": {
+                            "type": "textMessageEvent",
+                            "liveChatId": "KicKGFVDT2p0eVFPaTNNUjhYT3lzMFdOZmtKZxILZloyMUNMY0RhNEU",
+                            "authorChannelId": "UCw_FpDJgUaxFRzef1111111",
+                            "publishedAt": "2024-12-23T17:13:48.46128+00:00",
+                            "hasDisplayContent": true,
+                            "displayMessage": "Another chat message",
+                            "textMessageDetails": {
+                              "messageText": "Another chat message"
+                            }
+                          },
+                          "authorDetails": {
+                            "channelId": "UCw_FpDJgUaxFRzef1111111",
+                            "channelUrl": "http://www.youtube.com/channel/UCw_FpDJgUaxFRzef1111111",
+                            "displayName": "Test Name",
+                            "profileImageUrl": "https://yt3.ggpht.com/ytc/example-image=s88-c-k-c0x00ffffff-no-rj",
+                            "isVerified": false,
+                            "isChatOwner": false,
+                            "isChatSponsor": false,
+                            "isChatModerator": false
+                          }
+                        },
+                        {
+                          "kind": "youtube#liveChatMessage",
+                          "etag": "HvpQjat4-K_lUatrzAEfEoQm9zs",
+                          "id": "LCC.EhwKGkNNekNvSTIwdm9vREZYM0N3Z1FkY2222222",
+                          "snippet": {
+                            "type": "textMessageEvent",
+                            "liveChatId": "KicKGFVDT2p0eVFPaTNNUjhYT3lzMFdOZmtKZxILZloyMUNMY0RhNEU",
+                            "authorChannelId": "UCpjctZQgYjVA3qDA2222222",
+                            "publishedAt": "2024-12-23T17:23:35.594661+00:00",
+                            "hasDisplayContent": true,
+                            "displayMessage": "This is a test message sent on chat",
+                            "textMessageDetails": {
+                              "messageText": "This is a test message sent on chat"
+                            }
+                          },
+                          "authorDetails": {
+                            "channelId": "UCpjctZQgYjVA3qDA2222222",
+                            "channelUrl": "http://www.youtube.com/channel/UCpjctZQgYjVA3qDA2222222",
+                            "displayName": "User Display Name",
+                            "profileImageUrl": "https://yt3.ggpht.com/example-image=s88-c-k-c0x00ffffff-no-rj",
+                            "isVerified": false,
+                            "isChatOwner": false,
+                            "isChatSponsor": false,
+                            "isChatModerator": false
+                          }
+                        }
+                      ]
+                    }
+                  }
                 }
               }
             }
@@ -49840,6 +48626,19 @@
             "tokenUrl": "https://api.streamelements.com/oauth2/token"
           }
         }
+      }
+    },
+    "examples": {
+      "default": {
+        "value": [
+          {
+            "channelId": "5b2e2007760aeb7729487dab",
+            "username": "leeeeex",
+            "avatar": "https://static-cdn.jtvnw.net/jtv_user_pictures/b21a7fa5-4f3f-4402-b68f-3545dcc68b90-profile_image-300x300.jpg",
+            "provider": "twitch",
+            "role": "owner"
+          }
+        ]
       }
     },
     "schemas": {
