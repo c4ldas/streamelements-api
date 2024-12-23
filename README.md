@@ -18,7 +18,12 @@ You can check out all the endpoints and even test them on the live page:
 
 If you have suggestions or ideas for improvements, feel free to share them!
 
-## Official documenation
+## Preview
+
+![image](https://github.com/user-attachments/assets/12fd5486-a4fc-424f-acca-803ddb81d111)
+
+
+## Official documentation
 
 The official Streamelements API documentation is hosted on their [developer site](https://dev.streamelements.com).
 
