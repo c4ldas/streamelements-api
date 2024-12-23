@@ -6,7 +6,7 @@ Here’s an updated list of Streamelements API endpoints, filling in the missing
 
 I reviewed all Streamelements API endpoints and created my own api.yaml file because the official API documentation is quite outdated.
 
-Some endpoints were removed because they didn’t work, others were updated, and a few ended up in the `wonky - not working` folder. As the name suggests, these are endpoints that don’t work as expected or lack enough information to use properly.
+Some endpoints were updated, added body and response examples, some had the query parameters fixed, and others moved to `wonky - not working` folder. As the name suggests, these are endpoints that don’t work as expected or lack enough information to use properly.
 
 Every operation now includes response examples and, where needed, body examples with some explanations to make things clearer.
 
