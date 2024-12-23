@@ -26374,7 +26374,7 @@ paths:
         - store
       summary: '/:channel/items/:itemId'
       description: Get item details
-      operationId: 'Get/:channel/items/:itemId'
+      operationId: 'Get/store/:channel/items/:itemId'
       parameters:
         - name: channel
           in: path
@@ -26484,7 +26484,7 @@ paths:
         - store
       summary: '/:channel/items/:itemId'
       description: Update item
-      operationId: 'Put/:channel/items/:itemId'
+      operationId: 'Put/store/:channel/items/:itemId'
       parameters:
         - name: channel
           in: path
@@ -26681,7 +26681,7 @@ paths:
                   categoryName: ''
                   public: false
                   channel: 5f2de5dd9a474a2c2aaaaaaa
-                  thumbnail: 'https://cdn.streamelements.com/uploads/6590a161-9f0c-432b-9629-48ba8c5b10f4.gif'
+                  thumbnail: 'https://cdn.streamelements.com/uploads/example-image.gif'
       responses:
         '200':
           description: ''
@@ -26767,7 +26767,7 @@ paths:
         - store
       summary: '/:channel/items/:itemId'
       description: Delete item from store
-      operationId: 'Delete/:channel/items/:itemId'
+      operationId: 'Delete/store/:channel/items/:itemId'
       parameters:
         - name: channel
           in: path
