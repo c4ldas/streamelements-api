@@ -26508,10 +26508,180 @@ paths:
           application/json:
             schema:
               type: object
-              example: {}
+              x-examples:
+                Example 1:
+                  bot:
+                    identifier: itemcommand
+                    sendResponse: false
+                  cooldown:
+                    user: 1
+                    global: 1
+                    category: 0
+                  quantity:
+                    current: -1
+                    total: -1
+                  accessCodes:
+                    mode: multi
+                    random: false
+                    keys: []
+                  alert:
+                    graphics:
+                      duration: 8
+                      type: image
+                    audio:
+                      src: ''
+                      volume: 0.5
+                    enabled: true
+                  _id: 64fe4286be5cb0835e9a2eb1
+                  subscriberOnly: false
+                  sources:
+                    - website
+                  userInput: []
+                  order: 3
+                  enabled: true
+                  featured: false
+                  name: Test Item
+                  description: Item description
+                  type: perk
+                  cost: 1
+                  allowMessages: true
+                  categoryName: ''
+                  public: false
+                  channel: 5f2de5dd9a474a2c2aaaaaaa
+                  thumbnail: 'https://cdn.streamelements.com/uploads/6590a161-9f0c-432b-9629-48ba8c5b10f4.gif'
+              properties:
+                bot:
+                  type: object
+                  properties:
+                    identifier:
+                      type: string
+                    sendResponse:
+                      type: boolean
+                cooldown:
+                  type: object
+                  properties:
+                    user:
+                      type: integer
+                    global:
+                      type: integer
+                    category:
+                      type: integer
+                quantity:
+                  type: object
+                  properties:
+                    current:
+                      type: integer
+                    total:
+                      type: integer
+                accessCodes:
+                  type: object
+                  properties:
+                    mode:
+                      type: string
+                    random:
+                      type: boolean
+                    keys:
+                      type: array
+                      items:
+                        type: object
+                alert:
+                  type: object
+                  properties:
+                    graphics:
+                      type: object
+                      properties:
+                        duration:
+                          type: integer
+                        type:
+                          type: string
+                    audio:
+                      type: object
+                      properties:
+                        src:
+                          type: string
+                          nullable: true
+                        volume:
+                          type: number
+                    enabled:
+                      type: boolean
+                _id:
+                  type: string
+                subscriberOnly:
+                  type: boolean
+                sources:
+                  type: array
+                  items:
+                    type: string
+                userInput:
+                  type: array
+                  items:
+                    type: object
+                order:
+                  type: integer
+                enabled:
+                  type: boolean
+                featured:
+                  type: boolean
+                name:
+                  type: string
+                description:
+                  type: string
+                type:
+                  type: string
+                cost:
+                  type: integer
+                allowMessages:
+                  type: boolean
+                categoryName:
+                  type: string
+                public:
+                  type: boolean
+                channel:
+                  type: string
+                thumbnail:
+                  type: string
             examples:
               default:
-                value: {}
+                value:
+                  bot:
+                    identifier: itemcommand
+                    sendResponse: false
+                  cooldown:
+                    user: 1
+                    global: 1
+                    category: 0
+                  quantity:
+                    current: -1
+                    total: -1
+                  accessCodes:
+                    mode: multi
+                    random: false
+                    keys: []
+                  alert:
+                    graphics:
+                      duration: 8
+                      type: image
+                    audio:
+                      src: null
+                      volume: 0.5
+                    enabled: true
+                  _id: 64fe4286be5cb0835e9a2eb1
+                  subscriberOnly: false
+                  sources:
+                    - website
+                  userInput: []
+                  order: 3
+                  enabled: true
+                  featured: false
+                  name: Test Item
+                  description: Item description
+                  type: perk
+                  cost: 1
+                  allowMessages: true
+                  categoryName: ''
+                  public: false
+                  channel: 5f2de5dd9a474a2c2aaaaaaa
+                  thumbnail: 'https://cdn.streamelements.com/uploads/6590a161-9f0c-432b-9629-48ba8c5b10f4.gif'
       responses:
         '200':
           description: ''
@@ -28066,7 +28236,6 @@ paths:
             audio/mp3:
               schema:
                 type: string
-                contentMediaType: application/octet-stream
           headers:
             Date:
               schema: {}
@@ -28967,7 +29136,7 @@ paths:
       tags:
         - widgets
       summary: '/:channel/youtube-chat'
-      description: List youtube chat messages from public livestream
+      description: "List youtube chat messages from public livestream\r\n\r\nNotes: *On first request you get `id` and `nextPage`, so you can them to do the next requests.*"
       operationId: 'Get/widgets/:channel/youtube-chat'
       parameters:
         - name: channel
@@ -28976,13 +29145,221 @@ paths:
           required: true
           schema:
             type: string
+        - schema:
+            type: string
+            example: KicKGFVDT2p0eVFPaTNNUjhYT3lzFMdZOmtKZxILZloyMUNMY0RhNUE
+          in: query
+          name: id
+          description: string - id of the request
+        - schema:
+            type: string
+            example: GJ-RpabGvooDIKuIp5jWvooD
+          in: query
+          name: nextPage
+          description: string - next page for new requests
       responses:
         '200':
-          description: "OK\r\n\r\n*Pending response*"
+          description: "OK\r\n"
           content:
             application/json:
               schema:
                 type: object
+                x-examples:
+                  Example 1:
+                    id: KJcKGF123456789PaTN0000003lzMFdOZmtKZxILZloyMU123456789
+                    nextPage: AbCdEfy7vooDIJr987654321
+                    messages:
+                      - kind: youtube#liveChatMessage
+                        etag: m6nKmd0EdUw-W3ydrXOe2z4esJs
+                        id: LCC.EhwKGkNMVEdyTE94dm9vREZUWER3Z1Fkcaaaaaaa
+                        snippet:
+                          type: textMessageEvent
+                          liveChatId: KicKGFVDT2p0eVFPaTNNUjhYT3lzMFdOZmtKZxILZloyMUNMY0RhNEU
+                          authorChannelId: UCss9Po8aL0sVqKFhaaaaaaa
+                          publishedAt: '2024-12-23T17:11:30.17726+00:00'
+                          hasDisplayContent: true
+                          displayMessage: Chat message example
+                          textMessageDetails:
+                            messageText: Chat message example
+                        authorDetails:
+                          channelId: UCss9Po8aL0sVqKFhiaaaaaaa
+                          channelUrl: 'http://www.youtube.com/channel/UCss9Po8aL0sVqKFhaaaaaaa'
+                          displayName: Example Name
+                          profileImageUrl: 'https://yt3.ggpht.com/example-image=s88-c-k-c0x00ffffff-no-rj'
+                          isVerified: false
+                          isChatOwner: false
+                          isChatSponsor: false
+                          isChatModerator: false
+                      - kind: youtube#liveChatMessage
+                        etag: 3gWLgQijoZJS_ooZ5EeSpXjiwHQ
+                        id: LCC.EhwKGkNJamRwUFd4dm9vREZjTGV3Z1Fkd0000000
+                        snippet:
+                          type: textMessageEvent
+                          liveChatId: KicKGFVDT2p0eVFPaTNNUjhYT3lzMFdOZmtKZxILZloyMUNMY0RhNEU
+                          authorChannelId: UCw_FpDJgUaxFRzef1111111
+                          publishedAt: '2024-12-23T17:13:48.46128+00:00'
+                          hasDisplayContent: true
+                          displayMessage: Another chat message
+                          textMessageDetails:
+                            messageText: Another chat message
+                        authorDetails:
+                          channelId: UCw_FpDJgUaxFRzef1111111
+                          channelUrl: 'http://www.youtube.com/channel/UCw_FpDJgUaxFRzef1111111'
+                          displayName: Test Name
+                          profileImageUrl: 'https://yt3.ggpht.com/ytc/example-image=s88-c-k-c0x00ffffff-no-rj'
+                          isVerified: false
+                          isChatOwner: false
+                          isChatSponsor: false
+                          isChatModerator: false
+                      - kind: youtube#liveChatMessage
+                        etag: HvpQjat4-K_lUatrzAEfEoQm9zs
+                        id: LCC.EhwKGkNNekNvSTIwdm9vREZYM0N3Z1FkY2222222
+                        snippet:
+                          type: textMessageEvent
+                          liveChatId: KicKGFVDT2p0eVFPaTNNUjhYT3lzMFdOZmtKZxILZloyMUNMY0RhNEU
+                          authorChannelId: UCpjctZQgYjVA3qDA2222222
+                          publishedAt: '2024-12-23T17:23:35.594661+00:00'
+                          hasDisplayContent: true
+                          displayMessage: This is a test message sent on chat
+                          textMessageDetails:
+                            messageText: This is a test message sent on chat
+                        authorDetails:
+                          channelId: UCpjctZQgYjVA3qDA2222222
+                          channelUrl: 'http://www.youtube.com/channel/UCpjctZQgYjVA3qDA2222222'
+                          displayName: User Display Name
+                          profileImageUrl: 'https://yt3.ggpht.com/example-image=s88-c-k-c0x00ffffff-no-rj'
+                          isVerified: false
+                          isChatOwner: false
+                          isChatSponsor: false
+                          isChatModerator: false
+                required:
+                  - id
+                  - nextPage
+                  - messages
+                properties:
+                  id:
+                    type: string
+                  nextPage:
+                    type: string
+                  messages:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        kind:
+                          type: string
+                        etag:
+                          type: string
+                        id:
+                          type: string
+                        snippet:
+                          type: object
+                          properties:
+                            type:
+                              type: string
+                            liveChatId:
+                              type: string
+                            authorChannelId:
+                              type: string
+                            publishedAt:
+                              type: string
+                            hasDisplayContent:
+                              type: boolean
+                            displayMessage:
+                              type: string
+                            textMessageDetails:
+                              type: object
+                              properties:
+                                messageText:
+                                  type: string
+                        authorDetails:
+                          type: object
+                          properties:
+                            channelId:
+                              type: string
+                            channelUrl:
+                              type: string
+                            displayName:
+                              type: string
+                            profileImageUrl:
+                              type: string
+                            isVerified:
+                              type: boolean
+                            isChatOwner:
+                              type: boolean
+                            isChatSponsor:
+                              type: boolean
+                            isChatModerator:
+                              type: boolean
+              examples:
+                Example:
+                  value:
+                    id: KJcKGF123456789PaTN0000003lzMFdOZmtKZxILZloyMU123456789
+                    nextPage: AbCdEfy7vooDIJr987654321
+                    messages:
+                      - kind: youtube#liveChatMessage
+                        etag: m6nKmd0EdUw-W3ydrXOe2z4esJs
+                        id: LCC.EhwKGkNMVEdyTE94dm9vREZUWER3Z1Fkcaaaaaaa
+                        snippet:
+                          type: textMessageEvent
+                          liveChatId: KicKGFVDT2p0eVFPaTNNUjhYT3lzMFdOZmtKZxILZloyMUNMY0RhNEU
+                          authorChannelId: UCss9Po8aL0sVqKFhaaaaaaa
+                          publishedAt: '2024-12-23T17:11:30.17726+00:00'
+                          hasDisplayContent: true
+                          displayMessage: Chat message example
+                          textMessageDetails:
+                            messageText: Chat message example
+                        authorDetails:
+                          channelId: UCss9Po8aL0sVqKFhiaaaaaaa
+                          channelUrl: 'http://www.youtube.com/channel/UCss9Po8aL0sVqKFhaaaaaaa'
+                          displayName: Example Name
+                          profileImageUrl: 'https://yt3.ggpht.com/example-image=s88-c-k-c0x00ffffff-no-rj'
+                          isVerified: false
+                          isChatOwner: false
+                          isChatSponsor: false
+                          isChatModerator: false
+                      - kind: youtube#liveChatMessage
+                        etag: 3gWLgQijoZJS_ooZ5EeSpXjiwHQ
+                        id: LCC.EhwKGkNJamRwUFd4dm9vREZjTGV3Z1Fkd0000000
+                        snippet:
+                          type: textMessageEvent
+                          liveChatId: KicKGFVDT2p0eVFPaTNNUjhYT3lzMFdOZmtKZxILZloyMUNMY0RhNEU
+                          authorChannelId: UCw_FpDJgUaxFRzef1111111
+                          publishedAt: '2024-12-23T17:13:48.46128+00:00'
+                          hasDisplayContent: true
+                          displayMessage: Another chat message
+                          textMessageDetails:
+                            messageText: Another chat message
+                        authorDetails:
+                          channelId: UCw_FpDJgUaxFRzef1111111
+                          channelUrl: 'http://www.youtube.com/channel/UCw_FpDJgUaxFRzef1111111'
+                          displayName: Test Name
+                          profileImageUrl: 'https://yt3.ggpht.com/ytc/example-image=s88-c-k-c0x00ffffff-no-rj'
+                          isVerified: false
+                          isChatOwner: false
+                          isChatSponsor: false
+                          isChatModerator: false
+                      - kind: youtube#liveChatMessage
+                        etag: HvpQjat4-K_lUatrzAEfEoQm9zs
+                        id: LCC.EhwKGkNNekNvSTIwdm9vREZYM0N3Z1FkY2222222
+                        snippet:
+                          type: textMessageEvent
+                          liveChatId: KicKGFVDT2p0eVFPaTNNUjhYT3lzMFdOZmtKZxILZloyMUNMY0RhNEU
+                          authorChannelId: UCpjctZQgYjVA3qDA2222222
+                          publishedAt: '2024-12-23T17:23:35.594661+00:00'
+                          hasDisplayContent: true
+                          displayMessage: This is a test message sent on chat
+                          textMessageDetails:
+                            messageText: This is a test message sent on chat
+                        authorDetails:
+                          channelId: UCpjctZQgYjVA3qDA2222222
+                          channelUrl: 'http://www.youtube.com/channel/UCpjctZQgYjVA3qDA2222222'
+                          displayName: User Display Name
+                          profileImageUrl: 'https://yt3.ggpht.com/example-image=s88-c-k-c0x00ffffff-no-rj'
+                          isVerified: false
+                          isChatOwner: false
+                          isChatSponsor: false
+                          isChatModerator: false
         '400':
           description: Bad Request
           content:
