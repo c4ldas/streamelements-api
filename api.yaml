@@ -12822,7 +12822,25 @@ paths:
       tags:
         - filters
       summary: '/:channel/banphrases'
-      description: Add new banphrases group
+      description: |
+        Add new banphrases group
+
+        Bug Notes: 
+        ```
+        Issue: 
+        /:channel/banphrases does not save to correct channel
+
+        Description: 
+        The POST operation for https://api.streamelements.com/kappa/v2/bot/filters/{channel}/banphrases doesn't save to the channel ID used on the path. Instead, it saves on the account ID the JWT was created.
+        
+        If you copy your JWT and paste it on https://jwt.io, you will see a key called "channel" in the payload. That is the channel ID the banphrase will be saved to.
+
+        The impact is that in case you have many channels to moderate, you cannot use your own JWT to create banphrases for all of them.
+
+        oAuth credentials don't have this issue, as the access_token only gives access to a single channel. Trying to use a different channel from what the access_token is allowed to, triggers 403 error (as expected).
+        
+        This issue was reported to Streamelements team on 22/Aug/2024, but it hasn't been fixed yet.
+        ```
       operationId: 'Post/filters/:channel/banphrases'
       parameters:
         - name: channel
