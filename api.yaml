@@ -380,7 +380,12 @@ paths:
       tags:
         - activities
       summary: '/:channel'
-      description: "Post a new activity\r\n\r\n**As this endpoint impacts directly on Activity feed, sending wrong data body can break it (making it blank)!**\r\n**If that happens, send at least 50 new events to restore it.**"
+      description: |
+        Post a new activity
+        
+        **As this endpoint impacts directly on Activity feed, sending wrong data body can break it (making it blank)!**
+        
+        **If that happens, send at least 50 new events to restore it.**
       operationId: 'Post/activities/:channel'
       parameters:
         - name: channel
@@ -393,7 +398,189 @@ paths:
             format: string
             example: 5b2e2007760aeb7729487dab
       requestBody:
-        description: "Each `type` requires different `data` object. Here are some examples:\r\n\r\n## Twitch \r\n### - follow\r\n```json\r\n{\r\n  \"type\": \"follow\",\r\n  \"provider\": \"twitch\",\r\n  \"data\": {\r\n    \"providerId\": \"1234567\", // optional, but make sure to use the actual Twitch user ID\r\n    \"username\": \"MrSim\",\r\n    \"avatar\": \"https://link/to/image.png\" // optional\r\n  }\r\n}\r\n\r\n```\r\n\r\n### - subscriber\r\n```json\r\n{\r\n  \"type\": \"subscriber\",\r\n  \"provider\": \"twitch\",\r\n  \"data\": {\r\n    \"amount\": 1,\r\n    \"message\": \"This is a message\", // resubs only\r\n    \"username\": \"MrSim\", // either subscriber or gifted user\r\n    \"sender\": \"MrGifter\", // subgifts and community gifts only\r\n    \"gifted\": true, // subgifts only\r\n    \"bulkGifted\": true, // community gifts only\r\n    \"avatar\": \"https://link/to/image.png\" // optional\r\n  }\r\n}\r\n```\r\n\r\n### - cheer\r\n```json\r\n{\r\n  \"type\": \"cheer\",\r\n  \"provider\": \"twitch\",\r\n  \"data\": {\r\n    \"amount\": 100,\r\n    \"username\": \"MrSim\",\r\n    \"message\": \"This is a message\", // optional\r\n    \"avatar\": \"https://link/to/image.png\" // optional\r\n  }\r\n}\r\n```\r\n\r\n### - raid\r\n```json\r\n{\r\n  \"type\": \"raid\",\r\n  \"provider\": \"twitch\",\r\n  \"data\": {\r\n    \"amount\": 3500,\r\n    \"username\": \"MrSim\",\r\n    \"avatar\": \"https://link/to/image.png\" // optional\r\n  }\r\n}\r\n```\r\n\r\n### - charityCampaignDonation\r\n```json\r\n{\r\n  \"type\": \"charityCampaignDonation\",\r\n  \"provider\": \"twitch\",\r\n  \"data\": {\r\n    \"amount\": 250,\r\n    \"username\": \"MrSim\",\r\n    \"message\": \"This is a message\" // optional\r\n  }\r\n}\r\n```\r\n\r\n### - host\r\n_Host does not exist anymore on Twitch_\r\n```json\r\n{\r\n  \"type\": \"host\",\r\n  \"provider\": \"twitch\",\r\n  \"data\": {\r\n    \"amount\": 10,\r\n    \"username\": \"MrSim\",\r\n    \"avatar\": \"https://link/to/image.png\" // optional\r\n  }\r\n}\r\n```\r\n\r\n## Youtube\r\n### - subscriber\r\n```json\r\n{\r\n  \"type\": \"subscriber\",\r\n  \"provider\": \"youtube\",\r\n  \"data\": {\r\n    \"avatar\": \"https://link/to/image.png\", // optional\r\n    \"displayName\": \"MrSim\", // optional\r\n    \"username\": \"mrsim\"\r\n  }\r\n}\r\n```\r\n\r\n### - member (sponsor)\r\n```json\r\n{\r\n  \"type\": \"sponsor\",\r\n  \"provider\": \"youtube\",\r\n  \"data\": {\r\n    \"amount\": 3,\r\n    \"avatar\": \"https://link/to/image.png\",\r\n    \"username\": \"mrsim\", // either subscriber or gifted user\r\n    \"gifted\": true, // subgifts only\r\n    \"sender\": \"MrGifter\", // gifts and community gifts only\r\n    \"message\": \"This is a message\", // renew member only\r\n  }\r\n}\r\n```\r\n\r\n### - superchat\r\n```json\r\n{\r\n  \"type\": \"superchat\",\r\n  \"provider\": \"youtube\",\r\n  \"data\": {\r\n    \"amount\": 10,\r\n    \"avatar\": \"https://link/to/image.png\", // optional\r\n    \"displayName\": \"Conny\", // optional\r\n    \"username\": \"conny\"\r\n  }\r\n}\r\n```\r\n\r\n\r\n\r\n\r\n## Streamelements\r\n### - purchase\r\n```json\r\n{\r\n  \"type\": \"purchase\",\r\n  \"provider\": \"streamelements\",  \r\n  \"data\": { // everything below is optional\r\n    \"username\": \"MrSim\",\r\n    \"avatar\": \"https://link/to/image.png\",\r\n    \"message\": \"This is a message\",\r\n    \"items\": [\r\n      {\r\n        \"name\": \"gloves\",\r\n        \"image\": \"https://link/to/image.png\",\r\n        \"price\": 35,\r\n        \"quantity\": 1\r\n      },\r\n      {\r\n        \"name\": \"t-shirt\",\r\n        \"image\": \"https://link/to/image.png\",\r\n        \"price\": 80,\r\n        \"quantity\": 2\r\n      }\r\n    ]\r\n  }\r\n}\r\n```\r\n\r\n### - tip\r\n_Use the tip endpoint instead, which takes care of posting in Activity feed itself._\r\n\r\n```json\r\n\r\n```\r\n\r\n### - redemption\r\n```json\r\n{\r\n  \"type\": \"redemption\",\r\n  \"provider\": \"streamelements\",\r\n  \"data\": { \r\n    \"avatar\": \"https://link/to/image.png\", // optional\r\n    \"message\": \"This is a new message\", // optional\r\n    \"redemption\": \"Redemption name\",\r\n    \"username\": \"mrsim\",\r\n    \"displayName\": \"MrSim\" // optional\r\n  }\r\n}\r\n```"
+        description: |
+          Each `type` requires different `data` object. Here are some examples:
+          
+          ## Twitch
+          ### - follow
+          ```json
+          {
+            "type": "follow",  
+            "provider": "twitch",
+            "data": {
+              "providerId": "1234567", // optional, but make sure to use the actual Twitch user ID
+              "username": "MrSim",
+              "avatar": "https://link/to/image.png" // optional
+            }
+          }
+          ```
+
+          ### - subscriber
+          ```json
+          {
+            "type": "subscriber",
+            "provider": "twitch",
+            "data": {
+              "amount": 1,
+              "message": "This is a message", // resubs only
+              "username": "MrSim", // either subscriber or gifted user
+              "sender": "MrGifter", // subgifts and community gifts only
+              "gifted": true, // subgifts only
+              "bulkGifted": true, // community gifts only
+              "avatar": "https://link/to/image.png" // optional
+            }
+          }
+          ``` 
+
+          ### - cheer
+          ```json
+          {
+            "type": "cheer",
+            "provider": "twitch",
+            "data": {
+              "amount": 100,
+              "username": "MrSim",
+              "message": "This is a message", // optional
+              "avatar": "https://link/to/image.png" // optional
+            }
+          }
+          ``` 
+
+          ### - raid
+          ```json
+          {
+            "type": "raid",
+            "provider": "twitch",
+            "data": {
+              "amount": 3500,
+              "username": "MrSim",
+              "avatar": "https://link/to/image.png" // optional
+            }
+          }
+          ``` 
+
+          ### - charityCampaignDonation
+          ```json
+          {
+            "type": "charityCampaignDonation",
+            "provider": "twitch",
+            "data": {
+              "amount": 250,
+              "username": "MrSim",
+              "message": "This is a message" // optional
+            }
+          }
+          ``` 
+
+          ### - host
+          _Host does not exist anymore on Twitch_
+          ```json
+          {
+            "type": "host",
+            "provider": "twitch",
+            "data": {
+              "amount": 10,
+              "username": "MrSim",
+              "avatar": "https://link/to/image.png" // optional
+            }
+          }
+          ``` 
+
+          ## Youtube
+          ### - subscriber
+          ```json
+          {
+            "type": "subscriber",
+            "provider": "youtube",
+            "data": {
+              "avatar": "https://link/to/image.png", // optional
+              "displayName": "MrSim", // optional
+              "username": "mrsim"
+            }
+          }
+          ``` 
+
+          ### - member (sponsor)
+          ```json
+          {
+            "type": "sponsor",
+            "provider": "youtube",
+            "data": {
+              "amount": 3,
+              "avatar": "https://link/to/image.png",
+              "username": "mrsim", // either subscriber or gifted user
+              "gifted": true, // subgifts only
+              "sender": "MrGifter", // gifts and community gifts only
+              "message": "This is a message" // renew member only
+            }
+          }
+
+          ``` 
+
+          ### - superchat
+          ```json
+          {
+            "type": "superchat",
+            "provider": "youtube",
+            "data": {
+              "amount": 10,
+              "avatar": "https://link/to/image.png", // optional
+              "displayName": "Conny", // optional
+              "username": "conny"
+            }
+          }
+
+          ``` 
+
+          ## Streamelements
+          ### - purchase
+          ```json
+          {
+            "type": "purchase",
+            "provider": "streamelements",
+            "data": { // everything below is optional
+              "username": "MrSim",
+              "avatar": "https://link/to/image.png",
+              "message": "This is a message",
+              "items": [
+                {
+                  "name": "gloves",
+                  "image": "https://link/to/image.png",
+                  "price": 35,
+                  "quantity": 1
+                },
+                {
+                  "name": "t-shirt",
+                  "image": "https://link/to/image.png",
+                  "price": 80,
+                  "quantity": 2
+                }
+              ]
+            }
+          }
+
+          ``` 
+
+          ### - tip
+          _Use the tip endpoint instead, which takes care of posting in Activity feed itself._
+          ```json
+          
+          ```    
+
+          ### - redemption
+          ```json
+          {
+            "type": "redemption",
+            "provider": "streamelements",
+            "data": { 
+              "avatar": "https://link/to/image.png", // optional
+              "message": "This is a new message", // optional
+              "redemption": "Redemption name",
+              "username": "mrsim",
+              "displayName": "MrSim" // optional
+            }
+          }
+          ```
         content:
           application/json:
             schema:
@@ -673,7 +860,200 @@ paths:
             type: string
             example: 5b2e2007760aeb7729487dab
       requestBody:
-        description: "Each `type` requires different `data` object. Here are some examples:\r\n\r\n## Twitch \r\n### - follow\r\n```json\r\n{\r\n  \"isMock\": true,\r\n  \"type\": \"follow\",\r\n  \"provider\": \"twitch\",\r\n  \"data\": {\r\n    \"providerId\": \"1234567\", // optional, but make sure to use the actual Twitch user ID\r\n    \"username\": \"MrSim\",\r\n    \"avatar\": \"https://link/to/image.png\" // optional\r\n  }\r\n}\r\n\r\n```\r\n\r\n### - subscriber\r\n```json\r\n{\r\n  \"isMock\": true,\r\n  \"type\": \"subscriber\",\r\n  \"provider\": \"twitch\",\r\n  \"data\": {\r\n    \"amount\": 1,\r\n    \"message\": \"This is a message\", // resubs only\r\n    \"username\": \"MrSim\", // either subscriber or gifted user\r\n    \"sender\": \"MrGifter\", // subgifts and community gifts only\r\n    \"gifted\": true, // subgifts only\r\n    \"bulkGifted\": true, // community gifts only\r\n    \"avatar\": \"https://link/to/image.png\" // optional\r\n  }\r\n}\r\n```\r\n\r\n### - cheer\r\n```json\r\n{\r\n  \"isMock\": true,\r\n  \"type\": \"cheer\",\r\n  \"provider\": \"twitch\",\r\n  \"data\": {\r\n    \"amount\": 100,\r\n    \"username\": \"MrSim\",\r\n    \"message\": \"This is a message\", // optional\r\n    \"avatar\": \"https://link/to/image.png\" // optional\r\n  }\r\n}\r\n```\r\n\r\n### - raid\r\n```json\r\n{\r\n  \"isMock\": true,\r\n  \"type\": \"raid\",\r\n  \"provider\": \"twitch\",\r\n  \"data\": {\r\n    \"amount\": 3500,\r\n    \"username\": \"MrSim\",\r\n    \"avatar\": \"https://link/to/image.png\" // optional\r\n  }\r\n}\r\n```\r\n\r\n### - charityCampaignDonation\r\n```json\r\n{\r\n  \"isMock\": true,\r\n  \"type\": \"charityCampaignDonation\",\r\n  \"provider\": \"twitch\",\r\n  \"data\": {\r\n    \"amount\": 250,\r\n    \"username\": \"MrSim\",\r\n    \"message\": \"This is a message\" // optional\r\n  }\r\n}\r\n```\r\n\r\n### - host\r\n_Host does not exist anymore on Twitch_\r\n```json\r\n{\r\n  \"isMock\": true,\r\n  \"type\": \"host\",\r\n  \"provider\": \"twitch\",\r\n  \"data\": {\r\n    \"amount\": 10,\r\n    \"username\": \"MrSim\",\r\n    \"avatar\": \"https://link/to/image.png\" // optional\r\n  }\r\n}\r\n```\r\n\r\n## Youtube\r\n### - subscriber\r\n```json\r\n{\r\n  \"isMock\": true,\r\n  \"type\": \"subscriber\",\r\n  \"provider\": \"youtube\",\r\n  \"data\": {\r\n    \"avatar\": \"https://link/to/image.png\", // optional\r\n    \"displayName\": \"MrSim\", // optional\r\n    \"username\": \"mrsim\"\r\n  }\r\n}\r\n```\r\n\r\n### - member (sponsor)\r\n```json\r\n{\r\n  \"isMock\": true,\r\n  \"type\": \"sponsor\",\r\n  \"provider\": \"youtube\",\r\n  \"data\": {\r\n    \"amount\": 3,\r\n    \"avatar\": \"https://link/to/image.png\",\r\n    \"username\": \"mrsim\", // either subscriber or gifted user\r\n    \"gifted\": true, // subgifts only\r\n    \"sender\": \"MrGifter\", // gifts and community gifts only\r\n    \"message\": \"This is a message\", // renew member only\r\n  }\r\n}\r\n```\r\n\r\n### - superchat\r\n```json\r\n{\r\n  \"isMock\": true,\r\n  \"type\": \"superchat\",\r\n  \"provider\": \"youtube\",\r\n  \"data\": {\r\n    \"amount\": 10,\r\n    \"avatar\": \"https://link/to/image.png\", // optional\r\n    \"displayName\": \"Conny\", // optional\r\n    \"username\": \"conny\"\r\n  }\r\n}\r\n```\r\n\r\n\r\n\r\n\r\n## Streamelements\r\n### - purchase\r\n```json\r\n{\r\n  \"isMock\": true,\r\n  \"type\": \"purchase\",\r\n  \"provider\": \"streamelements\",  \r\n  \"data\": { // everything below is optional\r\n    \"username\": \"MrSim\",\r\n    \"avatar\": \"https://link/to/image.png\",\r\n    \"message\": \"This is a message\",\r\n    \"items\": [\r\n      {\r\n        \"name\": \"gloves\",\r\n        \"image\": \"https://link/to/image.png\",\r\n        \"price\": 35,\r\n        \"quantity\": 1\r\n      },\r\n      {\r\n        \"name\": \"t-shirt\",\r\n        \"image\": \"https://link/to/image.png\",\r\n        \"price\": 80,\r\n        \"quantity\": 2\r\n      }\r\n    ]\r\n  }\r\n}\r\n```\r\n\r\n### - tip\r\n\r\n```json\r\n{\r\n  \"isMock\": true,\r\n  \"provider\": \"streamelements\",\r\n  \"type\": \"tip\",\r\n  \"data\": {\r\n    \"amount\": 10,\r\n    \"avatar\": \"https://link/to/image.png\", // optional\r\n    \"displayName\": \"MrSim\", // optional\r\n    \"username\": \"mrsim\",\r\n    \"message\": \"This is a test message\" // optiona\r\n  }\r\n}\r\n```\r\n\r\n### - redemption\r\n```json\r\n{\r\n  \"isMock\": true,\r\n  \"type\": \"redemption\",\r\n  \"provider\": \"streamelements\",\r\n  \"data\": { \r\n    \"avatar\": \"https://link/to/image.png\", // optional\r\n    \"message\": \"This is a new message\", // optional\r\n    \"redemption\": \"Redemption name\",\r\n    \"username\": \"mrsim\",\r\n    \"displayName\": \"MrSim\" // optional\r\n  }\r\n}\r\n```"
+        description: |
+          Each `type` requires different `data` object. Here are some examples:
+          
+          ## Twitch
+          ### - follow
+          ```json
+          {
+            "type": "follow",  
+            "provider": "twitch",
+            "data": {
+              "providerId": "1234567", // optional, but make sure to use the actual Twitch user ID
+              "username": "MrSim",
+              "avatar": "https://link/to/image.png" // optional
+            }
+          }
+          ```
+
+          ### - subscriber
+          ```json
+          {
+            "type": "subscriber",
+            "provider": "twitch",
+            "data": {
+              "amount": 1,
+              "message": "This is a message", // resubs only
+              "username": "MrSim", // either subscriber or gifted user
+              "sender": "MrGifter", // subgifts and community gifts only
+              "gifted": true, // subgifts only
+              "bulkGifted": true, // community gifts only
+              "avatar": "https://link/to/image.png" // optional
+            }
+          }
+          ``` 
+
+          ### - cheer
+          ```json
+          {
+            "type": "cheer",
+            "provider": "twitch",
+            "data": {
+              "amount": 100,
+              "username": "MrSim",
+              "message": "This is a message", // optional
+              "avatar": "https://link/to/image.png" // optional
+            }
+          }
+          ``` 
+
+          ### - raid
+          ```json
+          {
+            "type": "raid",
+            "provider": "twitch",
+            "data": {
+              "amount": 3500,
+              "username": "MrSim",
+              "avatar": "https://link/to/image.png" // optional
+            }
+          }
+          ``` 
+
+          ### - charityCampaignDonation
+          ```json
+          {
+            "type": "charityCampaignDonation",
+            "provider": "twitch",
+            "data": {
+              "amount": 250,
+              "username": "MrSim",
+              "message": "This is a message" // optional
+            }
+          }
+          ``` 
+
+          ### - host
+          _Host does not exist anymore on Twitch_
+          ```json
+          {
+            "type": "host",
+            "provider": "twitch",
+            "data": {
+              "amount": 10,
+              "username": "MrSim",
+              "avatar": "https://link/to/image.png" // optional
+            }
+          }
+          ``` 
+
+          ## Youtube
+          ### - subscriber
+          ```json
+          {
+            "type": "subscriber",
+            "provider": "youtube",
+            "data": {
+              "avatar": "https://link/to/image.png", // optional
+              "displayName": "MrSim", // optional
+              "username": "mrsim"
+            }
+          }
+          ``` 
+
+          ### - member (sponsor)
+          ```json
+          {
+            "type": "sponsor",
+            "provider": "youtube",
+            "data": {
+              "amount": 3,
+              "avatar": "https://link/to/image.png",
+              "username": "mrsim", // either subscriber or gifted user
+              "gifted": true, // subgifts only
+              "sender": "MrGifter", // gifts and community gifts only
+              "message": "This is a message" // renew member only
+            }
+          }
+
+          ``` 
+
+          ### - superchat
+          ```json
+          {
+            "type": "superchat",
+            "provider": "youtube",
+            "data": {
+              "amount": 10,
+              "avatar": "https://link/to/image.png", // optional
+              "displayName": "Conny", // optional
+              "username": "conny"
+            }
+          }
+
+          ``` 
+
+          ## Streamelements
+          ### - purchase
+          ```json
+          {
+            "type": "purchase",
+            "provider": "streamelements",
+            "data": { // everything below is optional
+              "username": "MrSim",
+              "avatar": "https://link/to/image.png",
+              "message": "This is a message",
+              "items": [
+                {
+                  "name": "gloves",
+                  "image": "https://link/to/image.png",
+                  "price": 35,
+                  "quantity": 1
+                },
+                {
+                  "name": "t-shirt",
+                  "image": "https://link/to/image.png",
+                  "price": 80,
+                  "quantity": 2
+                }
+              ]
+            }
+          }
+
+          ``` 
+
+          ### - tip
+          ```json
+          {
+            "isMock": true,
+            "provider": "streamelements",
+            "type": "tip",
+            "data": {
+              "amount": 10,
+              "avatar": "https://link/to/image.png", // optional
+              "displayName": "MrSim", // optional
+              "username": "mrsim",
+              "message": "This is a test message" // optional
+            }
+          }          
+          ```    
+
+          ### - redemption
+          ```json
+          {
+            "type": "redemption",
+            "provider": "streamelements",
+            "data": { 
+              "avatar": "https://link/to/image.png", // optional
+              "message": "This is a new message", // optional
+              "redemption": "Redemption name",
+              "username": "mrsim",
+              "displayName": "MrSim" // optional
+            }
+          }
+          ```       
+          
         content:
           application/json:
             schema:
