@@ -432,7 +432,7 @@
           "activities"
         ],
         "summary": "/:channel",
-        "description": "Post a new activity\r\n\r\n**As this endpoint impacts directly on Activity feed, sending wrong data body can break it (making it blank)!**\r\n**If that happens, send at least 50 new events to restore it.**",
+        "description": "Post a new activity\n\n**As this endpoint impacts directly on Activity feed, sending wrong data body can break it (making it blank)!**\n\n**If that happens, send at least 50 new events to restore it.**\n",
         "operationId": "Post/activities/:channel",
         "parameters": [
           {
