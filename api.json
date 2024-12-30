@@ -36370,7 +36370,7 @@
     },
     {
       "name": "streams",
-      "description": "Get Stream statu"
+      "description": "Get Stream status"
     },
     {
       "name": "themes",
