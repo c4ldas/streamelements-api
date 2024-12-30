@@ -42439,7 +42439,7 @@ tags:
   - name: store
     description: Store items management
   - name: streams
-    description: Get Stream statu
+    description: Get Stream status
   - name: themes
     description: Endpoints to browse StreamElements themes
   - name: timers
