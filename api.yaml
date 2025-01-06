@@ -831,9 +831,27 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/400-badrequest'
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                  error:
+                    type: string
+                  message:
+                    type: string
+                  details:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        path:
+                          type: array
+                          items:
+                            type: string
+                        message:
+                          type: string
               examples:
-                default:
+                Example:
                   value:
                     statusCode: 400
                     error: Bad Request
