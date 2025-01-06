@@ -382,9 +382,9 @@ paths:
       summary: '/:channel'
       description: |
         Post a new activity
-        
+
         **As this endpoint impacts directly on Activity feed, sending wrong data body can break it (making it blank)!**
-        
+
         **If that happens, send at least 50 new events to restore it.**
       operationId: 'Post/activities/:channel'
       parameters:
@@ -400,7 +400,7 @@ paths:
       requestBody:
         description: |
           Each `type` requires different `data` object. Here are some examples:
-          
+
           ## Twitch
           ### - follow
           ```json
@@ -564,7 +564,7 @@ paths:
           ### - tip
           _Use the tip endpoint instead, which takes care of posting in Activity feed itself._
           ```json
-          
+
           ```    
 
           ### - redemption
@@ -862,7 +862,7 @@ paths:
       requestBody:
         description: |
           Each `type` requires different `data` object. Here are some examples:
-          
+
           ## Twitch
           ### - follow
           ```json
@@ -1053,7 +1053,6 @@ paths:
             }
           }
           ```       
-          
         content:
           application/json:
             schema:
@@ -14955,7 +14954,37 @@ paths:
         - JWTBearer: []
       responses:
         '200':
-          description: "OK\r\n\r\n*Pending response example*"
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  channelUsername:
+                    type: string
+              examples:
+                Example 1:
+                  value:
+                    channelUsername: streamelementshq
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                  error:
+                    type: string
+                  message:
+                    type: string
+              examples:
+                Example:
+                  value:
+                    statusCode: 400
+                    error: Bad Request
+                    message: ERROR_ALREADY_USED
   '/overlays/{channel}':
     get:
       tags:
