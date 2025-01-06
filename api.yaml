@@ -22818,7 +22818,7 @@ paths:
       tags:
         - themes
       summary: /
-      description: List available themes
+      description: List themes / alerts / widgets from StreamElements Overlays gallery
       operationId: Get/themes
       parameters:
         - name: type
@@ -22923,7 +22923,7 @@ paths:
       tags:
         - themes
       summary: '/:themeId'
-      description: Get theme details
+      description: Get details of a theme / alert / widget from StreamElements Overlays gallery
       operationId: 'Get/themes/:themeId'
       parameters:
         - name: themeId
