@@ -1183,9 +1183,7 @@ paths:
                 type: string
                 example: Created
               examples:
-                default:
-                  value: Created
-                Example 1:
+                Example:
                   value: Created
       security:
         - JWTBearer: []
