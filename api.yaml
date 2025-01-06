@@ -420,17 +420,38 @@ paths:
           {
             "type": "subscriber",
             "provider": "twitch",
+            "activityGroup":"9876543219876" // community gifts only
             "data": {
               "amount": 1,
               "message": "This is a message", // resubs only
               "username": "MrSim", // either subscriber or gifted user
               "sender": "MrGifter", // subgifts and community gifts only
               "gifted": true, // subgifts only
-              "bulkGifted": true, // community gifts only
+              "bulkGifted": true, // community gifts only (not sure, I don't use it and it works fine)
               "avatar": "https://link/to/image.png" // optional
             }
           }
           ``` 
+
+          ### - communityGift
+          _This event has an "activityGroup" key that you will need to add to the gifted subscribers. The actual value is irrelevant as long as you use the same for the gifted one._
+
+          _The "amount" value represents how many gifts were given, and you will need to send the same amount of subscriber alerts with same "activityGroup" value._
+
+          _More info [here](https://github.com/c4ldas/streamelements-api/issues/7)_ 
+          ```json
+          {
+            "type": "communityGiftPurchase",
+            "activityGroup": "1234567891234", // Any value, but use the same on gifted ones, to group them together
+            "provider": "twitch",
+            "data": {
+              "amount": 3, // That means 3 gifted subscriber events will need to be sent afterwards
+              "username": "mrsim",
+              "displayName": "MrSim", 
+              "avatar": "https://cdn.streamelements.com/assets/dashboard/my-overlays/overlay-default-preview-2.jpg"
+            }
+          }
+          ```
 
           ### - cheer
           ```json
