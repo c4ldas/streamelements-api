@@ -1181,7 +1181,6 @@ paths:
             text/plain:
               schema:
                 type: string
-                example: Created
               examples:
                 Example:
                   value: Created
