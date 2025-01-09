@@ -13436,8 +13436,6 @@ paths:
       security:
         - JWTBearer: []
       servers:
-        - url: 'https://api.streamelements.com/kappa/v2'
-          description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
     post:
@@ -13512,8 +13510,6 @@ paths:
         - OAuth2: []
         - ApiKeyBearer: []
       servers:
-        - url: 'https://api.streamelements.com/kappa/v2'
-          description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
     put:
@@ -13589,8 +13585,6 @@ paths:
       security:
         - JWTBearer: []
       servers:
-        - url: 'https://api.streamelements.com/kappa/v2'
-          description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
     delete:
@@ -13652,8 +13646,6 @@ paths:
       security:
         - JWTBearer: []
       servers:
-        - url: 'https://api.streamelements.com/kappa/v2'
-          description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
   '/giveaways/{channel}/{giveawayId}/joined':
@@ -13726,8 +13718,6 @@ paths:
         - OAuth2: []
         - ApiKeyBearer: []
       servers:
-        - url: 'https://api.streamelements.com/kappa/v2'
-          description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
   '/giveaways/{channel}/{giveawayId}/entries':
@@ -13789,8 +13779,6 @@ paths:
       security:
         - JWTBearer: []
       servers:
-        - url: 'https://api.streamelements.com/kappa/v2'
-          description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
   '/giveaways/{channel}/{giveawayId}/entry':
@@ -13884,8 +13872,6 @@ paths:
         - OAuth2:
             - 'channel:read'
       servers:
-        - url: 'https://api.streamelements.com/kappa/v2'
-          description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
   '/giveaways/{channel}/{giveawayId}/start':
@@ -13967,8 +13953,6 @@ paths:
         - OAuth2: []
         - ApiKeyBearer: []
       servers:
-        - url: 'https://api.streamelements.com/kappa/v2'
-          description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
   '/giveaways/{channel}/{giveawayId}/winner':
@@ -14019,8 +14003,6 @@ paths:
         - OAuth2: []
         - ApiKeyBearer: []
       servers:
-        - url: 'https://api.streamelements.com/kappa/v2'
-          description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
   '/giveaways/{channel}/{giveawayId}/complete':
@@ -14090,8 +14072,6 @@ paths:
         - OAuth2: []
         - ApiKeyBearer: []
       servers:
-        - url: 'https://api.streamelements.com/kappa/v2'
-          description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
   '/giveaways/{channel}/{giveawayId}/reopen':
@@ -14161,8 +14141,6 @@ paths:
         - OAuth2: []
         - ApiKeyBearer: []
       servers:
-        - url: 'https://api.streamelements.com/kappa/v2'
-          description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
   '/giveaways/{channel}/{giveawayId}/refund':
@@ -14232,8 +14210,6 @@ paths:
         - OAuth2: []
         - ApiKeyBearer: []
       servers:
-        - url: 'https://api.streamelements.com/kappa/v2'
-          description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
   '/giveaways/{channel}/{giveawayId}/action':
@@ -14286,8 +14262,6 @@ paths:
       security:
         - JWTBearer: []
       servers:
-        - url: 'https://api.streamelements.com/kappa/v2'
-          description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
   '/giveaways/{channel}/{giveawayId}/close':
@@ -14357,8 +14331,6 @@ paths:
         - OAuth2: []
         - ApiKeyBearer: []
       servers:
-        - url: 'https://api.streamelements.com/kappa/v2'
-          description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
   '/giveaways/{channel}':
@@ -25788,6 +25760,168 @@ paths:
           description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
+  '/widgets/{channel}':
+    get:
+      tags:
+        - widgets
+      summary: '/:channel'
+      description: "*This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*\r\n\r\nList ELements widgets"
+      operationId: 'Get/widgets/:channel'
+      parameters:
+        - name: channel
+          in: path
+          description: guid - Channel id
+          required: true
+          schema:
+            type: string
+        - schema:
+            type: integer
+            default: 0
+            example: 5
+          in: query
+          name: offset
+          description: string - starting item
+        - schema:
+            type: integer
+            example: 10
+          in: query
+          name: limit
+          description: string - number of items to show
+        - schema:
+            type: string
+          in: query
+          name: sort
+          description: 'string - `updatedAt:` or `createdAt`'
+      responses:
+        '200':
+          description: "OK\r\n"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    widgetInstancePublicUrl:
+                      type: string
+                    widgetInstance:
+                      type: object
+                      properties:
+                        widgetInstanceId:
+                          type: string
+                        sourceWidgetInstanceId:
+                          type: string
+                          nullable: true
+                        widgetManifestUrl:
+                          type: string
+                        originalWidgetManifestUrl:
+                          type: string
+                        widgetCatalogReferenceId:
+                          type: string
+                        channelId:
+                          type: string
+                        displayName:
+                          type: string
+                        languageCode:
+                          type: string
+                        isPublicWidgetInstanceAccessEnabled:
+                          type: boolean
+                        publicWidgetInstanceDisplayName:
+                          type: string
+                        publicWidgetInstanceSubtitle:
+                          type: string
+                        publicWidgetInstanceDescription:
+                          type: string
+                        publicWidgetInstancePreviewImageUrl:
+                          type: string
+                        publicWidgetInstanceManifestUrl:
+                          type: string
+                        publicWidgetInstanceReleaseNotes:
+                          type: string
+                        pendingPublicWidgetInstanceManifestUrlDescription:
+                          type: string
+                        pendingPublicWidgetInstanceReleaseNotes:
+                          type: string
+                        pendingPublicWidgetInstanceReviewStatus:
+                          type: string
+                        widgetInstancePublishedConfigVersionId:
+                          type: string
+                        widgetPreviewImageUrl:
+                          type: string
+                        createdAt:
+                          type: string
+                        updatedAt:
+                          type: string
+                    publicWidgetInstancePresentationPageUrl:
+                      type: string
+              examples:
+                Example:
+                  value:
+                    - widgetInstancePublicUrl: 'https://widgets.streamelements.com/host/a1b2c3d4e5f67890abcd1234/a9876543-b21e-789f-012g-65432gfedcba/E6vBT8pxPXZtWZ05A0vp39VuNeppmwsqZe7QcrcQptDndz_z'
+                      widgetInstance:
+                        widgetInstanceId: a9876543-b21e-789f-012g-65432gfedcba
+                        sourceWidgetInstanceId: null
+                        widgetManifestUrl: 'https://elementsusercontent.com/production/6101c92403c4e7d7dadee42f/zyxw9876-vut5-43rs-qpon-87654mlkjihg/manifest.json'
+                        originalWidgetManifestUrl: 'https://elementsusercontent.com/production/6101c92403c4e7d7dadee42f/zyxw9876-vut5-43rs-qpon-87654mlkjihg/manifest.json'
+                        widgetCatalogReferenceId: zyxw9876-vut5-43rs-qpon-87654mlkjihg
+                        channelId: a1b2c3d4e5f67890abcd1234
+                        displayName: Subathon
+                        languageCode: en
+                        isPublicWidgetInstanceAccessEnabled: false
+                        publicWidgetInstanceDisplayName: ''
+                        publicWidgetInstanceSubtitle: ''
+                        publicWidgetInstanceDescription: ''
+                        publicWidgetInstancePreviewImageUrl: ''
+                        publicWidgetInstanceManifestUrl: 'https://elementsusercontent.com/production/6101c92403c4e7d7dadee42f/zyxw9876-vut5-43rs-qpon-87654mlkjihg/manifest.json'
+                        publicWidgetInstanceReleaseNotes: ''
+                        pendingPublicWidgetInstanceManifestUrlDescription: ''
+                        pendingPublicWidgetInstanceReleaseNotes: ''
+                        pendingPublicWidgetInstanceReviewStatus: not yet requested
+                        widgetInstancePublishedConfigVersionId: e5432109-87dc-65ba-3210-fedcba987654
+                        widgetPreviewImageUrl: 'https://cdn.streamelements.com/widgets-cms/uploads/e5432109-87dc-65ba-3210-fedcba987654.jpg'
+                        createdAt: '2024-02-19T18:40:53.701166Z'
+                        updatedAt: '2024-04-01T22:51:11.749543Z'
+                      publicWidgetInstancePresentationPageUrl: 'https://widgets.streamelements.com/shared/a9876543-b21e-789f-012g-65432gfedcba'
+                    - widgetInstancePublicUrl: 'https://widgets.streamelements.com/host/a1b2c3d4e5f67890abcd1234/b8765432-fedc-3210-8765-43gfedcba098/E6vBT8pxPXZtWZ05A0vp39VuNeppmwsqZe7QcrcQptDndz_z'
+                      widgetInstance:
+                        widgetInstanceId: b8765432-fedc-3210-8765-43gfedcba098
+                        sourceWidgetInstanceId: c6543210-9876-5432-abcd-ef0987654321
+                        widgetManifestUrl: 'https://elementsusercontent.com/production/604dbb25e78661dddb4a6d84/c6543210-9876-5432-abcd-ef0987654321/manifest.json'
+                        originalWidgetManifestUrl: 'https://elementsusercontent.com/production/604dbb25e78661dddb4a6d84/c6543210-9876-5432-abcd-ef0987654321/manifest.json'
+                        widgetCatalogReferenceId: d5432109-8765-4321-bcde-0fedcba98765
+                        channelId: a1b2c3d4e5f67890abcd1234
+                        displayName: Chat Widget
+                        languageCode: en
+                        isPublicWidgetInstanceAccessEnabled: false
+                        publicWidgetInstanceDisplayName: ''
+                        publicWidgetInstanceSubtitle: ''
+                        publicWidgetInstanceDescription: ''
+                        publicWidgetInstancePreviewImageUrl: ''
+                        publicWidgetInstanceManifestUrl: 'https://elementsusercontent.com/production/604dbb25e78661dddb4a6d84/c6543210-9876-5432-abcd-ef0987654321/manifest.json'
+                        publicWidgetInstanceReleaseNotes: ''
+                        pendingPublicWidgetInstanceManifestUrlDescription: ''
+                        pendingPublicWidgetInstanceReleaseNotes: ''
+                        pendingPublicWidgetInstanceReviewStatus: not yet requested
+                        widgetInstancePublishedConfigVersionId: f4321098-7654-321b-cdef-0fedcba98765
+                        widgetPreviewImageUrl: 'https://cdn.streamelements.com/uploads/f4321098-7654-321b-cdef-0fedcba98765.png'
+                        createdAt: '2024-04-01T17:02:42.350808Z'
+                        updatedAt: '2024-04-01T17:17:52.548755Z'
+                      publicWidgetInstancePresentationPageUrl: 'https://widgets.streamelements.com/shared/b8765432-fedc-3210-8765-43gfedcba098'
+      security:
+        - JWTBearer: []
+        - ApiKeyBearer: []
+        - OAuth2:
+            - 'overlays:read'
+      servers:
+        - url: 'https://api.streamelements.com/kappa/v3'
+          description: V3
+    parameters:
+      - schema:
+          type: string
+        name: channel
+        in: path
+        required: true
+        description: guid - Channel id
   '/widgets/{channel}/bits/cheermotes':
     get:
       tags:
@@ -42361,7 +42495,7 @@ tags:
   - name: single giveaway
     description: 'This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.'
   - name: single user
-    description: 'Endpoints to manage single user points data '
+    description: 'Endpoints to manage single user points data'
   - name: songrequest
     description: Endpoints to interact with StreamElements Mediashare
   - name: speech
