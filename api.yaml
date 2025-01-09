@@ -13438,6 +13438,8 @@ paths:
       servers:
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
+        - url: 'https://api.streamelements.com/kappa/v2'
+          description: V2
     post:
       tags:
         - wonky - not working
@@ -13510,6 +13512,8 @@ paths:
         - OAuth2: []
         - ApiKeyBearer: []
       servers:
+        - url: 'https://api.streamelements.com/kappa/v2'
+          description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
     put:
@@ -13585,6 +13589,8 @@ paths:
       security:
         - JWTBearer: []
       servers:
+        - url: 'https://api.streamelements.com/kappa/v2'
+          description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
     delete:
@@ -13646,6 +13652,8 @@ paths:
       security:
         - JWTBearer: []
       servers:
+        - url: 'https://api.streamelements.com/kappa/v2'
+          description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
   '/giveaways/{channel}/{giveawayId}/joined':
@@ -13718,6 +13726,8 @@ paths:
         - OAuth2: []
         - ApiKeyBearer: []
       servers:
+        - url: 'https://api.streamelements.com/kappa/v2'
+          description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
   '/giveaways/{channel}/{giveawayId}/entries':
@@ -13779,6 +13789,8 @@ paths:
       security:
         - JWTBearer: []
       servers:
+        - url: 'https://api.streamelements.com/kappa/v2'
+          description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
   '/giveaways/{channel}/{giveawayId}/entry':
@@ -13872,6 +13884,8 @@ paths:
         - OAuth2:
             - 'channel:read'
       servers:
+        - url: 'https://api.streamelements.com/kappa/v2'
+          description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
   '/giveaways/{channel}/{giveawayId}/start':
@@ -13953,6 +13967,8 @@ paths:
         - OAuth2: []
         - ApiKeyBearer: []
       servers:
+        - url: 'https://api.streamelements.com/kappa/v2'
+          description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
   '/giveaways/{channel}/{giveawayId}/winner':
@@ -14003,6 +14019,8 @@ paths:
         - OAuth2: []
         - ApiKeyBearer: []
       servers:
+        - url: 'https://api.streamelements.com/kappa/v2'
+          description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
   '/giveaways/{channel}/{giveawayId}/complete':
@@ -14072,6 +14090,8 @@ paths:
         - OAuth2: []
         - ApiKeyBearer: []
       servers:
+        - url: 'https://api.streamelements.com/kappa/v2'
+          description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
   '/giveaways/{channel}/{giveawayId}/reopen':
@@ -14141,6 +14161,8 @@ paths:
         - OAuth2: []
         - ApiKeyBearer: []
       servers:
+        - url: 'https://api.streamelements.com/kappa/v2'
+          description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
   '/giveaways/{channel}/{giveawayId}/refund':
@@ -14210,6 +14232,8 @@ paths:
         - OAuth2: []
         - ApiKeyBearer: []
       servers:
+        - url: 'https://api.streamelements.com/kappa/v2'
+          description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
   '/giveaways/{channel}/{giveawayId}/action':
@@ -14262,6 +14286,8 @@ paths:
       security:
         - JWTBearer: []
       servers:
+        - url: 'https://api.streamelements.com/kappa/v2'
+          description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
   '/giveaways/{channel}/{giveawayId}/close':
@@ -14331,6 +14357,8 @@ paths:
         - OAuth2: []
         - ApiKeyBearer: []
       servers:
+        - url: 'https://api.streamelements.com/kappa/v2'
+          description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
   '/giveaways/{channel}':
@@ -25765,7 +25793,9 @@ paths:
       tags:
         - widgets
       summary: '/:channel'
-      description: "*This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*\r\n\r\nList ELements widgets"
+      description: |
+        *This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*
+        List ELements widgets"
       operationId: 'Get/widgets/:channel'
       parameters:
         - name: channel
@@ -42495,7 +42525,7 @@ tags:
   - name: single giveaway
     description: 'This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.'
   - name: single user
-    description: 'Endpoints to manage single user points data'
+    description: Endpoints to manage single user points data
   - name: songrequest
     description: Endpoints to interact with StreamElements Mediashare
   - name: speech
