@@ -25807,7 +25807,6 @@ paths:
             type: string
         - schema:
             type: integer
-            default: 0
             example: 5
           in: query
           name: offset
@@ -25825,7 +25824,7 @@ paths:
           description: 'string - `updatedAt:` or `createdAt`'
       responses:
         '200':
-          description: "OK\r\n"
+          description: "OK"
           content:
             application/json:
               schema:
