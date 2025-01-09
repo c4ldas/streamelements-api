@@ -25956,7 +25956,7 @@ paths:
         description: guid - Channel id
     post:
       summary: '/:channel'
-      description: Create new widget
+      description: Create new Elements widget
       tags:
         - widgets
       responses:
@@ -26219,7 +26219,7 @@ paths:
                 Example:
                   value: '""'
       operationId: 'Delete/widgets/:channel/:widgetId'
-      description: "*This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*\r\n\r\nDelete widget"
+      description: "*This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*\r\n\r\nDelete Elements widget"
       security:
         - JWTBearer: []
         - ApiKeyBearer: []
