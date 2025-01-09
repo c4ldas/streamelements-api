@@ -25956,7 +25956,10 @@ paths:
         description: guid - Channel id
     post:
       summary: '/:channel'
-      description: Create new Elements widget
+      description: |
+        *This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*
+        
+        Create new Elements widget
       tags:
         - widgets
       responses:
@@ -26199,6 +26202,11 @@ paths:
           description: V3
     delete:
       summary: '/:channel/:widgetId'
+      operationId: 'Delete/widgets/:channel/:widgetId'
+      description: |
+        *This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*
+        
+        Delete Elements widget
       tags:
         - widgets
       responses:
@@ -26211,30 +26219,33 @@ paths:
               examples:
                 Example:
                   value: '""'
-      operationId: 'Delete/widgets/:channel/:widgetId'
-      description: "*This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*\r\n\r\nDelete Elements widget"
       security:
         - JWTBearer: []
         - ApiKeyBearer: []
         - OAuth2: []
   '/widgets/{channel}/{widgetId}/config-version':
+    parameters:
+      - schema:
+          type: string
+        name: channel
+        in: path
+        required: true
+        description: guid - Channel id
+      - schema:
+          type: string
+        name: widgetId
+        in: path
+        required: true
+        description: string - Widget id
     get:
       tags:
         - widgets
       summary: '/:channel/:widgetId/config-version'
+      description: |
+        *This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*
+
+        Get Elements widget data
       parameters:
-        - schema:
-            type: string
-          name: channel
-          in: path
-          required: true
-          description: guid - Channel id
-        - schema:
-            type: string
-          name: widgetId
-          in: path
-          required: true
-          description: string - Widget id
         - schema:
             type: integer
           in: query
@@ -26251,10 +26262,6 @@ paths:
           name: sort
           description: '`createdAt:desc`'
       operationId: 'Get/widgets/:channel/:widgetId/config-version'
-      description: |
-        *This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*
-
-        Get Elements widget data
       responses:
         '200':
           description: OK
@@ -26309,6 +26316,75 @@ paths:
           description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
+    post:
+      summary: '/:channel/:widgetId/config-version'
+      description: |
+        *This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*
+        
+        Update Elements widget
+      tags:
+        - widgets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  widgetInstanceConfigVersionId:
+                    type: string
+                  widgetInstanceId:
+                    type: string
+                  displayName:
+                    type: string
+                  configData:
+                    type: string
+                  connectedPlatforms:
+                    type: array
+                    items:
+                      type: string
+                  createdAt:
+                    type: string
+                  updatedAt:
+                    type: string
+              examples:
+                Example:
+                  value:
+                    widgetInstanceConfigVersionId: 892740c1-dbb5-419f-9b32-853bec8974ea
+                    widgetInstanceId: 653c46e9-1c88-4e0c-9300-d2f206925008
+                    displayName: Example Element
+                    configData: // WIDGET DATA HERE (the huge JSON)
+                    connectedPlatforms:
+                      - twitch
+                    createdAt: '2025-01-06T15:17:14.292739Z'
+                    updatedAt: '2025-01-06T15:17:14.29274Z'
+      operationId: 'Post/widgets/:channel/:widgetId/config-version'
+      security:
+        - JWTBearer: []
+        - ApiKeyBearer: []
+        - OAuth2: []      
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                displayName:
+                  type: string
+                connectedPlatforms:
+                  type: array
+                  items:
+                    type: string
+                configData:
+                  type: string
+            examples:
+              Example:
+                value:
+                  displayName: Example Elements widget
+                  connectedPlatforms:
+                    - twitch
+                  configData: // WIDGET DATA HERE (the huge JSON)
   '/widgets/{channel}/{widgetId}/config-version/{widgetConfigId}/action':
     parameters:
       - schema:
@@ -26338,9 +26414,10 @@ paths:
           description: OK
           content: {}
       operationId: 'Put/widgets/:channel/:widgetId/config-version/:widgetConfigId/action'
-      x-stoplight:
-        id: p637gwrkzbkbt
-      description: "*This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*\r\n\r\nPublish Elements widget"
+      description: |
+        *This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*
+      
+        Publish Elements widget
       security:
         - JWTBearer: []
         - ApiKeyBearer: []
