@@ -26069,13 +26069,6 @@ paths:
                   type: string
                 widgetPreviewImageUrl:
                   type: string
-              x-examples:
-                Example 1:
-                  widgetManifestUrl: 'https://pkg.streamelements.com/widgets-v2-demo@0/manifest.json'
-                  widgetCatalogReferenceId: c30b0458-73fe-47b4-9047-dbda49a1e07b
-                  displayName: Example Elements widget
-                  languageCode: en
-                  widgetPreviewImageUrl: 'https://cdn.streamelements.com/widgets-cms/uploads/6a5c4b5d-9449-4cab-83e4-290f4f1ea1f1.png'
             examples:
               Example:
                 value:
@@ -26316,6 +26309,54 @@ paths:
           description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
+  '/widgets/{channel}/{widgetId}/config-version/{widgetConfigId}/action':
+    parameters:
+      - schema:
+          type: string
+        name: channel
+        in: path
+        required: true
+        description: guid - Channel id
+      - schema:
+          type: string
+        name: widgetId
+        in: path
+        required: true
+        description: string - Widget id
+      - schema:
+          type: string
+        name: widgetConfigId
+        in: path
+        required: true
+        description: string - Widget instance config-version id
+    put:
+      summary: '/:channel/:widgetId/config-version/:widgetConfigId/action'
+      tags:
+        - widgets
+      responses:
+        '200':
+          description: OK
+          content: {}
+      operationId: 'Put/widgets/:channel/:widgetId/config-version/:widgetConfigId/action'
+      x-stoplight:
+        id: p637gwrkzbkbt
+      description: "*This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*\r\n\r\nPublish Elements widget"
+      security:
+        - JWTBearer: []
+        - ApiKeyBearer: []
+        - OAuth2: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                action:
+                  type: string
+            examples:
+              Example:
+                value:
+                  action: publish
   '/widgets/{channel}/bits/cheermotes':
     get:
       tags:
