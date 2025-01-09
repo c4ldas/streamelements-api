@@ -25824,7 +25824,7 @@ paths:
           description: 'string - `updatedAt:` or `createdAt`'
       responses:
         '200':
-          description: "OK"
+          description: OK
           content:
             application/json:
               schema:
@@ -25954,24 +25954,154 @@ paths:
         in: path
         required: true
         description: guid - Channel id
+    post:
+      summary: '/:channel'
+      description: Create new widget
+      tags:
+        - widgets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  widgetInstancePublicUrl:
+                    type: string
+                  widgetInstance:
+                    type: object
+                    properties:
+                      widgetInstanceId:
+                        type: string
+                      sourceWidgetInstanceId:
+                        type: string
+                        nullable: true
+                      widgetManifestUrl:
+                        type: string
+                      originalWidgetManifestUrl:
+                        type: string
+                      widgetCatalogReferenceId:
+                        type: string
+                      channelId:
+                        type: string
+                      displayName:
+                        type: string
+                      languageCode:
+                        type: string
+                      isPublicWidgetInstanceAccessEnabled:
+                        type: boolean
+                      publicWidgetInstanceDisplayName:
+                        type: string
+                      publicWidgetInstanceSubtitle:
+                        type: string
+                      publicWidgetInstanceDescription:
+                        type: string
+                      publicWidgetInstancePreviewImageUrl:
+                        type: string
+                      publicWidgetInstanceManifestUrl:
+                        type: string
+                      publicWidgetInstanceReleaseNotes:
+                        type: string
+                      pendingPublicWidgetInstanceManifestUrlDescription:
+                        type: string
+                      pendingPublicWidgetInstanceReleaseNotes:
+                        type: string
+                      pendingPublicWidgetInstanceReviewStatus:
+                        type: string
+                      widgetInstancePublishedConfigVersionId:
+                        type: string
+                      widgetPreviewImageUrl:
+                        type: string
+                      createdAt:
+                        type: string
+                      updatedAt:
+                        type: string
+                  publicWidgetInstancePresentationPageUrl:
+                    type: string
+              examples:
+                Example:
+                  value:
+                    widgetInstancePublicUrl: 'https://widgets.streamelements.com/host/5f2de5dd9a474a2c2aaaaaaa/669c53e4-1c88-4e0c-9300-d692205082f0/rcQptDvtWZ0uNep6vBTp39V5A0pEZ8nXpmwxPQcsqZe7dz_z'
+                    widgetInstance:
+                      widgetInstanceId: 669c53e4-1c88-4e0c-9300-d692205082f0
+                      sourceWidgetInstanceId: null
+                      widgetManifestUrl: 'https://pkg.streamelements.com/widgets-v2-demo@0/manifest.json'
+                      originalWidgetManifestUrl: 'https://pkg.streamelements.com/widgets-v2-demo@0/manifest.json'
+                      widgetCatalogReferenceId: c30b0458-73fe-47b4-9047-dbda49a1e07b
+                      channelId: <ACCOUNT_ID>
+                      displayName: Example Elements widget
+                      languageCode: en
+                      isPublicWidgetInstanceAccessEnabled: false
+                      publicWidgetInstanceDisplayName: ''
+                      publicWidgetInstanceSubtitle: ''
+                      publicWidgetInstanceDescription: ''
+                      publicWidgetInstancePreviewImageUrl: ''
+                      publicWidgetInstanceManifestUrl: 'https://pkg.streamelements.com/widgets-v2-demo@0/manifest.json'
+                      publicWidgetInstanceReleaseNotes: ''
+                      pendingPublicWidgetInstanceManifestUrlDescription: ''
+                      pendingPublicWidgetInstanceReleaseNotes: ''
+                      pendingPublicWidgetInstanceReviewStatus: not yet requested
+                      widgetInstancePublishedConfigVersionId: 00000000-0000-0000-0000-000000000000
+                      widgetPreviewImageUrl: 'https://cdn.streamelements.com/widgets-cms/uploads/image1.png'
+                      createdAt: '2024-12-30T06:40:50.579939Z'
+                      updatedAt: '2024-12-30T06:40:50.579939Z'
+                    publicWidgetInstancePresentationPageUrl: 'https://widgets.streamelements.com/shared/669c53e4-1c88-4e0c-9300-d692205082f0'
+      operationId: 'Post/widgets/:channel'
+      security:
+        - JWTBearer: []
+        - ApiKeyBearer: []
+        - OAuth2: []
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                widgetManifestUrl:
+                  type: string
+                widgetCatalogReferenceId:
+                  type: string
+                displayName:
+                  type: string
+                languageCode:
+                  type: string
+                widgetPreviewImageUrl:
+                  type: string
+              x-examples:
+                Example 1:
+                  widgetManifestUrl: 'https://pkg.streamelements.com/widgets-v2-demo@0/manifest.json'
+                  widgetCatalogReferenceId: c30b0458-73fe-47b4-9047-dbda49a1e07b
+                  displayName: Example Elements widget
+                  languageCode: en
+                  widgetPreviewImageUrl: 'https://cdn.streamelements.com/widgets-cms/uploads/6a5c4b5d-9449-4cab-83e4-290f4f1ea1f1.png'
+            examples:
+              Example:
+                value:
+                  widgetManifestUrl: 'https://pkg.streamelements.com/widgets-v2-demo@0/manifest.json'
+                  widgetCatalogReferenceId: c4530b08-73fe-47b4-9047-da1eb907bda4
+                  displayName: Example Elements widget
+                  languageCode: en
+                  widgetPreviewImageUrl: 'https://cdn.streamelements.com/widgets-cms/uploads/image1.png'
   '/widgets/{channel}/{widgetId}':
+    parameters:
+      - schema:
+          type: string
+        name: channel
+        in: path
+        required: true
+        description: guid - Channel id
+      - schema:
+          type: string
+        name: widgetId
+        in: path
+        required: true
+        description: string - Widget id
     get:
       tags:
         - widgets
       summary: '/:channel/:widgetId'
-      parameters:
-        - schema:
-            type: string
-          name: channel
-          in: path
-          required: true
-          description: guid - Channel id
-        - schema:
-            type: string
-          name: widgetId
-          in: path
-          required: true
-          description: string - Widget id
       operationId: 'Get/widgets/:channel/:widgetId'
       description: |
         *This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*
@@ -26074,6 +26204,26 @@ paths:
           description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
+    delete:
+      summary: '/:channel/:widgetId'
+      tags:
+        - widgets
+      responses:
+        '200':
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples:
+                Example:
+                  value: '""'
+      operationId: 'Delete/widgets/:channel/:widgetId'
+      description: "*This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*\r\n\r\nDelete widget"
+      security:
+        - JWTBearer: []
+        - ApiKeyBearer: []
+        - OAuth2: []
   '/widgets/{channel}/{widgetId}/config-version':
     get:
       tags:
