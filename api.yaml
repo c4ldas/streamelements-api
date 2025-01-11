@@ -7,21 +7,24 @@ info:
     ## About this document
     
     This is the unofficial StreamElements REST API documentation. 
-    Here you will find an updated list of StreamElements endpoints that are not available on the official [developer website](https://dev.streamelements) or [docs](https://docs.streamelements.com) page.
+    Here you will find an updated list of StreamElements endpoints that are not available on the official [developer website](https://dev.streamelements.com) or [docs](https://docs.streamelements.com) page.
 
     For some time, I have been collecting and documenting as many endpoints as I could from [https://api.streamelements.com/kappa/](https://api.streamelements.com/kappa/) and putting them together in a way I could understand and use it.
 
-    This page is a result of that, where I now have the endpoints added, with body and response examples and having query parameters fixed. 
-    Also, there are some that do not work, so I simply moved to `wonky - not working` group folder. 
+    This page is a result of that, where I now have the endpoints added, with body and response examples and query parameters fixed. 
+    
+    Also, there are some endpoints/operations that don't work, and they were moved to `wonky - not working` group folder. 
     As the name suggests, these are endpoints that don't work as expected or lack enough information to use them properly.
 
-    Not a single endpoint/operation was removed from the official documenation. You still have the same ones you find there (and more), but with examples and explanations.
+    Not a single endpoint/operation was removed from the official documentation. This page contains all same ones from the official documentation (and more), but with examples and explanations.
 
     Every operation now includes response examples and, where needed, body examples with some explanations to make things clearer.
 
     ## Repository
 
     This documentation is available on my Github repository ([https://github.com/c4ldas/streamelements-api](https://github.com/c4ldas/streamelements-api)) and it is open (and appreciated) for suggestions.
+
+    So if you spot any error, missing info, wrong info or even any odd word or sentence, feel free to contact me or open an issue on Github page.
 
     ## How to use it
 
