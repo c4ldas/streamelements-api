@@ -2,18 +2,64 @@ openapi: 3.0.0
 info:
   version: '1.0'
   title: SE API Docs
-  description: |-
-    ## Authorization / Authentication
+  description: |
 
-    This API documentation uses 3 types of Authorization. 
-    - JWT Token
+    ## About this document
+    
+    This is the unofficial StreamElements REST API documentation. 
+    Here you will find an updated list of StreamElements endpoints that are not available on the official [developer website](https://dev.streamelements) or [docs](https://docs.streamelements.com) page.
+
+    For some time, I have been collecting and documenting as many endpoints as I could from [https://api.streamelements.com/kappa/](https://api.streamelements.com/kappa/) and putting them together in a way I could understand and use it.
+
+    This page is a result of that, where I now have the endpoints added, with body and response examples and having query parameters fixed. 
+    Also, there are some that do not work, so I simply moved to `wonky - not working` group folder. 
+    As the name suggests, these are endpoints that don't work as expected or lack enough information to use them properly.
+
+    Not a single endpoint/operation was removed from the official documenation. You still have the same ones you find there (and more), but with examples and explanations.
+
+    Every operation now includes response examples and, where needed, body examples with some explanations to make things clearer.
+
+    ## Repository
+
+    This documentation is available on my Github repository ([https://github.com/c4ldas/streamelements-api](https://github.com/c4ldas/streamelements-api)) and it is open (and appreciated) for suggestions.
+
+    ## How to use it
+
+    In order to use StreamElements API, you just need to have an StreamElements account linking your Twitch / Youtube / Trovo / Twitter account.
+    
+    With your SE account created, you can make requests just using the below:
+
+    - Channel id
+
+    - Token
+
+    You can understand what they are in the next topics
+
+    ### Channel Id
+
+    Channel Id is also known as Account Id and it is a code that represents your channel / profile. That info is public and safe to share.
+
+    You can obtain your channel Id in your StreamElements dashboard using this link: [https://streamelements.com/dashboard/account/channels](https://streamelements.com/dashboard/account/channels)
+
+    ### Token
+
+    Token is a private code and should not be shared not put in a front end application. That token should be kept secret, treat them like your password.
+    
+    Tokens are used for authorization / authentication for certain requests. 
+
+    This API documentation uses 3 types of token. 
+    - JWT
     - Overlay Token
     - oAuth2
 
-    Not all operations accept all types of security authentication. Most of them accept JWT, some work with Oauth2 and a few will support Overlay Token. When trying to use a non-supported authentication, you will receive a `403 - Forbidden`.
-    You can see on each operation which types they support.
+    In the next topics you will have more information on how to obtain those tokens.
 
-    ### JWT Token 
+    Note: Not all operations accept all types of token. Most of them accept JWT, some use Oauth2 and a few will support Overlay Token. 
+    When trying to use a non-supported type of authentication, you will receive a `403 - Forbidden` message.
+
+    You can see on each operation which types they support.    
+
+    ### - JWT 
 
     It is the bearer token, most endpoints use this one and it is focused on personal projects. 
 
@@ -21,9 +67,9 @@ info:
 
     Example: `Authorization: bearer TOKEN`
 
-    You can find your JWT Token in https://streamelements.com/dashboard/account/channels
+    You can find your JWT in https://streamelements.com/dashboard/account/channels
 
-    ### Overlay Token 
+    ### - Overlay Token 
 
     This is the token you can mostly use with endpoints related to overlays and custom widgets. 
 
@@ -42,7 +88,7 @@ info:
     })
     ```
 
-    ### oAuth2 Token 
+    ### - oAuth2 Token 
 
     It is the oAuth token you can use it after receiving a Client ID and Client Secret. 
 
@@ -52,21 +98,6 @@ info:
 
     You can request oAuth access using the form in https://strms.net/oauth2_request
 
-    ## Custom Variable types
-
-    `guid` - string that matches pattern: `/^[0-9a-fA-F]{24}$/` (24 character hexadecimal string)
-
-    `datetime` - either timestamp in milliseconds (unix timestamp*1000) or string in ISO 8061 format
-
-    ## Global variables
-
-    `Authorization` - string:  JWT Token / Overlay Token / oAuth2 Token
-
-    `channelId` - guid: obtained by requesting `/channels/me` endpoint with provided JWT token. Also known as `Account ID`: https://streamelements.com/dashboard/account/channels
-
-    `channelName` - string: lowercase channel name
-
-    `timezone` - integer: timezone index
   termsOfService: ''
   contact:
     email: support@streamelements.com
@@ -368,7 +399,7 @@ paths:
                         message: '"minsub" must be a number'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'activities:read'
       servers:
@@ -553,7 +584,7 @@ paths:
 
           ``` 
 
-          ## Streamelements
+          ## StreamElements
           ### - purchase
           ```json
           {
@@ -736,7 +767,7 @@ paths:
                           - provider
                         message: '"provider" must be one of [twitch, youtube, facebook, mixer, trovo, displate, xsolla, represent, patreon, fourthwall, lunar, x, streamelements]'
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'activities:read'
             - 'activities:write'
@@ -877,7 +908,7 @@ paths:
                         message: '"type" must be one of [cheer, tip]'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -1033,7 +1064,7 @@ paths:
 
           ``` 
 
-          ## Streamelements
+          ## StreamElements
           ### - purchase
           ```json
           {
@@ -1185,7 +1216,7 @@ paths:
                 Example:
                   value: Created
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -1263,9 +1294,9 @@ paths:
                           - activityId
                         message: '"activityId" with value "test" fails to match the required pattern: /^[0-9a-fA-F]{24}$/'
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2: []
-        - ApiKeyBearer: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -1313,9 +1344,9 @@ paths:
                           - activityId
                         message: '"activityId" with value "test" fails to match the required pattern: /^[0-9a-fA-F]{24}$/'
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2: []
-        - ApiKeyBearer: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -1357,7 +1388,7 @@ paths:
                     success: true
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'activities:read'
       servers:
@@ -1414,7 +1445,7 @@ paths:
                   value: '176'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
       servers:
@@ -1465,7 +1496,7 @@ paths:
                     message: The bot is already in your channel
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -1524,7 +1555,7 @@ paths:
                     message: The bot is not in your channel
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -1576,7 +1607,7 @@ paths:
                     message: The bot is already muted in your channel
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -1628,7 +1659,7 @@ paths:
                     message: The bot is currently not muted
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -1682,7 +1713,7 @@ paths:
                     message: Hello! I am here to help!
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -1742,7 +1773,7 @@ paths:
                         message: '"language" length must be 2 characters long'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -1823,7 +1854,7 @@ paths:
                         avatarUrl: 'https://static-cdn.jtvnw.net/jtv_user_pictures/test2-profile_image-300x300.png'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -1895,7 +1926,7 @@ paths:
                     message: '[not_found] user not found'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -1954,7 +1985,7 @@ paths:
                   value: '52'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -2011,7 +2042,7 @@ paths:
                   value: '35'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -2068,7 +2099,7 @@ paths:
                   value: '35'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -2131,7 +2162,7 @@ paths:
                     id: testcounter
                     count: 12
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -2181,7 +2212,7 @@ paths:
                     id: testcounter
                     count: 0
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -2416,9 +2447,9 @@ paths:
                     message: Not allowed to perform this operation
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2: []
-        - ApiKeyBearer: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -2609,7 +2640,7 @@ paths:
                     message: Not allowed to perform this operation
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
@@ -6288,8 +6319,8 @@ paths:
       deprecated: false
       security:
         - {}
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2:
             - 'channel:read'
       servers:
@@ -6302,7 +6333,7 @@ paths:
       tags:
         - channels
       summary: '/:channel/socket'
-      description: "Send an event to Streamelements socket\r\n\r\nIt is useful to send info to be captured Streamelements customwidgets"
+      description: "Send an event to StreamElements socket\r\n\r\nIt is useful to send info to be captured StreamElements customwidgets"
       operationId: 'Post/channels/:channel/socket'
       parameters:
         - name: channel
@@ -6375,9 +6406,9 @@ paths:
                     message: Not allowed to perform this operation
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2: []
-        - ApiKeyBearer: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -6431,7 +6462,7 @@ paths:
                     message: Not allowed to perform this operation
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -6463,7 +6494,7 @@ paths:
             example: 5f2de5dd9a474a2c2aaaaaaa
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -6546,7 +6577,7 @@ paths:
                     error: Not Found
                     message: No user was found
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -7150,7 +7181,7 @@ paths:
       deprecated: false
       security:
         - {}
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
       servers:
@@ -7273,7 +7304,7 @@ paths:
                     message: Command test already exists
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -7401,7 +7432,7 @@ paths:
       deprecated: false
       security:
         - {}
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -9202,7 +9233,7 @@ paths:
       deprecated: false
       security:
         - {}
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -9342,7 +9373,7 @@ paths:
                         message: '"reply" is required'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -9433,7 +9464,7 @@ paths:
       deprecated: false
       security:
         - {}
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
       servers:
@@ -9531,7 +9562,7 @@ paths:
                   value: '388'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -9664,7 +9695,7 @@ paths:
                     error: Not Found
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -9849,8 +9880,8 @@ paths:
       deprecated: false
       security:
         - {}
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
@@ -10014,7 +10045,7 @@ paths:
                     message: Not allowed to perform this operation
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -10182,8 +10213,8 @@ paths:
       deprecated: false
       security:
         - {}
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2:
             - 'channel:read'
       servers:
@@ -10244,7 +10275,7 @@ paths:
                       updatedAt: '2024-12-20T23:49:16.021Z'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
       servers:
@@ -10796,7 +10827,7 @@ paths:
                     updatedAt: '2024-12-20T23:49:11.845Z'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
       servers:
@@ -11550,7 +11581,7 @@ paths:
                     updatedAt: '2024-12-22T00:46:26.635Z'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -11581,7 +11612,7 @@ paths:
 
         oAuth credentials don't have this issue, as the access_token only gives access to a single channel. Trying to use a different channel from what the access_token is allowed to, triggers 403 error (as expected).
 
-        This issue was reported to Streamelements team on 22/Aug/2024, but it hasn't been fixed yet.
+        This issue was reported to StreamElements team on 22/Aug/2024, but it hasn't been fixed yet.
         ```
       operationId: 'Post/filters/:channel/banphrases'
       parameters:
@@ -11706,7 +11737,7 @@ paths:
                     updatedAt: '2024-12-21T05:45:39.931Z'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -11790,7 +11821,7 @@ paths:
                   value: '307'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
       servers:
@@ -11883,7 +11914,7 @@ paths:
                     message: Command test already exists
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -11956,7 +11987,7 @@ paths:
                   value: '305'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
       servers:
@@ -12055,7 +12086,7 @@ paths:
                   value: '306'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -12116,7 +12147,7 @@ paths:
                     updatedAt: '2024-12-14T11:29:50.519Z'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -12150,7 +12181,7 @@ paths:
                 $ref: '#/components/schemas/BotModules'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
       servers:
@@ -12246,7 +12277,7 @@ paths:
                         pointsWin: '/me {winner} won the Duel vs {loser} PogChamp {winner} won {points} ${pointsname} FeelsGoodMan'
                       enabled: true
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -12397,7 +12428,7 @@ paths:
                         message: '"origin" must be one of [bot, activities]'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -12501,7 +12532,7 @@ paths:
           description: OK
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -12537,7 +12568,7 @@ paths:
           description: No Content
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'bot:read'
             - 'bot:write'
@@ -12585,9 +12616,9 @@ paths:
           description: ''
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2: []
-        - ApiKeyBearer: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -12675,8 +12706,8 @@ paths:
       deprecated: false
       security:
         - {}
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
@@ -12814,7 +12845,7 @@ paths:
                     message: Not allowed to perform this operation
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -12866,7 +12897,7 @@ paths:
                     message: Not allowed to perform this operation
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -12950,7 +12981,7 @@ paths:
                     message: You have already entered the contest
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -13016,8 +13047,8 @@ paths:
                     message: no bet found
       deprecated: false
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2:
             - 'channel:read'
       servers:
@@ -13102,8 +13133,8 @@ paths:
                   value: '539'
       deprecated: false
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
@@ -13159,8 +13190,8 @@ paths:
                   value: Created
       deprecated: false
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
@@ -13221,7 +13252,7 @@ paths:
                     message: No contest found
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -13292,7 +13323,7 @@ paths:
                     message: No contest found
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -13434,7 +13465,7 @@ paths:
                     message: not found
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
@@ -13508,9 +13539,9 @@ paths:
                     message: The giveaway is currently not running
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2: []
-        - ApiKeyBearer: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -13587,7 +13618,7 @@ paths:
                     message: Bad Request
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -13650,7 +13681,7 @@ paths:
                     message: not found
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -13722,9 +13753,9 @@ paths:
                         message: '"giveawayId" with value "11111111" fails to match the required pattern: /^[0-9a-fA-F]{24}$/'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2: []
-        - ApiKeyBearer: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -13787,7 +13818,7 @@ paths:
                         createdAt: '2024-12-21T01:40:25.009Z'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -13879,8 +13910,8 @@ paths:
                     error: Bad Request
                     message: sorry you don't have enough points
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2:
             - 'channel:read'
       servers:
@@ -13963,9 +13994,9 @@ paths:
                         message: '"giveawayId" with value "start" fails to match the required pattern: /^[0-9a-fA-F]{24}$/'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2: []
-        - ApiKeyBearer: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -14015,9 +14046,9 @@ paths:
                         message: '"giveawayId" with value "5c10e383bd1e475b7c3d6eb" fails to match the required pattern: /^[0-9a-fA-F]{24}$/'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2: []
-        - ApiKeyBearer: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -14086,9 +14117,9 @@ paths:
                         message: '"giveawayId" with value "5c10e383bd1e475b7c3d6eb" fails to match the required pattern: /^[0-9a-fA-F]{24}$/'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2: []
-        - ApiKeyBearer: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -14157,9 +14188,9 @@ paths:
                         message: '"giveawayId" with value "1a1528113asd23sg" fails to match the required pattern: /^[0-9a-fA-F]{24}$/'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2: []
-        - ApiKeyBearer: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -14228,9 +14259,9 @@ paths:
                         message: '"giveawayId" with value "5c10e383bd1e475b7c3d6eb" fails to match the required pattern: /^[0-9a-fA-F]{24}$/'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2: []
-        - ApiKeyBearer: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -14284,7 +14315,7 @@ paths:
                   value:
                     success: true
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -14353,9 +14384,9 @@ paths:
                         message: '"giveawayId" with value "5c10e383bd1e475b7c3d6eb" fails to match the required pattern: /^[0-9a-fA-F]{24}$/'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2: []
-        - ApiKeyBearer: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -14470,7 +14501,7 @@ paths:
                         winners: []
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -14571,7 +14602,7 @@ paths:
                     updatedAt: '2018-12-07T14:55:43.348Z'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -14608,9 +14639,9 @@ paths:
                   value: []
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2: []
-        - ApiKeyBearer: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -14845,9 +14876,9 @@ paths:
                   value: '333'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2: []
-        - ApiKeyBearer: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -14934,7 +14965,7 @@ paths:
                     createdAt: '2024-12-29T22:43:23.549Z'
                     updatedAt: '2024-12-29T22:43:23.549Z'
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -14960,7 +14991,7 @@ paths:
             format: string
             example: 572d82a0-56d5-4357-b7f0-4a389a8bb0c4
       security:
-        - JWTBearer: []
+        - JWT: []
       responses:
         '200':
           description: OK
@@ -15046,8 +15077,8 @@ paths:
                   value: '359'
       deprecated: false
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2:
             - 'overlays:read'
       servers:
@@ -15166,8 +15197,8 @@ paths:
                     createdAt: '2024-12-19T03:25:15.977Z'
                     updatedAt: '2024-12-19T03:25:15.977Z'
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2:
             - 'overlays:read'
             - 'overlays:write'
@@ -15223,8 +15254,8 @@ paths:
                     key: alerts.muted
                     message: successfully updated key
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2:
             - 'overlays:read'
             - 'overlays:write'
@@ -15735,8 +15766,8 @@ paths:
                     updatedAt: '2024-12-01T01:40:17.612Z'
       deprecated: false
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2:
             - 'overlays:read'
       servers:
@@ -16061,8 +16092,8 @@ paths:
         '200':
           description: OK
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2:
             - 'overlays:read'
             - 'overlays:write'
@@ -16094,8 +16125,8 @@ paths:
         '204':
           description: No Content
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2:
             - 'overlays:read'
             - 'overlays:write'
@@ -16153,8 +16184,8 @@ paths:
                   value: '11'
       deprecated: false
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2:
             - 'overlays:read'
             - 'overlays:write'
@@ -16209,9 +16240,9 @@ paths:
                 __default_content:
                   value: '7'
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2: []
-        - ApiKeyBearer: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -16272,8 +16303,8 @@ paths:
       deprecated: false
       security:
         - {}
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2:
             - 'channel:read'
       servers:
@@ -16325,7 +16356,7 @@ paths:
                     message: username1 was successfully reset
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'loyalty:read'
             - 'loyalty:write'
@@ -16377,8 +16408,8 @@ paths:
       deprecated: false
       security:
         - {}
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2:
             - 'channel:read'
       servers:
@@ -16446,7 +16477,7 @@ paths:
                     message: Added 10 points to user streamelements
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'loyalty:read'
             - 'loyalty:write'
@@ -16523,7 +16554,7 @@ paths:
                     message: Added 100 points to user username2
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'loyalty:read'
             - 'loyalty:write'
@@ -16577,7 +16608,7 @@ paths:
                     message: username1 was successfully reset
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'loyalty:read'
             - 'loyalty:write'
@@ -16654,8 +16685,8 @@ paths:
       deprecated: false
       security:
         - {}
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2:
             - 'channel:read'
       servers:
@@ -16733,8 +16764,8 @@ paths:
       deprecated: false
       security:
         - {}
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2:
             - 'channel:read'
       servers:
@@ -16812,8 +16843,8 @@ paths:
       deprecated: false
       security:
         - {}
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2:
             - 'channel:read'
       servers:
@@ -16883,7 +16914,7 @@ paths:
                   value: Created
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'loyalty:read'
             - 'loyalty:write'
@@ -16973,7 +17004,7 @@ paths:
                         message: '"context" must be one of [current, alltime]'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'loyalty:read'
             - 'loyalty:write'
@@ -17713,8 +17744,8 @@ paths:
                   value: '16595'
       deprecated: false
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -18475,7 +18506,7 @@ paths:
                   value: '16595'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -18523,8 +18554,8 @@ paths:
                   value: '35'
       deprecated: false
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -18574,7 +18605,7 @@ paths:
                 $ref: '#/components/schemas/channel_settings'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -19163,7 +19194,7 @@ paths:
                   value: '12414'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -19195,9 +19226,9 @@ paths:
         '200':
           description: ''
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2: []
-        - ApiKeyBearer: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -19291,8 +19322,8 @@ paths:
                       total: 10
       deprecated: false
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -19398,8 +19429,8 @@ paths:
       deprecated: false
       security:
         - {}
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2:
             - 'channel:read'
       servers:
@@ -19480,8 +19511,8 @@ paths:
                   value: '600'
       deprecated: false
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -19662,8 +19693,8 @@ paths:
                     message: Not allowed to perform this operation
       deprecated: false
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -19725,7 +19756,7 @@ paths:
                       providerId: '12345678'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -19798,7 +19829,7 @@ paths:
                     message: An internal server error occurred
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -19975,8 +20006,8 @@ paths:
                       voteskips: []
       deprecated: false
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -20138,8 +20169,8 @@ paths:
                     message: The backup playlist is not set
       deprecated: false
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -20186,8 +20217,8 @@ paths:
                   value: '18'
       deprecated: false
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -20254,8 +20285,8 @@ paths:
                         message: '"state" must be one of [volume, play, pause]'
       deprecated: false
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -20418,8 +20449,8 @@ paths:
       deprecated: false
       security:
         - {}
-        - JWTBearer: []
-        - JWTBearer: []
+        - JWT: []
+        - JWT: []
         - OAuth2:
             - 'channel:read'
       servers:
@@ -20492,8 +20523,8 @@ paths:
       deprecated: false
       security:
         - {}
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2:
             - 'channel:read'
       servers:
@@ -20557,8 +20588,8 @@ paths:
       deprecated: false
       security:
         - {}
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2:
             - 'channel:read'
       servers:
@@ -21241,7 +21272,7 @@ paths:
                           - 24
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -21392,7 +21423,7 @@ paths:
                         updatedAt: '2024-11-15T22:51:38.267Z'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -21541,7 +21572,7 @@ paths:
                         updatedAt: '2024-12-09T19:54:18.121Z'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -21757,7 +21788,7 @@ paths:
                         message: '"sort" must be an object'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -21863,7 +21894,7 @@ paths:
                     rejected: false
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -21904,7 +21935,7 @@ paths:
                   value: Created
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -22024,7 +22055,7 @@ paths:
                     error: Not Found
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -22200,7 +22231,7 @@ paths:
       deprecated: false
       security:
         - {}
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -22429,7 +22460,7 @@ paths:
                         message: '"description" is required'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -22540,7 +22571,7 @@ paths:
                     error: Not Found
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -22782,7 +22813,7 @@ paths:
                         message: '"description" is required'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -22845,7 +22876,7 @@ paths:
                     error: Not Found
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -22948,9 +22979,9 @@ paths:
                   value: '167228'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2: []
-        - ApiKeyBearer: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -23113,9 +23144,9 @@ paths:
                     error: Not Found
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2: []
-        - ApiKeyBearer: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -23340,7 +23371,7 @@ paths:
                     nextPage: null
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'tips:read'
       servers:
@@ -23435,7 +23466,7 @@ paths:
                         message: '"email" must be a valid email'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'tips:read'
             - 'tips:write'
@@ -23697,7 +23728,7 @@ paths:
       deprecated: false
       security:
         - {}
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'tips:read'
       servers:
@@ -24304,7 +24335,7 @@ paths:
                   value: '180'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'tips:read'
       servers:
@@ -24361,9 +24392,9 @@ paths:
                       username: username2123
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2: []
-        - ApiKeyBearer: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -24473,7 +24504,7 @@ paths:
                   value: '440'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -24569,7 +24600,7 @@ paths:
                     error: Not Found
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2:
             - 'tips:read'
       servers:
@@ -24648,9 +24679,9 @@ paths:
                   value: '1317'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2: []
-        - ApiKeyBearer: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -24776,9 +24807,9 @@ paths:
                     example: Not allowed to perform this operation
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2: []
-        - ApiKeyBearer: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -24827,9 +24858,9 @@ paths:
                   value: '219'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2: []
-        - ApiKeyBearer: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -24877,9 +24908,9 @@ paths:
                   value: '219'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2: []
-        - ApiKeyBearer: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -24956,9 +24987,9 @@ paths:
                   value: '219'
       deprecated: false
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2: []
-        - ApiKeyBearer: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -25057,8 +25088,8 @@ paths:
                     message: No integration was found
       deprecated: false
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -25104,8 +25135,8 @@ paths:
                   value:
                     success: true
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -25151,8 +25182,8 @@ paths:
                   value:
                     success: true
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -25204,8 +25235,8 @@ paths:
                   value: '219'
       deprecated: false
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -25280,7 +25311,7 @@ paths:
                     error: Bad Request
                     message: Integration is already connected
       security:
-        - JWTBearer: []
+        - JWT: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -25354,7 +25385,7 @@ paths:
                       start: '2024-12-17T02:21:11.311Z'
                       end: '2024-12-17T06:29:35.297Z'
       security:
-        - JWTBearer: []
+        - JWT: []
         - OAuth2: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
@@ -25390,8 +25421,8 @@ paths:
                   value:
                     isLive: true
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
@@ -25589,8 +25620,8 @@ paths:
                             click_action: visit_url
                             click_url: 'https://www.twitch.tv/directory/game/60%20Seconds!/details'
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2:
             - 'overlays:read'
       servers:
@@ -25779,8 +25810,8 @@ paths:
                     error: Bad Request
                     message: Failed to get youtube chat
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2:
             - 'overlays:read'
       servers:
@@ -25938,8 +25969,8 @@ paths:
                         updatedAt: '2024-04-01T17:17:52.548755Z'
                       publicWidgetInstancePresentationPageUrl: 'https://widgets.streamelements.com/shared/b8765432-fedc-3210-8765-43gfedcba098'
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2:
             - 'overlays:read'
       servers:
@@ -26052,8 +26083,8 @@ paths:
                     publicWidgetInstancePresentationPageUrl: 'https://widgets.streamelements.com/shared/669c53e4-1c88-4e0c-9300-d692205082f0'
       operationId: 'Post/widgets/:channel'
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2: []
       requestBody:
         description: ''
@@ -26192,8 +26223,8 @@ paths:
                       updatedAt: '2025-01-09T21:10:00.091403Z'
                     publicWidgetInstancePresentationPageUrl: 'https://widgets.streamelements.com/shared/e6c46539-1c88-4e0c-9220-d605093002f8'
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
@@ -26220,8 +26251,8 @@ paths:
                 Example:
                   value: '""'
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2: []
   '/widgets/{channel}/{widgetId}/config-version':
     parameters:
@@ -26308,8 +26339,8 @@ paths:
                       createdAt: '2025-01-09T21:08:42.749196Z'
                       updatedAt: '2025-01-09T21:08:42.749197Z'
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2: []
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
@@ -26361,8 +26392,8 @@ paths:
                     updatedAt: '2025-01-06T15:17:14.29274Z'
       operationId: 'Post/widgets/:channel/:widgetId/config-version'
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2: []      
       requestBody:
         content:
@@ -26419,8 +26450,8 @@ paths:
       
         Publish Elements widget
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2: []
       requestBody:
         content:
@@ -26756,8 +26787,8 @@ paths:
                         last_updated: '2018-05-22T00:06:05Z'
                         is_charitable: false
       security:
-        - JWTBearer: []
-        - ApiKeyBearer: []
+        - JWT: []
+        - overlayToken: []
         - OAuth2:
             - 'overlays:read'
       servers:
@@ -26767,7 +26798,7 @@ paths:
           description: V3
 components:
   securitySchemes:
-    JWTBearer:
+    JWT:
       type: http
       description: |
         Uses the JWT token with 'bearer' prefix in the the Authorization header. 
@@ -26777,7 +26808,7 @@ components:
         You can obtain it in https://streamelements.com/dashboard/account/channels
       scheme: bearer
       bearerFormat: JWT
-    ApiKeyBearer:
+    overlayToken:
       type: apiKey
       description: |
         Uses the Overlay Token with 'apikey' prefix in the Authorization header. 
@@ -42962,9 +42993,9 @@ components:
         provider: twitch
         role: owner
 security:
-  - JWTBearer: []
+  - JWT: []
   - OAuth2: []
-  - ApiKeyBearer: []
+  - overlayToken: []
 tags:
   - name: activities
     description: Endpoints to interact with activities collected by StreamElements
@@ -42985,7 +43016,7 @@ tags:
   - name: giveaways
     description: 'This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.'
   - name: integrations
-    description: Endpoints related to Streamelements integrations
+    description: Endpoints related to StreamElements integrations
   - name: invite
     description: Endpoints related to invite link
   - name: loyalties
