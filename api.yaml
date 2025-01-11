@@ -101,6 +101,11 @@ info:
 
     You can request oAuth access using the form in https://strms.net/oauth2_request
 
+    ## That's it
+
+    I believe you have what you need to start making your own API requests, but again, if you need more info, please let me know and I will add it to the documentation.
+    Good luck and happy coding!
+
   termsOfService: ''
   contact:
     email: support@streamelements.com
