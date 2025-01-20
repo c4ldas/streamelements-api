@@ -14895,13 +14895,6 @@ paths:
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
   '/invite/{channel-or-invite-code}':
-    parameters:
-      - schema:
-          type: string
-        name: channel-or-invite-code
-        in: path
-        required: true
-        description: Channel id or Invite code
     post:
       tags:
         - manager
@@ -43027,8 +43020,6 @@ tags:
     description: 'This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.'
   - name: integrations
     description: Endpoints related to StreamElements integrations
-  - name: invite
-    description: Endpoints related to invite link
   - name: loyalties
     description: Endpoints to manage loyalty settings
   - name: manager
@@ -43073,3 +43064,4 @@ tags:
     description: Endpoints for widgets
   - name: wonky - not working
     description: Endpoints not working or without explanation
+    
