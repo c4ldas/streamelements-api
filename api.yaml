@@ -23739,13 +23739,6 @@ paths:
           description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
-    parameters:
-      - schema:
-          type: string
-        name: channel
-        in: path
-        required: true
-        description: guid - Channel id
   /tipping/rates:
     get:
       tags:
@@ -24281,7 +24274,6 @@ paths:
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
       security: []
-    parameters: []
   '/tips/{channel}/top':
     get:
       tags:
@@ -25981,13 +25973,6 @@ paths:
           description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
-    parameters:
-      - schema:
-          type: string
-        name: channel
-        in: path
-        required: true
-        description: guid - Channel id
     post:
       summary: '/:channel'
       description: |
@@ -25996,6 +25981,13 @@ paths:
         Create new Elements widget
       tags:
         - widgets
+      parameters:
+        - name: channel
+          in: path
+          description: guid - Channel id
+          required: true
+          schema:
+            type: string        
       responses:
         '200':
           description: OK
@@ -26115,24 +26107,24 @@ paths:
                   languageCode: en
                   widgetPreviewImageUrl: 'https://cdn.streamelements.com/widgets-cms/uploads/image1.png'
   '/widgets/{channel}/{widgetId}':
-    parameters:
-      - schema:
-          type: string
-        name: channel
-        in: path
-        required: true
-        description: guid - Channel id
-      - schema:
-          type: string
-        name: widgetId
-        in: path
-        required: true
-        description: string - Widget id
     get:
       tags:
         - widgets
       summary: '/:channel/:widgetId'
       operationId: 'Get/widgets/:channel/:widgetId'
+      parameters:
+        - name: channel
+          in: path
+          description: guid - Channel id
+          required: true
+          schema:
+            type: string
+        - name: widgetId
+          in: path
+          description: string - Widget id
+          required: true
+          schema: 
+            type: string
       description: |
         *This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*
 
@@ -26237,6 +26229,19 @@ paths:
     delete:
       summary: '/:channel/:widgetId'
       operationId: 'Delete/widgets/:channel/:widgetId'
+      parameters:
+        - name: channel
+          in: path
+          description: guid - Channel id
+          required: true
+          schema:
+            type: string
+        - name: widgetId
+          in: path
+          description: string - Widget id
+          required: true
+          schema: 
+            type: string      
       description: |
         *This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*
         
@@ -26258,19 +26263,6 @@ paths:
         - overlayToken: []
         - OAuth2: []
   '/widgets/{channel}/{widgetId}/config-version':
-    parameters:
-      - schema:
-          type: string
-        name: channel
-        in: path
-        required: true
-        description: guid - Channel id
-      - schema:
-          type: string
-        name: widgetId
-        in: path
-        required: true
-        description: string - Widget id
     get:
       tags:
         - widgets
@@ -26280,6 +26272,18 @@ paths:
 
         Get Elements widget data
       parameters:
+        - name: channel
+          in: path
+          description: guid - Channel id
+          required: true 
+          schema: 
+            type: string
+        - name: widgetId
+          in: path
+          description: string - Widget id
+          required: true 
+          schema: 
+            type: string
         - schema:
             type: integer
           in: query
@@ -26420,29 +26424,29 @@ paths:
                     - twitch
                   configData: // WIDGET DATA HERE (the huge JSON)
   '/widgets/{channel}/{widgetId}/config-version/{widgetConfigId}/action':
-    parameters:
-      - schema:
-          type: string
-        name: channel
-        in: path
-        required: true
-        description: guid - Channel id
-      - schema:
-          type: string
-        name: widgetId
-        in: path
-        required: true
-        description: string - Widget id
-      - schema:
-          type: string
-        name: widgetConfigId
-        in: path
-        required: true
-        description: string - Widget instance config-version id
     put:
       summary: '/:channel/:widgetId/config-version/:widgetConfigId/action'
       tags:
         - widgets
+      parameters:
+        - name: channel
+          in: path
+          description: guid Channel id
+          required: true
+          schema:
+            type: string
+        - name: widgetId
+          in: path
+          description: string - Widget id
+          required: true
+          schema: 
+            type: string
+        - name: widgetConfigId
+          in: path
+          description: string - Widget instance config-version id
+          required: true
+          schema: 
+            type: string
       responses:
         '200':
           description: OK
