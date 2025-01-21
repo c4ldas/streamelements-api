@@ -7,19 +7,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.png" type="image/x-icon" />  
+  <!-- <link rel="stylesheet" href="https://unpkg.com/@stoplight/elements/styles.min.css"> -->
   
   <script src="https://unpkg.com/@stoplight/elements/web-components.min.js"></script> 
   <script src="https://cdn.jsdelivr.net/npm/js-yaml/dist/js-yaml.min.js"></script>
   <script src="script.js" defer></script>
 
   <title>StreamElements API</title>
-
-  <!-- <link rel="stylesheet" href="https://unpkg.com/@stoplight/elements/styles.min.css"> -->
 </head>
 
 <body>
   <div id="elements-content" style="height: 100%;">
     <elements-api style="height: 100%;" apiDescriptionUrl="api.yaml" router="hash" hideSchemas="true" />
   </div>
+
+  <!-- Search button and popup -->
+  <button id="searchTerm" class="searchTerm" placeholder="Search" onclick="showSearchPopup()">🔎Search</button>
+  <div id="searchPopup" class="searchPopup">
+    <div class="searchPopupContent">
+      <button id="closeButton" class="closeButton">x</button>
+      <input type="text" id="popupSearchTerm" class="popupSearchTerm" placeholder="Search" oninput="performSearch()" />
+      <div id="popupResults" class="popupResults"></div>
+    </div>
+  </div>
+  
 </body>
 </html>
