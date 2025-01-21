@@ -34,5 +34,24 @@ const config = {
 // Start observing the target element
 observer.observe(targetElement, config);
 
-// Optionally, you can disconnect the observer later when it's no longer needed
-// observer.disconnect();
+
+//////////////////////////////////////////////////
+//////// Search implementation ///////////////////
+//////////////////////////////////////////////////
+
+let apiDoc = null;
+const yamlFile = "api.yaml";
+
+async function loadYamlFile() {
+  try {
+    const response = await fetch(yamlFile);
+    if (!response.ok) {
+      throw new Error('Network response was not ok ' + response.statusText);
+    }
+    const yamlText = await response.text();
+    apiDoc = jsyaml.load(yamlText); // Store the parsed YAML in the global variable
+    console.log('YAML file loaded successfully:', apiDoc);
+  } catch (error) {
+    console.error('Error loading YAML file:', error);
+  }
+}
