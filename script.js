@@ -42,6 +42,8 @@ observer.observe(targetElement, config);
 let apiDoc = null;
 const yamlFile = "api.yaml";
 
+loadYamlFile();
+
 async function loadYamlFile() {
   try {
     const response = await fetch(yamlFile);
