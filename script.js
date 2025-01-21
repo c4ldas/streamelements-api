@@ -40,6 +40,7 @@ observer.observe(targetElement, config);
 
 let apiDoc = null;
 const yamlFile = "api.yaml";
+const baseUrl = "https://c4ldas.github.io/streamelements-api"
 
 loadYamlFile();
 
@@ -130,7 +131,7 @@ const performSearch = debounce(function () {
     resultsDiv.appendChild(resultDiv);
   } else {
     results.forEach(result => {
-      const link = `/#/operations/${result.operationId}`;
+      const link = `${baseUrl}/#/operations/${result.operationId}`;
       const resultDiv = document.createElement('div');
       resultDiv.classList.add('result');
 
