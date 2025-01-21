@@ -34,7 +34,6 @@ const config = {
 // Start observing the target element
 observer.observe(targetElement, config);
 
-
 ///////////////////////////////////////
 //////// Search implementation ////////
 ///////////////////////////////////////
@@ -53,7 +52,7 @@ async function loadYamlFile() {
     }
     const yamlText = await response.text();
     apiDoc = jsyaml.load(yamlText); // Store the parsed YAML in the global variable
-    console.log('YAML file loaded successfully:', apiDoc);
+    // console.log('YAML file loaded successfully:', apiDoc);
   } catch (error) {
     console.error('Error loading YAML file:', error);
   }
@@ -136,7 +135,6 @@ const performSearch = debounce(function () {
       resultDiv.classList.add('result');
 
       const bodyDescription = `${result.requestBodyDescription.length > 255 ? shrinkText(result.requestBodyDescription, searchTerm) : result.requestBodyDescription}`;
-
       const method = filterText(result.method.toUpperCase(), searchTerm);
       const path = filterText(result.path, searchTerm);
       const summary = filterText(result.summary, searchTerm);
@@ -172,8 +170,7 @@ function shrinkText(result, searchTerm) {
       const snippet = match[0].trim();
       const separator = index < matches.length - 1 ? ' [...] ' : '';
       return snippet + separator;
-    })
-    .join('');
+    }).join('');
 }
 
 
@@ -220,4 +217,3 @@ function searchApiDoc(apiDoc, searchTerm) {
 
   return results;
 }
-
