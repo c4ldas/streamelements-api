@@ -75,11 +75,15 @@ function closeSearchPopup() {
 }
 
 
+// Close search bar with ESC key
+document.addEventListener('keydown', function (event) {
+  if (event.key == "Escape") closeSearchPopup();
+});
+
+
 // When clicking outside the search popup, call the function to close popup
 document.getElementById('searchPopup').addEventListener('click', function (event) {
-  if (event.target === this) {
-    closeSearchPopup();
-  }
+  if (event.target === this) closeSearchPopup();
 });
 
 
