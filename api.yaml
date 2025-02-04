@@ -1797,7 +1797,7 @@ paths:
       tags:
         - bot
       summary: '/:channel/users'
-      description: List channel permissions for users
+      description: List channel permissions for users in User Management table
       operationId: 'Get/:channel/users'
       parameters:
         - name: channel
