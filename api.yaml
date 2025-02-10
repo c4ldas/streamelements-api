@@ -461,7 +461,7 @@ paths:
           {
             "type": "subscriber",
             "provider": "twitch",
-            "activityGroup":"9876543219876" // community gifts only
+            "activityGroup":"9876543219876", // community gifts only
             "data": {
               "amount": 1,
               "message": "This is a message", // resubs only
@@ -527,9 +527,11 @@ paths:
             "type": "charityCampaignDonation",
             "provider": "twitch",
             "data": {
-              "amount": 250,
-              "username": "MrSim",
-              "message": "This is a message" // optional
+              "amount": 3, // value
+              "currency": "EUR" // or any other currency
+              "username": "mrsim",
+              "displayName": "MrSim", // optional
+              "avatar": "https://link/to/image.png" //optional
             }
           }
           ``` 
@@ -947,6 +949,7 @@ paths:
           ### - follow
           ```json
           {
+            "isMock": true,
             "type": "follow",  
             "provider": "twitch",
             "data": {
@@ -960,6 +963,7 @@ paths:
           ### - subscriber
           ```json
           {
+            "isMock": true,
             "type": "subscriber",
             "provider": "twitch",
             "data": {
@@ -977,6 +981,7 @@ paths:
           ### - cheer
           ```json
           {
+            "isMock": true,
             "type": "cheer",
             "provider": "twitch",
             "data": {
@@ -991,6 +996,7 @@ paths:
           ### - raid
           ```json
           {
+            "isMock": true,
             "type": "raid",
             "provider": "twitch",
             "data": {
@@ -1004,12 +1010,15 @@ paths:
           ### - charityCampaignDonation
           ```json
           {
+            "isMock": true,
             "type": "charityCampaignDonation",
             "provider": "twitch",
             "data": {
-              "amount": 250,
-              "username": "MrSim",
-              "message": "This is a message" // optional
+              "amount": 3, // value
+              "currency": "EUR" // or any other currency
+              "username": "mrsim",
+              "displayName": "MrSim", // optional
+              "avatar": "https://link/to/image.png" //optional
             }
           }
           ``` 
@@ -1018,6 +1027,7 @@ paths:
           _Host does not exist anymore on Twitch_
           ```json
           {
+            "isMock": true,
             "type": "host",
             "provider": "twitch",
             "data": {
@@ -1032,6 +1042,7 @@ paths:
           ### - subscriber
           ```json
           {
+            "isMock": true,
             "type": "subscriber",
             "provider": "youtube",
             "data": {
@@ -1045,6 +1056,7 @@ paths:
           ### - member (sponsor)
           ```json
           {
+            "isMock": true,
             "type": "sponsor",
             "provider": "youtube",
             "data": {
@@ -1062,6 +1074,7 @@ paths:
           ### - superchat
           ```json
           {
+            "isMock": true,
             "type": "superchat",
             "provider": "youtube",
             "data": {
@@ -1078,6 +1091,7 @@ paths:
           ### - purchase
           ```json
           {
+            "isMock": true,
             "type": "purchase",
             "provider": "streamelements",
             "data": { // everything below is optional
@@ -1122,6 +1136,7 @@ paths:
           ### - redemption
           ```json
           {
+            "isMock": true,
             "type": "redemption",
             "provider": "streamelements",
             "data": { 
