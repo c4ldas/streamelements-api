@@ -2,6 +2,8 @@
 
 Here’s an updated list of Streamelements API endpoints, filling in the missing details and fixing mistakes in the official docs.
 
+The endpoint list is only for `https://api.streamelements.com/kappa/{v2|v3}`, which means `/kvstore/` subdomain is not included.
+
 ## Filling the gaps
 
 I reviewed all Streamelements API endpoints and created my own api.yaml file because the official API documentation is quite outdated.
