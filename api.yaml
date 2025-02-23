@@ -23334,10 +23334,10 @@ paths:
                   hasNextPage:
                     type: boolean
                   prevPage:
-                    type: string
+                    type: integer
                     nullable: true
                   nextPage:
-                    type: string
+                    type: integer
                     nullable: true
               examples:
                 Example 1:
