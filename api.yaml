@@ -13936,9 +13936,6 @@ paths:
                     message: sorry you don't have enough points
       security:
         - JWT: []
-        - overlayToken: []
-        - OAuth2:
-            - 'channel:read'
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
@@ -14011,8 +14008,6 @@ paths:
                     message: no entry was found
       security:
         - JWT: []
-        - OAuth2:
-            - 'channel:read'
       servers:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
