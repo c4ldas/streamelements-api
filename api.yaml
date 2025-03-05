@@ -13944,6 +13944,80 @@ paths:
           description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
+  '/giveaways/{channel}/{giveawayId}/entry/{providerId}/refund':
+    post:
+      tags:
+        - single giveaway
+      summary: '/:channel/:giveawayId/entry/:providerId/refund'
+      description: |
+       *This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*
+       
+       Refund tickets for a single user
+      operationId: 'Post/giveaways/:channel/:giveawayId/entry/:providerId/refund'
+      parameters:
+        - name: channel
+          in: path
+          description: guid - channel id
+          required: true
+          schema:
+            type: string
+            example: 5b2e2007760aeb7729487dab
+        - name: giveawayId
+          in: path
+          description: guid - Giveaway id
+          required: true
+          schema:
+            type: string
+            example: 6765f12e928026789d08290f
+        - name: providerId
+          in: path
+          description: string - provider id
+          required: true
+          schema:
+            type: string
+            example: 100135110
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+              examples:
+                Example 1:
+                  value:
+                    success: true
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                  error:
+                    type: string
+                  message:
+                    type: string
+              examples:
+                Example:
+                  value:
+                    statusCode: 400
+                    error: Bad Request
+                    message: no entry was found
+      security:
+        - JWT: []
+        - OAuth2:
+            - 'channel:read'
+      servers:
+        - url: 'https://api.streamelements.com/kappa/v2'
+          description: V2
+        - url: 'https://api.streamelements.com/kappa/v3'
+          description: V3
   '/giveaways/{channel}/{giveawayId}/start':
     put:
       tags:
@@ -26377,6 +26451,19 @@ paths:
         Update Elements widget
       tags:
         - widgets
+      parameters:
+        - name: channel
+          in: path
+          description: guid - Channel id
+          required: true 
+          schema: 
+            type: string
+        - name: widgetId
+          in: path
+          description: string - Widget id
+          required: true 
+          schema: 
+            type: string      
       responses:
         '200':
           description: OK
