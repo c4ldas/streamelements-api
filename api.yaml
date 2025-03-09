@@ -25713,7 +25713,7 @@ paths:
       tags:
         - widgets
       summary: '/:channel/youtube-chat'
-      description: "List youtube chat messages from public livestream\r\n\r\nNotes: *On first request you get `id` and `nextPage`, so you can them to do the next requests.*"
+      description: "List youtube chat messages from public livestream\r\n\r\nNotes: *On first request you get `id` and `nextPage`, so you can use them to do the next requests.*"
       operationId: 'Get/widgets/:channel/youtube-chat'
       parameters:
         - name: channel
