@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.png" type="image/x-icon" />
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./socket.css">
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/prism.min.js" defer></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"
+    defer></script>
+  <!-- <link href="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/themes/prism-okaidia.min.css" rel="stylesheet" /> -->
+
+
+  <title>StreamElements Socket.io</title>
+</head>
+
+<body data-theme="dark">
+  <div class="header">
+    <div class="header-content">
+      <!-- <img src="logo.png" alt="Logo" class="logo" /> -->
+      <a href="test.html">
+        <p class="title">StreamElements API</p>
+      </a>
+      <a href="socket.html">
+        <p class="subtitle">StreamElements socket.io</p>
+      </a>
+    </div>
+  </div>
+
+  <h1>StreamElements socket.io</h1>
+  <div class="main">
+    <p>
+      StreamElements socket.io URL is <strong>https://realtime.streamelements.com</strong> and you can authenticate to
+      it using JWT, oAuth2 and overlay token. It uses "websocket" transport.
+    </p>
+
+    <p>
+      It seems it is possible to connect directly using Websockets (not socket.io) to
+      <strong>wss://realtime.streamelements.com</strong>,
+      but this document will only relate to socket.io version (although it would apply to both).
+    </p>
+    <br />
+    <p>Official StreamElements socket.io documentation is on <a
+        href="https://dev.streamelements.com/docs/api-docs/5a84cc101a9c5-connecting-via-websocket-using-o-auth2">Streamelements
+        Developer Portal</a></p>
+
+    <p>
+      There is also a new Websockets implementation called Astro (wss://astro.streamelements.com), which will not be
+      covered here, but you can find more information at <a
+        href="https://docs.streamelements.com/websockets">https://docs.streamelements.com/websockets</a>.
+    </p>
+
+    <br />
+    <h2>
+      How to connect:
+    </h2>
+
+    <p>
+      It seems StreamElements still uses an old version of Socket.io, version 2. I was able to connect to the server
+      using a recent client version, like 4.5.4, though. However, if you are having issues to connect to it, try to use
+      an
+      older client version to check if it works.
+    </p>
+
+    <p>
+      You need to use a socket.io library to connect to StreamElements socket. It is originally a JavaScript library,
+      but
+      you can find other client implementations at <a href="https://socket.io/docs#client-implementations">Socket.io
+        website</a>
+    </p>
+
+    <div class="code-container">
+      <div class="code-header">
+        <span>HTML</span>
+        <!-- <button class="copy-button" onclick="copyCode('javascript')">Copy</button> -->
+      </div>
+      <pre><code class="language-html testing">
+        &lt;script src="https://cdn.socket.io/4.5.4/socket.io.min.js"&gt;&lt;/script&gt;
+      </code></pre>
+    </div>
+
+    <div class="code-container">
+      <div class="code-header">
+        <span>JavaScript</span>
+        <!-- <button class="copy-button" onclick="copyCode('javascript')">Copy</button> -->
+      </div>
+      <pre><code class="language-javascript">
+        // This snippet is only an example to connect to the StreamElements socket.
+        // For more information on how to read events, check the next section
+
+        const url = "https://realtime.streamelements.com";
+        const options = { transports: ["websocket"]};
+        const token = ""; // Your JWT, overlay token (aka apikey) or oAuth2 token
+        const method = ""; // "jwt", "apikey" or "oauth2", based on the token above
+        const socket = io(url, options); // The connection is started here
+
+        // Connect and authenticate
+        socket.on("connect", onConnect);
+        socket.on("authenticated", onAuthenticated);
+        socket.on("disconnect", onDisconnect);
+        socket.on("unauthorized", console.error);
+
+        function onConnect() {
+          console.log("Connected to StreamElements socket.");
+          // After connected, authenticate:
+          socket.emit("authenticate", { method: method, token: token });
+        }
+
+        function onAuthenticated(data) {
+          const { channelId, clientId, message, project } = data; // available variables for data
+          console.log(`Successfully authenticated to channel ${channelId} with id ${clientId}`);
+          console.log(message);
+        }
+
+        function onDisconnect(data) {
+          // The client will try to reconnect automatically if the reasons are different from 
+          // "io server disconnect" and "io client disconnect" (manual disconnections)
+          // In case you want to connect even when there is a manual disconnection, use:
+          // if (reason === "io server disconnect" || reason === "io client disconnect") {
+          //  socket.connect();
+          // }
+          console.log(`Disconnected from StreamElements. Reason: ${data}`);        
+        }
+      </code></pre>
+    </div>
+
+    <h2>
+      Events
+    </h2>
+    <p>Every time a new event occurs, the socket will emit an event message (except for a chat message). Some events
+      are listed below:</p>
+
+    <div class="code-container">
+      <div class="code-header">
+        <span>Reference</span>
+        <!-- <button></button> -->
+      </div>
+      <pre><code class="language-javascript">
+        "event"                       // normal events like follower, subscribers, channel points. Alerts in general
+        "event:test"                  // Whtn the button to next alert is clicked. Also test events you can emit
+        "event:update"                // Same as "event", but updates data
+        "event:skip"                  // When alert is skipped
+        "session:reset"               // When session data is reset
+        "overlay:mute"                // When overlays are muted or unmuted
+        "overlay:refresh"             // When overlays are refreshed
+        "overlay:update"              // When an overlay is updated
+        "overlay:action"              // When the "Reload overlays" is clicked on Activity feed
+        "overlay:togglequeue"         // When overlays are paused or resumed
+        "kvstore:update"              // When a kvstore data is updated (like overlay paused)
+        "session:update"              // When an session update occurs (new bits, new follower, tips, etc)
+        "bot:counter"                 // When a counter is updated
+        "giveaway:state"              // When a giveaway is created or closed
+        "contest:state"               // When a contest is created or closed
+        "contest:winner"              // When a contest winner is picked
+        "songrequest::mediashare"     // Information on media share
+        "songrequest:play"            // When song request starts playing
+        "songrequest:pause"           // When song request is paused
+        "songrequest:song:next"       // When next song is chosen to be played
+        "songrequest:song:previous"   // When previous song is chosen to be played
+        "songrequest:queue:remove"    // When song is removed from queue (or declined from pending requests)
+        "songrequest:queue:add"       // When song is added to the queue (or approved from pending requests)
+        "songrequest:history:add"     // When song is added to the history
+        "songrequest:volume"          // When volume is set for song
+        "songrequest:settings:update" // When song request settings is changed
+      </code></pre>
+    </div>
+
+    <h3>Receiving events</h3>
+    <p>In order to receive events, add a socket.on function with the event name you want to receive:</p>
+    <p>If you want, you can add all events from the box above, each one in its own code block.</p>
+    <div class="code-container">
+      <div class="code-header">
+        <span>Javascript</span>
+        <!-- <button>Copy</button> -->
+      </div>
+      <pre><code class="language-javascript">
+        socket.on("event", (data) => {
+          console.log("event received:", data);
+          // Your logic here
+        });
+
+        socket.on("event:test", (data) => {
+          console.log("event:test received:", data);
+          // Your logic here
+        })
+
+        socket.on("overlay:action", (data) => {
+          console.log("overlay:action received:", data);
+          // Your logic here
+        })
+    </code></pre>
+    </div>
+
+    <p>Or, you can use "socket.onAny()" function to listen to any events:
+    </p>
+    <div class="code-container">
+      <div class="code-header">
+        <span>Javascript</span>
+        <!-- <button>Copy</button> -->
+      </div>
+      <pre><code class="language-javascript">
+        socket.onAny((eventName, ...args) => {
+          console.log("New event:", eventName);
+          console.log("Data:", args[0]);
+          // Your logic here
+        });
+    </code></pre>
+    </div>
+
+
+    <h2>
+      Rooms
+    </h2>
+    <p>Some rooms are available to subscribe on StreamElements socket. Here are the ones I could find (ACCOUNT_ID is
+      your actual StreamElements account id):</p>
+    <div class="code-container">
+      <div class="code-header">
+        <span>Reference</span>
+        <!-- <button></button> -->
+      </div>
+      <pre><code class="language-javascript">
+        "songrequest::ACCOUNT_ID"
+        "kvstore::ACCOUNT_ID"
+        "contests::ACCOUNT_ID"
+        "giveaways::ACCOUNT_ID"
+        "partner-integrations::ACCOUNT_ID"
+        "plarium::ACCOUNT_ID"
+        "appsflyer::ACCOUNT_ID"
+    </code></pre>
+    </div>
+
+    <p>Before you ask, I also don't know what for "plarium" and "appsflyer" are used. Plarium is the company who owns
+      the game “Raid - Shadow Legends” (a very known StreamElements sponsorship) and AppsFlyer is a company that does
+      analytics and campaigns management. partner-integrations is probably the room for sponsorships, but I could not
+      test it.</p>
+
+    <h3>
+      Subscribe to a room
+    </h3>
+    <p>In order to join a room, emit a “subscribe” event with the room name. In JavaScript, you also need a third
+      parameter, the callback. So, it should look like below:</p>
+
+    <div class="code-container">
+      <div class="code-header">
+        <span>JavaScript</span>
+        <!-- <button class="copy-button" onclick="copyCode('javascript')">Copy</button> -->
+      </div>
+      <pre><code class="language-javascript">
+        const id = "5a2ed5cc9a474a2c2bc4f0aa"; // your account id
+        socket.emit("subscribe" , {"room": `giveaways::${id}`} , () => console.log(`Joined room giveaways::${id}`));
+      </code></pre>
+    </div>
+
+    <h2>Other info</h2>
+    <p>
+      There are way more data that needs to be documented, but I don't remember what else to add here. In the meantime,
+      take some time to admire the randomly generated image below:
+    </p>
+    <br />
+    <img src="https://picsum.photos/1280/720">
+  </div>
+  </div>
+  <br /><br /><br />
+</body>
+
+</html>
