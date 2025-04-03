@@ -1,3 +1,13 @@
+.header-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 3rem;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
 blockquote,
 dd,
 dl,
