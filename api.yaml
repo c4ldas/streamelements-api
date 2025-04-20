@@ -251,10 +251,14 @@ paths:
           explode: true
           schema:
             oneOf:
+              - type: string
+                description: |
+                  A repeated parameter format. Example: `types=follow&types=redemption&types=cheer`
+                  - Available values: tip, sponsor, sponsorship, sponsorshipPassive, superchat, host, raid, subscriber, cheer, follow, redemption, merch            
               - type: array
                 description: |
                   A JSON-like array as a string. Example: `type=["follow", "redemption", "cheer"]`
-                  - Available values: tip, sponsor, superchat, host, raid, subscriber, cheer, follow, redemption, merch                          
+                  - Available values: tip, sponsor, sponsorship, sponsorshipPassive, superchat, host, raid, subscriber, cheer, follow, redemption, merch                          
                 items:
                   type: string
                   enum:
@@ -268,10 +272,6 @@ paths:
                     - follow
                     - redemption
                     - merch
-              - type: string
-                description: |
-                  A repeated parameter format. Example: `type=follow&type=redemption&type=cheer`
-                  - Available values: tip, sponsor, superchat, host, raid, subscriber, cheer, follow, redemption, merch
             example: '["follow", "tip", "sponsor", "superchat", "host", "raid", "subscriber", "cheer", "redemption", "merch"]'
         - name: count
           in: query
