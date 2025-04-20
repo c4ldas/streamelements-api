@@ -379,8 +379,6 @@ paths:
           description: Bad Request
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/400-badrequest'
               examples:
                 default:
                   value:
