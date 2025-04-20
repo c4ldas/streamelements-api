@@ -129,7 +129,9 @@ paths:
       summary: '/:channel'
       description: |
         List channel activities. That's what you see in your Activity Feed.
+        
         Note: If using /v3/, the parameters `before` and `after` are not used, as the result has pagination. 
+        
         You can use the query parameter `cursor` to go to the next page.
       operationId: 'Get/activities/:channel'
       parameters:
