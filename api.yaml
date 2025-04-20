@@ -146,12 +146,18 @@ paths:
             oneOf:
               - type: string
                 description: |
-                  Start Date. Only for `/v2/`
-                  Date in ISO 8061 format. Examples: `2020-01-01` or `2020-01-01T00:00:00` or `2020-01-01T00:00:00Z` 
+                  Start Date.
+
+                  Date in ISO 8061 format. Examples: `2020-01-01` or `2020-01-01T00:00:00` or `2020-01-01T00:00:00Z`.
+
+                  Only for `/v2/`.
               - type: number
                 description: |
-                  Start Date                  
-                  Timestamp in milliseconds or Unix epoch time. Examples: `1577836800` or `1577836800000` 
+                  Start Date. 
+
+                  Timestamp in milliseconds or Unix epoch time. Examples: `1577836800` or `1577836800000`.
+
+                  Only for `/v2/`.
             example: 2020-01-01 or 1577836800000
         - name: before
           in: query
@@ -164,12 +170,18 @@ paths:
             oneOf:
               - type: string
                 description: |
-                  End Date. Only for `/v2/`
-                  Date in ISO 8061 format. Examples: `2021-10-31` or `2021-10-31T00:00:00` or `2021-10-31T00:00:00Z` 
+                  End Date. 
+
+                  Date in ISO 8061 format. Examples: `2021-10-31` or `2021-10-31T00:00:00` or `2021-10-31T00:00:00Z`.
+
+                  Only for `/v2/`.
               - type: number
                 description: |
-                  End Date                  
-                  Timestamp in milliseconds or Unix epoch time. Examples: `1635638400` or `1635638400000`
+                  End Date. 
+
+                  Timestamp in milliseconds or Unix epoch time. Examples: `1635638400` or `1635638400000`.
+
+                  Only for `/v2/`.
             example: 2021-10-31 or 1635638400
         - name: limit
           in: query
