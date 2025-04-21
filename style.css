@@ -8,6 +8,15 @@
   text-align: center;
 }
 
+.fileInput {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  text-align: center;
+}
+
+
 blockquote,
 dd,
 dl,
@@ -47,7 +56,8 @@ ul {
 
 html {
   font-family: var(--font-ui);
-  line-height: 1.5
+  line-height: 1.5;
+  background-color: #0e131b;
 }
 
 body {
@@ -30117,7 +30127,10 @@ textarea {
   background-color: hsla(0, 0%, 0%, 0.2);
 }
 
-.method, .summary, .description, .bodyDescription {
+.method,
+.summary,
+.description,
+.bodyDescription {
   padding-bottom: 5px;
 }
 
