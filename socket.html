@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
-  <meta name="color-scheme" content="dark">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="favicon.png" type="image/x-icon" />
   <link href="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
@@ -12,7 +11,7 @@
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/prism.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js" defer></script>
   <!-- <link href="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/themes/prism-okaidia.min.css" rel="stylesheet" /> -->
-  
+
   <title>StreamElements Socket.io</title>
 </head>
 
@@ -222,19 +221,29 @@
       </div>
       <pre><code class="language-javascript">
         "songrequest::ACCOUNT_ID"
-        "kvstore::ACCOUNT_ID"
         "contests::ACCOUNT_ID"
         "giveaways::ACCOUNT_ID"
-        "partner-integrations::ACCOUNT_ID"
+        "store::ACCOUNT_ID"
+        "obs::ACCOUNT_ID"
+        "kvstore::ACCOUNT_ID"
         "plarium::ACCOUNT_ID"
         "appsflyer::ACCOUNT_ID"
+        "partner-integrations::ACCOUNT_ID"
+        "audience-queue::ACCOUNT_ID"
     </code></pre>
     </div>
 
-    <p>Before you ask, I also don't know what for "plarium" and "appsflyer" are used. Plarium is the company who owns
+
+    <p>
+      Before you ask, I also don't know what for "plarium" and "appsflyer" are used. Plarium is the company who owns
       the game “Raid - Shadow Legends” (a very known StreamElements sponsorship) and AppsFlyer is a company that does
-      analytics and campaigns management. partner-integrations is probably the room for sponsorships, but I could not
-      test it.</p>
+      analytics and campaigns management. "partner-integrations" is probably the room for sponsorships, but I could not
+      test it.
+    </p>
+    <p>
+      As for "obs", well... I believe it has something to do with OBS. I couldn't test it, so I'm not sure. Please let
+      me know if you know more about it.
+    </p>
 
     <h3>
       Subscribe to a room
@@ -249,7 +258,31 @@
       </div>
       <pre><code class="language-javascript">
         const id = "5a2ed5cc9a474a2c2bc4f0aa"; // your account id
-        socket.emit("subscribe" , {"room": `giveaways::${id}`} , () => console.log(`Joined room giveaways::${id}`));
+        socket.emit("subscribe" , {"room": `giveaways::${id}`} , (error, data) => console.log(error, data));
+      </code></pre>
+    </div>
+
+    <p>Or you can subscribe to multiple rooms at the same time:</p>
+
+    <div class="code-container">
+      <div class="code-header">
+        <span>JavaScript</span>
+        <!-- <button class="copy-button" onclick="copyCode('javascript')">Copy</button> -->
+      </div>
+      <pre><code class="language-javascript">
+        const id = "5a2ed5cc9a474a2c2bc4f0aa"; // your account id
+        const rooms = [ "songrequest", "contests", "giveaways", "kvstore", "store", 
+                        "obs", "audience-queue", "partner-integrations", "plarium", "appsflyer" ];
+
+        rooms.forEach( (room) => {
+          socket.emit("subscribe" , {"room": `${room}::${id}`} , (error, data) => {
+            if(error){
+              console.error(`Error subscribing to ${room}::${id}:\n ${error.message}`);
+              return;
+            }
+            console.log(data);
+          });
+        });
       </code></pre>
     </div>
 
