@@ -3,16 +3,15 @@ info:
   version: '1.0'
   title: SE API Docs
   description: |
-
     ## About this document
-    
+
     This is the unofficial StreamElements REST API documentation. 
     Here you will find an updated list of StreamElements endpoints that are not available on the official [developer website](https://dev.streamelements.com) or [docs](https://docs.streamelements.com) page.
 
     For some time, I have been collecting and documenting as many endpoints as I could from [https://api.streamelements.com/kappa/](https://api.streamelements.com/kappa/) and putting them together in a way I could understand and use it.
 
     This page is a result of that, where I now have the endpoints added, with body and response examples and query parameters fixed. 
-    
+
     Also, there are some endpoints/operations that don't work, and they were moved to `wonky - not working` group folder. 
     As the name suggests, these are endpoints that don't work as expected or lack enough information to use them properly.
 
@@ -29,7 +28,7 @@ info:
     ## How to use it
 
     In order to use StreamElements API, you just need to have an StreamElements account linking your Twitch / Youtube / Trovo / Twitter account.
-    
+
     With your SE account created, you can make requests just using the below:
 
     - Channel id
@@ -47,7 +46,7 @@ info:
     ### Token
 
     Token is a private code and should not be shared not put in a front end application. That token should be kept secret, treat them like your password.
-    
+
     Tokens are used for authorization / authentication for certain requests. 
 
     This API documentation uses 3 types of token. 
@@ -105,9 +104,8 @@ info:
 
     If you spot any errors or think something could be improved, please let me know!
     Also, if an endpoint doesn't make sense or isn't clear enough, that's a sign it needs more explanation — don't hesitate to reach out with your questions on Github repository.
-    
-    Good luck and happy coding!
 
+    Good luck and happy coding!
   termsOfService: ''
   contact:
     email: support@streamelements.com
@@ -129,9 +127,9 @@ paths:
       summary: '/:channel'
       description: |
         List channel activities. That's what you see in your Activity Feed.
-        
+
         **Note**: If using `/v3/`, the parameters `before` and `after` are not used, as the result has pagination.  
-        
+
         You can use the query parameter `cursor` to go to the next page.
       operationId: 'Get/activities/:channel'
       parameters:
@@ -250,7 +248,7 @@ paths:
           explode: true
           schema:
             type: string
-            example: Njc2NjJmMTNmMWFmNTg4NWIxZGRiOWQy            
+            example: Njc2NjJmMTNmMWFmNTg4NWIxZGRiOWQy
         - name: types
           in: query
           description: |
@@ -13971,9 +13969,9 @@ paths:
         - single giveaway
       summary: '/:channel/:giveawayId/entry/:providerId/refund'
       description: |
-       *This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*
-       
-       Refund tickets for a single user
+        *This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*
+
+        Refund tickets for a single user
       operationId: 'Post/giveaways/:channel/:giveawayId/entry/:providerId/refund'
       parameters:
         - name: channel
@@ -13996,7 +13994,7 @@ paths:
           required: true
           schema:
             type: string
-            example: 100135110
+            example: '100135110'
       responses:
         '200':
           description: OK
@@ -25644,6 +25642,157 @@ paths:
           description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
+  '/uploads/{channel}':
+    get:
+      tags:
+        - uploads
+      summary: '/:channel'
+      description: Get list of media files uploaded toaccount
+      operationId: 'Get/uploads/:channel'
+      parameters:
+        - name: channel
+          in: path
+          description: guid - Channel id
+          required: true
+          schema:
+            type: string
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: Amount of items to be shown
+        - schema:
+            type: integer
+          in: query
+          name: offset
+          description: Number of items to be skipped
+        - schema:
+            type: string
+            example: image
+            enum:
+              - image
+              - audio
+              - video
+          in: query
+          name: type
+          description: Type of items to list
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  total:
+                    type: integer
+                  totalSize:
+                    type: integer
+                  totalStorage:
+                    type: integer
+                  uploads:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        _id:
+                          type: string
+                        deleted:
+                          type: boolean
+                        channel:
+                          type: string
+                        uuid:
+                          type: string
+                        name:
+                          type: string
+                        size:
+                          type: integer
+                        url:
+                          type: string
+                        type:
+                          type: string
+                        createdAt:
+                          type: string
+                        updatedAt:
+                          type: string
+              examples:
+                Example:
+                  value:
+                    total: 77
+                    totalSize: 50097384
+                    totalStorage: 2000000000
+                    uploads:
+                      - _id: 6314baca530249c9d5aaaaaa
+                        deleted: false
+                        channel: 5f2de5dd9a474abbbbbbbbbb
+                        uuid: 7539c9a2-47e1-4db6-a8cd-bbbbbbbbbb.png
+                        name: img103.png
+                        size: 4055645
+                        url: 'https://cdn.streamelements.com/uploads/7539c9a2-47e1-4db6-a8cd-bbbbbbbbbb.png'
+                        type: image/png
+                        createdAt: '2022-09-04T14:48:42.220Z'
+                        updatedAt: '2022-09-04T14:48:42.220Z'
+                      - _id: 625df67f96c8cc1ff5aaaaaa
+                        deleted: false
+                        channel: 5f2de5dd9a474abbbbbbbbbb
+                        uuid: 6c76ca96-87a4-4df6-963a-bbbbbbbbbb.mp3
+                        name: metalgearsolid.mp3
+                        size: 30510
+                        url: 'https://cdn.streamelements.com/uploads/6c76ca96-87a4-4df6-963a-bbbbbbbbbb.mp3'
+                        type: audio/mpeg
+                        createdAt: '2022-04-18T23:38:39.745Z'
+                        updatedAt: '2022-04-18T23:38:39.745Z'
+                      - _id: 612d845eac59fef428aaaaaa
+                        deleted: false
+                        channel: 5f2de5dd9a474abbbbbbbbbb
+                        uuid: 25e9dc9f-230c-4b44-a9ee-bbbbbbbbbb.mp4
+                        name: 01h.mp4
+                        size: 943932
+                        url: 'https://cdn.streamelements.com/uploads/25e9dc9f-230c-4b44-a9ee-bbbbbbbbbb.mp4'
+                        type: video/mp4
+                        createdAt: '2021-08-31T01:22:38.281Z'
+                        updatedAt: '2021-08-31T01:22:38.281Z'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                  error:
+                    type: string
+                  message:
+                    type: string
+                  details:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        path:
+                          type: array
+                          items:
+                            type: string
+                        message:
+                          type: string
+              examples:
+                Example:
+                  value:
+                    statusCode: 400
+                    error: Bad Request
+                    message: '"type" must be one of [image, audio, video, ]'
+                    details:
+                      - path:
+                          - type
+                        message: '"type" must be one of [image, audio, video, ]'
+      servers:
+        - url: 'https://api.streamelements.com/kappa/v2'
+          description: V2
+        - url: 'https://api.streamelements.com/kappa/v3'
+          description: V3
+      security:
+        - JWT: []
   '/widgets/{channel}/chat/badges':
     get:
       tags:
@@ -26085,7 +26234,7 @@ paths:
       summary: '/:channel'
       description: |
         *This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*
-        
+
         Create new Elements widget
       tags:
         - widgets
@@ -26095,7 +26244,7 @@ paths:
           description: guid - Channel id
           required: true
           schema:
-            type: string        
+            type: string
       responses:
         '200':
           description: OK
@@ -26231,7 +26380,7 @@ paths:
           in: path
           description: string - Widget id
           required: true
-          schema: 
+          schema:
             type: string
       description: |
         *This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*
@@ -26348,11 +26497,11 @@ paths:
           in: path
           description: string - Widget id
           required: true
-          schema: 
-            type: string      
+          schema:
+            type: string
       description: |
         *This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*
-        
+
         Delete Elements widget
       tags:
         - widgets
@@ -26383,14 +26532,14 @@ paths:
         - name: channel
           in: path
           description: guid - Channel id
-          required: true 
-          schema: 
+          required: true
+          schema:
             type: string
         - name: widgetId
           in: path
           description: string - Widget id
-          required: true 
-          schema: 
+          required: true
+          schema:
             type: string
         - schema:
             type: integer
@@ -26466,7 +26615,7 @@ paths:
       summary: '/:channel/:widgetId/config-version'
       description: |
         *This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*
-        
+
         Update Elements widget
       tags:
         - widgets
@@ -26474,15 +26623,15 @@ paths:
         - name: channel
           in: path
           description: guid - Channel id
-          required: true 
-          schema: 
+          required: true
+          schema:
             type: string
         - name: widgetId
           in: path
           description: string - Widget id
-          required: true 
-          schema: 
-            type: string      
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: OK
@@ -26522,7 +26671,7 @@ paths:
       security:
         - JWT: []
         - overlayToken: []
-        - OAuth2: []      
+        - OAuth2: []
       requestBody:
         content:
           application/json:
@@ -26560,13 +26709,13 @@ paths:
           in: path
           description: string - Widget id
           required: true
-          schema: 
+          schema:
             type: string
         - name: widgetConfigId
           in: path
           description: string - Widget instance config-version id
           required: true
-          schema: 
+          schema:
             type: string
       responses:
         '200':
@@ -26575,7 +26724,7 @@ paths:
       operationId: 'Put/widgets/:channel/:widgetId/config-version/:widgetConfigId/action'
       description: |
         *This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*
-      
+
         Publish Elements widget
       security:
         - JWT: []
@@ -43183,10 +43332,11 @@ tags:
     description: Endpoints to interact with tipping
   - name: tips
     description: Endpoints to interact with tips
+  - name: uploads
+    description: Endpoints related to uploads
   - name: users
     description: Folder for loyalty
   - name: widgets
     description: Endpoints for widgets
   - name: wonky - not working
     description: Endpoints not working or without explanation
-    
