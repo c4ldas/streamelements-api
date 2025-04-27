@@ -25647,7 +25647,7 @@ paths:
       tags:
         - uploads
       summary: '/:channel'
-      description: Get list of media files uploaded toaccount
+      description: Get list of media files uploaded to account
       operationId: 'Get/uploads/:channel'
       parameters:
         - name: channel
