@@ -41,14 +41,15 @@
       but this document will only relate to socket.io version (although it would apply to both).
     </p>
     <br />
-    <p>Official StreamElements socket.io documentation is on <a
-        href="https://dev.streamelements.com/docs/api-docs/5a84cc101a9c5-connecting-via-websocket-using-o-auth2">Streamelements
-        Developer Portal</a></p>
+    <p>Official StreamElements socket.io documentation is on <a href="https://dev.streamelements.com/docs/api-docs/5a84cc101a9c5-connecting-via-websocket-using-o-auth2" target="_blank">
+      Streamelements Developer Portal
+    </a>
+    </p>
 
     <p>
       There is also a new Websockets implementation called Astro (wss://astro.streamelements.com), which will not be
-      covered here, but you can find more information at <a
-        href="https://docs.streamelements.com/websockets">https://docs.streamelements.com/websockets</a>.
+      covered here, but you can find more information at <a href="https://docs.streamelements.com/websockets"
+        target="_blank">https://docs.streamelements.com/websockets</a>.
     </p>
 
     <br />
@@ -66,8 +67,8 @@
     <p>
       You need to use a socket.io library to connect to StreamElements socket. It is originally a JavaScript library,
       but
-      you can find other client implementations at <a href="https://socket.io/docs#client-implementations">Socket.io
-        website</a>
+      you can find other client implementations at <a href="https://socket.io/docs#client-implementations"
+        target="_blank">Socket.io website</a>
     </p>
 
     <div class="code-container">
@@ -296,6 +297,31 @@
   </div>
   </div>
   <br /><br /><br />
+
+  <script>
+    const prefetched = new Set();
+
+    document.addEventListener('mouseenter', e => {
+      if (e.target instanceof Element) {
+        const link = e.target.closest('a[href]');
+        if (link) smartPrefetch(link);
+      }
+    }, { capture: true });
+
+    function smartPrefetch(link) {
+      const href = link.getAttribute('href');
+
+      if (prefetched.has(href)) return;
+
+      const prefetch = document.createElement('link');
+      prefetch.rel = 'prefetch';
+      prefetch.href = href;
+      document.head.appendChild(prefetch);
+
+      prefetched.add(href);
+    }
+  </script>
+
 </body>
 
 </html>
