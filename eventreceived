@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.png" type="image/x-icon" />
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./socket.css">
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/prism.min.js" defer></script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"
+    defer></script>
+  <!-- <link href="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/themes/prism-okaidia.min.css" rel="stylesheet" /> -->
+
+  <title>onEventReceived examples</title>
+</head>
+
+<body data-theme="dark">
+  <div class="header">
+    <div class="header-content">
+      <!-- <img src="logo.png" alt="Logo" class="logo" /> -->
+      <a href="index.html">
+        <p class="title">StreamElements API</p>
+      </a>
+      <a href="socket.html">
+        <p class="subtitle">StreamElements socket.io</p>
+      </a>
+      <a href="eventreceived.html">
+        <p class="subtitle">onEventReceived examples</p>
+      </a>
+    </div>
+  </div>
+
+  <h1>onEventReceived examples</h1>
+  <div class="main">
+    <p>
+      StreamElements custom widgets have some events you can listen to. They are the ones below:
+    </p>
+    <br />
+    <ul>
+      <li>- onEventReceived</li>
+      <li>- onWidgetLoad</li>
+      <li>- onSessionUpdate</li>
+    </ul>
+    <br />
+    <p>
+      The most used one is by far "onEventReceived", as it allows you to receive events like chat messages, follows,
+      subscriptions, etc.
+    </p>
+    <p>In order to listen to events, you can use the following piece of code and check the browser console:</p>
+    <div class="code-container">
+      <div class="code-header">
+        <span>JS</span>
+      </div>
+      <pre><code class="language-javascript testing">
+       window.addEventListener("onEventReceived", (obj) => {
+         console.log(obj);
+       })
+      </code></pre>
+    </div>
+    <p>
+      More detailed information can be found in the <a
+        href="https://docs.streamelements.com/overlays/custom-widget-events" target="_blank">StreamElements
+        documentation</a>. The idea of this page is just to show some examples of objects that can be received from
+      "onEventReceived".
+    </p>
+
+    <h2>Object examples for "onEventReceived"</h2>
+
+    <p>
+      Except for chat messages and channel points redemptions, all events have will send two objects. One will
+      have the obj.detail.listener called "event" and the other will have obj.detail.listener with the type of event.
+    </p>
+
+
+    <h3>Chat message without reply</h3>
+    <div class="code-container">
+      <div class="code-header">
+        <span>JSON</span>
+      </div>
+      <pre><code class="language-javascript">
+        {
+        "detail": {
+          "listener": "message",
+          "event": {
+            "service": "twitch",
+            "data": {
+              "time": 1746249626071,
+              "tags": {
+                "badge-info": "",
+                "badges": "moderator/1,bits/10000",
+                "client-nonce": "eb789f6900adb111f492dc4a3b5f80cf",
+                "color": "#8AE020",
+                "display-name": "c4ldas",
+                "emotes": "",
+                "first-msg": "0",
+                "flags": "",
+                "id": "97054284-4000-4bb1-9840-cc7290c28a31",
+                "mod": "1",
+                "returning-chatter": "0",
+                "room-id": "39163965",
+                "subscriber": "0",
+                "tmi-sent-ts": "1746249626755",
+                "turbo": "0",
+                "user-id": "28057703",
+                "user-type": "mod"
+              },
+              "nick": "c4ldas",
+              "userId": "28057703",
+              "displayName": "c4ldas",
+              "displayColor": "#8AE020",
+              "badges": [
+                {
+                  "type": "moderator",
+                  "version": "1",
+                  "url": "https://static-cdn.jtvnw.net/badges/v1/3267646d-33f0-4b17-b3df-f923a41db1d0/3",
+                  "description": "Moderator"
+                },
+                {
+                  "type": "bits",
+                  "version": "10000",
+                  "url": "https://static-cdn.jtvnw.net/badges/v1/b3a7248e-ee06-4db6-a295-a5f7ab36fe01/3",
+                  "description": "cheer 10000"
+                }
+              ],
+              "channel": "dannyjones",
+              "text": "This is a test message.",
+              "isAction": false,
+              "emotes": [],
+              "msgId": "97054284-4000-4bb1-9840-cc7290c28a31"
+            },
+            "renderedText": "This is a test message."
+          }
+        }
+      }
+      </code></pre>
+    </div>
+
+
+    <h3>Chat message with reply</h3>
+    <div class="code-container">
+      <div class="code-header">
+        <span>JSON</span>
+      </div>
+      <pre><code class="language-javascript">
+        {
+          "detail": {
+            "listener": "message",
+            "event": {
+              "service": "twitch",
+              "data": {
+                "time": 1746249569714,
+                "tags": {
+                  "badge-info": "subscriber/11",
+                  "badges": "moderator/1,subscriber/9,purple-pixel-heart---together-for-good-24/1",
+                  "client-nonce": "7676f00ad4f8976effd4e0603f18aff8",
+                  "color": "#515151",
+                  "display-name": "horzse",
+                  "emotes": "",
+                  "first-msg": "0",
+                  "flags": "",
+                  "id": "2d9a81de-69e2-4b9d-9929-841061ac7ffa",
+                  "mod": "1",
+                  "reply-parent-display-name": "Dasantunes",
+                  "reply-parent-msg-body": "@horzse\\sn\\sadianta",
+                  "reply-parent-msg-id": "d7c0acff-8d0a-45a8-8575-7042bac7d363",
+                  "reply-parent-user-id": "517350065",
+                  "reply-parent-user-login": "dasantunes",
+                  "reply-thread-parent-display-name": "arvbh",
+                  "reply-thread-parent-msg-id": "b1c823f9-627b-4c5a-a13c-83ecebe27140",
+                  "reply-thread-parent-user-id": "827911372",
+                  "reply-thread-parent-user-login": "arvbh",
+                  "returning-chatter": "0",
+                  "room-id": "39163965",
+                  "subscriber": "1",
+                  "tmi-sent-ts": "1746249570423",
+                  "turbo": "0",
+                  "user-id": "277694894",
+                  "user-type": "mod"
+                },
+                "nick": "horzse",
+                "userId": "277694894",
+                "displayName": "horzse",
+                "displayColor": "#515151",
+                "badges": [
+                  {
+                    "type": "moderator",
+                    "version": "1",
+                    "url": "https://static-cdn.jtvnw.net/badges/v1/3267646d-33f0-4b17-b3df-f923a41db1d0/3",
+                    "description": "Moderator"
+                  },
+                  {
+                    "type": "subscriber",
+                    "version": "9",
+                    "url": "https://static-cdn.jtvnw.net/badges/v1/c1a3aa47-3670-4def-97d8-4fbd104872ed/3",
+                    "description": "9-Month Subscriber"
+                  },
+                  {
+                    "type": "purple-pixel-heart---together-for-good-24",
+                    "version": "1",
+                    "url": "https://static-cdn.jtvnw.net/badges/v1/1afb4b76-8c34-4b7b-8beb-75f7e5d2a1ab/3",
+                    "description": "Purple Pixel Heart - Together For Good '24"
+                  }
+                ],
+                "channel": "dannyjones",
+                "text": "@Dasantunes N AGUENTO MAIS DASANTUNES",
+                "isAction": false,
+                "emotes": [],
+                "msgId": "2d9a81de-69e2-4b9d-9929-841061ac7ffa"
+              },
+              "renderedText": "@Dasantunes N AGUENTO MAIS DASANTUNES"
+            }
+          }
+        }
+      </code></pre>
+    </div>
+
+
+    <h3>Channel points redemption</h3>
+    <div class="code-container">
+      <div class="code-header">
+        <span>JSON</span>
+      </div>
+      <pre><code class="language-javascript">
+        {
+          "detail": {
+            "listener": "event",
+            "event": {
+              "type": "channelPointsRedemption",
+              "provider": "twitch",
+              "channel": "5d1b97ed15d716160eb048ec",
+              "flagged": false,
+              "createdAt": "2025-05-03T05:12:47.326Z",
+              "data": {
+                "amount": 6000,
+                "username": "c4ldas",
+                "displayName": "c4ldas",
+                "providerId": "28057703",
+                "redemption": "Hidratação",
+                "quantity": 0,
+                "avatar": "https://static-cdn.jtvnw.net/user-default-pictures-uv/XXX-profile_image-300x300.png"
+              },
+              "_id": "6815a5cfe6a8bf782bf8c79b",
+              "expiresAt": "2025-05-31T05:12:47.331Z",
+              "updatedAt": "2025-05-03T05:12:47.326Z",
+              "activityId": "6815a5cfe6a8bf782bf8c79b",
+              "sessionEventsCount": 1
+            }
+          }
+        }
+      </code></pre>
+    </div>
+
+    <h3>Follow</h3>
+    <div class="code-container">
+      <div class="code-header">
+        <span>JSON</span>
+      </div>
+      <pre><code class="language-javascript">
+      {
+        "detail": {
+          "listener": "follower-latest",
+          "event": {
+            "name": "02_theusxw",
+            "activityId": "6815a3eb43063a12cf1c5c1e",
+            "_id": "6815a3eb43063a12cf1c5c1e",
+            "sessionTop": false,
+            "type": "follower",
+            "originalEventName": "follower-latest"
+          }
+        }
+      }
+    </code></pre>
+    </div>
+
+    <div class="code-container">
+      <div class="code-header">
+        <span>JSON</span>
+      </div>
+      <pre><code class="language-javascript">
+      {
+        "detail": {
+          "listener": "event",
+          "event": {
+            "type": "follow",
+            "provider": "twitch",
+            "channel": "5d1b97ed15d716160eb048ec",
+            "flagged": false,
+            "createdAt": "2025-05-03T05:04:43.985Z",
+            "data": {
+              "username": "02_theusxw",
+              "displayName": "02_theusxw",
+              "providerId": "1305084540",
+              "quantity": 0,
+              "avatar": "https://static-cdn.jtvnw.net/user-default-pictures-uv/XXX-profile_image-300x300.png"
+            },
+            "_id": "6815a3eb43063a12cf1c5c1e",
+            "expiresAt": "2026-04-04T05:04:43.989Z",
+            "updatedAt": "2025-05-03T05:04:43.985Z",
+            "activityId": "6815a3eb43063a12cf1c5c1e",
+            "sessionEventsCount": 6
+          }
+        }
+      }
+    </code></pre>
+    </div>
+
+
+    <h3>Bits</h3>
+    <div class="code-container">
+      <div class="code-header">
+        <span>JSON</span>
+      </div>
+      <pre><code class="language-javascript">
+      {
+        "detail": {
+          "listener": "cheer-latest",
+          "event": {
+            "name": "c4ldas",
+            "amount": 100,
+            "message": "Shamrock100 Nunca mais te mandei bits",
+            "activityId": "6815a682e6a8bf782bf8d233",
+            "_id": "6815a682e6a8bf782bf8d233",
+            "sessionTop": true,
+            "type": "cheer",
+            "originalEventName": "cheer-latest"
+          }
+        }
+      }
+    </code></pre>
+    </div>
+
+    <div class="code-container">
+      <div class="code-header">
+        <span>JSON</span>
+      </div>
+      <pre><code class="language-javascript">
+      {
+        "detail": {
+          "listener": "event",
+          "event": {
+            "type": "cheer",
+            "provider": "twitch",
+            "channel": "5d1b97ed15d716160eb048ec",
+            "flagged": false,
+            "createdAt": "2025-05-03T05:15:46.811Z",
+            "data": {
+              "amount": 100,
+              "username": "c4ldas",
+              "displayName": "c4ldas",
+              "providerId": "28057703",
+              "message": "Shamrock100 Nunca mais te mandei bits",
+              "quantity": 0,
+              "avatar": "https://static-cdn.jtvnw.net/user-default-pictures-uv/XXX-profile_image-300x300.png"
+            },
+            "_id": "6815a682e6a8bf782bf8d233",
+            "updatedAt": "2025-05-03T05:15:46.811Z",
+            "activityId": "6815a682e6a8bf782bf8d233",
+            "sessionEventsCount": 13
+          }
+        }
+      }
+      </code></pre>
+    </div>
+
+
+    <h3>First time subscriber</h3>
+    <div class="code-container">
+      <div class="code-header">
+        <span>JSON</span>
+      </div>
+      <pre><code class="language-javascript">
+      {
+        "detail": {
+          "listener": "subscriber-latest",
+          "event": {
+            "name": "vickqtoria",
+            "amount": 1,
+            "tier": "1000", // "prime", "1000", "2000", "3000"
+            "activityId": "6815a54c9b543203ee4aeb56",
+            "_id": "6815a54c9b543203ee4aeb56",
+            "sessionTop": false,
+            "type": "subscriber",
+            "originalEventName": "subscriber-latest"
+          }
+        }
+      }
+      </code></pre>
+    </div>
+
+    <div class="code-container">
+      <div class="code-header">
+        <span>JSON</span>
+      </div>
+      <pre><code class="language-javascript">
+      {
+        "detail": {
+          "listener": "event",
+          "event": {
+            "type": "subscriber",
+            "provider": "twitch",
+            "channel": "5d1b97ed15d716160eb048ec",
+            "flagged": false,
+            "createdAt": "2025-05-03T05:10:36.916Z",
+            "data": {
+              "amount": 1,
+              "username": "vickqtoria",
+              "displayName": "vickqtoria",
+              "providerId": "442970117",
+              "tier": "1000", // "prime", "1000", "2000", "3000"
+              "quantity": 0,
+              "avatar": "https://static-cdn.jtvnw.net/user-default-pictures-uv/XXX-profile_image-300x300.png"
+            },
+            "_id": "6815a54c9b543203ee4aeb56",
+            "updatedAt": "2025-05-03T05:10:36.916Z",
+            "activityId": "6815a54c9b543203ee4aeb56",
+            "sessionEventsCount": 9
+          }
+        }
+      }
+      </code></pre>
+    </div>
+
+
+    <h3>Resubscriber</h3>
+    <div class="code-container">
+      <div class="code-header">
+        <span>JSON</span>
+      </div>
+      <pre><code class="language-javascript">
+      {
+        "detail": {
+          "listener": "subscriber-latest",
+          "event": {
+            "name": "gabrrroela",
+            "amount": 2,
+            "tier": "1000",
+            "message": "abobra",
+            "activityId": "6815b8019b543203ee4ba7ec",
+            "_id": "6815b8019b543203ee4ba7ec",
+            "sessionTop": false,
+            "type": "subscriber",
+            "originalEventName": "subscriber-latest"
+          }
+        }
+      }
+      </code></pre>
+    </div>
+
+
+    <div class="code-container">
+      <div class="code-header">
+        <span>JSON</span>
+      </div>
+      <pre><code class="language-javascript">
+      {
+        "detail": {
+          "listener": "event",
+          "event": {
+            "type": "subscriber",
+            "provider": "twitch",
+            "channel": "5d1b97ed15d716160eb048ec",
+            "flagged": false,
+            "createdAt": "2025-05-03T06:30:25.211Z",
+            "data": {
+              "amount": 2,
+              "username": "gabrrroela",
+              "displayName": "gabrrroela",
+              "providerId": "157073781",
+              "message": "abobra",
+              "tier": "1000",
+              "streak": 1,
+              "quantity": 0,
+              "avatar": "https://static-cdn.jtvnw.net/user-default-pictures-uv/XXX-profile_image-300x300.png"
+            },
+            "_id": "6815b8019b543203ee4ba7ec",
+            "updatedAt": "2025-05-03T06:30:25.211Z",
+            "activityId": "6815b8019b543203ee4ba7ec",
+            "sessionEventsCount": 9
+          }
+        }
+      }
+      </code></pre>
+    </div>
+
+
+    <h3>Subgift</h3>
+    <div class="code-container">
+      <div class="code-header">
+        <span>JSON</span>
+      </div>
+      <pre><code class="language-javascript">
+        PENDING
+      </code></pre>
+    </div>
+
+    <div class="code-container">
+      <div class="code-header">
+        <span>JSON</span>
+      </div>
+      <pre><code class="language-javascript">
+        PENDING
+      </code></pre>
+    </div>
+
+
+    <h3>Community gift</h3>
+    <p>
+      Community gifts are kind of special as it triggers multiple events. Two for each gift received and two more for
+      the gifter. So, in case you have someone who gifted 5 gifts as community gifts, you will receive 12 events (two
+      for each gift plus two more for the gifter).
+    </p>
+    <p>
+      In the example below, the gifter sent 5 gifts, but I will only show two of them, as the other ones are the same,
+      just changing the user who received the gift.
+    </p>
+    <p>
+      Community gifts have the activityGroup (for listener: "event") and _id (for listener: "subscriber-latest") in
+      common, so you can group them based on that.
+    </p>
+    <p>The events below repeat for each gift received. In our case, that would be 5 times.</p>
+
+    <div class="code-container">
+      <div class="code-header">
+        <span>JSON</span>
+      </div>
+      <pre><code class="language-javascript">
+      {
+        "detail": {
+          "listener": "event",
+          "event": {
+            "type": "subscriber",
+            "provider": "twitch",
+            "channel": "5d1b97ed15d716160eb048ec",
+            "flagged": false,
+            "createdAt": "2025-05-03T07:02:05.521Z",
+            "activityGroup": "6809ba7e8d6834c4d95e892f152f8ecf",
+            "data": {
+              "amount": 1,
+              "username": "edeenn1",
+              "displayName": "edeenn1",
+              "providerId": "681784915",
+              "message": "ahxxis gifted a Tier 1 sub to edeenn1!",
+              "tier": "1000",
+              "sender": "ahxxis",
+              "gifted": true,
+              "quantity": 0,
+              "avatar": "https://static-cdn.jtvnw.net/user-default-pictures-uv/XXX-profile_image-300x300.png"
+            },
+            "_id": "6815bf6d534aeccc99a0da00",
+            "updatedAt": "2025-05-03T07:02:05.521Z",
+            "activityId": "6815bf6d534aeccc99a0da00",
+            "sessionEventsCount": 12
+          }
+        }
+      }
+      </code></pre>
+    </div>
+
+    <div class="code-container">
+      <div class="code-header">
+        <span>JSON</span>
+      </div>
+      <pre><code class="language-javascript">
+      {
+        "detail": {
+          "listener": "subscriber-latest",
+          "event": {
+            "name": "edeenn1",
+            "amount": 1,
+            "tier": "1000",
+            "gifted": true,
+            "communityGifted": true,
+            "sender": "ahxxis",
+            "message": "ahxxis gifted a Tier 1 sub to edeenn1!",
+            "activityId": "6815bf6d534aeccc99a0da00",
+            "_id": "6815bf6e3f97152224cd8d68",
+            "sessionTop": false,
+            "type": "subscriber",
+            "originalEventName": "subscriber-latest",
+            "isCommunityGift": true,
+            "playedAsCommunityGift": false
+          }
+        }
+      }
+      </code></pre>
+    </div>
+
+
+
+    <div class="code-container">
+      <div class="code-header">
+        <span>JSON</span>
+      </div>
+      <pre><code class="language-javascript">
+    {
+      "detail": {
+        "listener": "event",
+        "event": {
+          "type": "subscriber",
+          "provider": "twitch",
+          "channel": "5d1b97ed15d716160eb048ec",
+          "flagged": false,
+          "createdAt": "2025-05-03T07:02:05.527Z",
+          "activityGroup": "6809ba7e8d6834c4d95e892f152f8ecf",
+          "data": {
+            "amount": 1,
+            "username": "mateusin_1",
+            "displayName": "mateusin_1",
+            "providerId": "985280392",
+            "message": "ahxxis gifted a Tier 1 sub to mateusin_1!",
+            "tier": "1000",
+            "sender": "ahxxis",
+            "gifted": true,
+            "quantity": 0,
+            "avatar": "https://static-cdn.jtvnw.net/user-default-pictures-uv/XXX-profile_image-300x300.png"
+          },
+          "_id": "6815bf6d11c220f9fda37538",
+          "updatedAt": "2025-05-03T07:02:05.527Z",
+          "activityId": "6815bf6d11c220f9fda37538",
+          "sessionEventsCount": 11
+        }
+      }
+      }
+    </code></pre>
+    </div>
+
+    <div class="code-container">
+      <div class="code-header">
+        <span>JSON</span>
+      </div>
+      <pre><code class="language-javascript">
+      {
+      "detail": {
+        "listener": "subscriber-latest",
+        "event": {
+          "name": "mateusin_1",
+          "amount": 1,
+          "tier": "1000",
+          "gifted": true,
+          "communityGifted": true,
+          "sender": "ahxxis",
+          "message": "ahxxis gifted a Tier 1 sub to mateusin_1!",
+          "activityId": "6815bf6d11c220f9fda37538",
+          "_id": "6815bf6e3f97152224cd8d68",
+          "sessionTop": false,
+          "type": "subscriber",
+          "originalEventName": "subscriber-latest",
+          "isCommunityGift": true,
+          "playedAsCommunityGift": false
+        }
+      }
+      }
+    </code></pre>
+    </div>
+
+    <p>The events below are the ones related to the gifter to indicate the ones below were a community gift</p>
+    <p>They do not repeat and are usually sent after the ones above.</p>
+
+    <div class="code-container">
+      <div class="code-header">
+        <span>JSON</span>
+      </div>
+      <pre><code class="language-javascript">
+      {
+        "detail": {
+          "listener": "event",
+          "event": {
+            "type": "communityGiftPurchase",
+            "provider": "twitch",
+            "channel": "5d1b97ed15d716160eb048ec",
+            "flagged": false,
+            "createdAt": "2025-05-03T07:02:06.007Z",
+            "activityGroup": "6809ba7e8d6834c4d95e892f152f8ecf",
+            "data": {
+              "amount": 5,
+              "username": "ahxxis",
+              "displayName": "ahxxis",
+              "providerId": "148121197",
+              "tier": "1000",
+              "sender": "ahxxis",
+              "quantity": 0,
+              "avatar": "https://static-cdn.jtvnw.net/user-default-pictures-uv/XXX-profile_image-300x300.png"
+            },
+            "_id": "6815bf6e3f97152224cd8d68",
+            "updatedAt": "2025-05-03T07:02:06.007Z",
+            "activityId": "6815bf6e3f97152224cd8d68",
+            "sessionEventsCount": 0
+          }
+        }
+      }        
+      </code></pre>
+    </div>
+
+    <div class="code-container">
+      <div class="code-header">
+        <span>JSON</span>
+      </div>
+      <pre><code class="language-javascript">
+      {
+        "detail": {
+          "listener": "subscriber-latest",
+          "event": {
+            "name": "ahxxis",
+            "sender": "ahxxis",
+            "displayName": "ahxxis",
+            "amount": 5,
+            "count": 16,
+            "tier": "1000",
+            "message": "",
+            "bulkGifted": true,
+            "type": "subscriber",
+            "originalEventName": "subscriber-latest"
+          }
+        }
+      }
+      </code></pre>
+    </div>
+
+
+
+
+
+    <h3>Donation</h3>
+    <div class="code-container">
+      <div class="code-header">
+        <span>JSON</span>
+      </div>
+      <pre><code class="language-javascript">
+      {
+        "detail": {
+          "listener": "tip-latest",
+          "event": {
+            "name": "SaraRira",
+            "amount": 3,
+            "message": "ela não está valorizando o romantismo nordeisto do xupetinha, estou aqui na fila minha rapadurinha",
+            "activityId": "6815a37391d582d238a40f11",
+            "_id": "6815a37391d582d238a40f11",
+            "sessionTop": false,
+            "type": "tip",
+            "originalEventName": "tip-latest"
+          }
+        }
+      }
+      </code></pre>
+    </div>
+
+    <div class="code-container">
+      <div class="code-header">
+        <span>JSON</span>
+      </div>
+      <pre><code class="language-javascript">
+      {
+        "detail": {
+          "listener": "event",
+          "event": {
+            "type": "tip",
+            "provider": "twitch",
+            "channel": "5d1b97ed15d716160eb048ec",
+            "createdAt": "2025-05-03T05:02:43.949Z",
+            "data": {
+              "amount": 3,
+              "currency": "BRL",
+              "username": "SaraRira",
+              "tipId": "6815a373bab88c4c7230f6b3",
+              "message": "ela não está valorizando o romantismo nordeisto do xupetinha, estou aqui na fila minha rapadurinha",
+              "avatar": "https://cdn.streamelements.com/static/default-avatar.png"
+            },
+            "_id": "6815a37391d582d238a40f11",
+            "updatedAt": "2025-05-03T05:02:43.949Z",
+            "activityId": "6815a37391d582d238a40f11",
+            "sessionEventsCount": 7
+          }
+        }
+      }
+      </code></pre>
+    </div>
+
+
+    <h2>Other info</h2>
+    <p>
+      There are way more data that needs to be documented, but I don't remember what else to add here. In the
+      meantime, take some time to admire the randomly generated image below:
+    </p>
+    <br />
+    <img src="https://picsum.photos/1280/720">
+  </div>
+  </div>
+  <br /><br /><br />
+
+  <script>
+    const prefetched = new Set();
+
+    document.addEventListener('mouseenter', e => {
+      if (e.target instanceof Element) {
+        const link = e.target.closest('a[href]');
+        if (link) smartPrefetch(link);
+      }
+    }, { capture: true });
+
+    function smartPrefetch(link) {
+      const href = link.getAttribute('href');
+
+      if (prefetched.has(href)) return;
+
+      const prefetch = document.createElement('link');
+      prefetch.rel = 'prefetch';
+      prefetch.href = href;
+      document.head.appendChild(prefetch);
+
+      prefetched.add(href);
+    }
+  </script>
+
+</body>
+
+</html>
