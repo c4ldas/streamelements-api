@@ -70,8 +70,8 @@
     <h2>Object examples for "onEventReceived"</h2>
 
     <p>
-      Except for chat messages and channel points redemptions, all events have will send two objects. One will
-      have the obj.detail.listener called "event" and the other will have obj.detail.listener with the type of event.
+      Except for some specific ones (chat, redemptions, deleted messages), all events have will send two objects. One
+      is the obj.detail.listener called "event" and the other is obj.detail.listener with the type of event.
     </p>
 
     <p>As of May 2025, these are the objects for each event (it can be changed in the future):</p>
@@ -790,6 +790,61 @@
     </div>
 
 
+    <h3><a name="store-redemption" href="#store-redemption" class="anchor-link">Store redemption</a></h3>
+    <div class="code-container">
+      <div class="code-header">
+        <span>JSON</span>
+      </div>
+      <pre><code class="language-javascript">
+      {
+        "detail": {
+          "listener": "event",
+          "event": {
+            "type": "redemption",
+            "provider": "twitch",
+            "channel": "5f2de5dd9a474a2c2daaaaaa",
+            "createdAt": "2025-05-10T18:09:09.429Z",
+            "data": {
+              "amount": 0,
+              "username": "c4ldas",
+              "message": "This is a test message",
+              "redemption": "Send a message",
+              "avatar": "https://cdn.streamelements.com/static/default-avatar.png"
+            },
+            "_id": "681f9645ff99a7c7df18542a",
+            "updatedAt": "2025-05-10T18:09:09.429Z",
+            "activityId": "681f9645ff99a7c7df18542a",
+            "sessionEventsCount": 0
+          }
+        }
+      }
+      </code></pre>
+    </div>
+
+    <div class="code-container">
+      <div class="code-header">
+        <span>JSON</span>
+      </div>
+      <pre><code class="language-javascript">
+      {
+        "detail": {
+          "listener": undefined,
+          "event": {
+            "redemptionId": "681f964597235a7505e468a5",
+            "itemId": "5feaf146d07f8725e3f10c0d",
+            "type": "perk",
+            "name": "c4ldas",
+            "message": "This is a test message",
+            "item": "Send a message",
+            "_id": "681f9645ff99a7c7df18542a",
+            "sessionTop": false
+          }
+        }
+      }
+      </code></pre>
+    </div>
+
+
     <h3><a name="donation" href="#donation" class="anchor-link">Donation</a></h3>
     <div class="code-container">
       <div class="code-header">
@@ -839,6 +894,82 @@
             "updatedAt": "2025-05-03T05:02:43.949Z",
             "activityId": "6815a37391d582d238a40f11",
             "sessionEventsCount": 7
+          }
+        }
+      }
+      </code></pre>
+    </div>
+
+
+    <h3><a name="counter" href="#counter" class="anchor-link">Counter update</a></h3>
+    <div class="code-container">
+      <div class="code-header">
+        <span>JSON</span>
+      </div>
+      <pre><code class="language-javascript">
+        {
+          "detail": {
+            "listener": "bot:counter",
+            "event": {
+              "counter": "test",
+              "value": 1
+            }
+          }
+        }
+      </code></pre>
+    </div>
+
+
+    <h3><a name="button-click" href="#button-click" class="anchor-link">Button click from Fields</a></h3>
+    <div class="code-container">
+      <div class="code-header">
+        <span>JSON</span>
+      </div>
+      <pre><code class="language-javascript">
+        {
+          "detail": {
+            "listener": "event:test",
+            "event": {
+              "listener": "widget-button",
+              "field": "buttonItem",
+              "value": "button-value"
+            }
+          }
+        }
+      </code></pre>
+    </div>
+
+
+    <h3><a name="delete-message" href="#delete-message" class="anchor-link">Single deleted message</a></h3>
+    <div class="code-container">
+      <div class="code-header">
+        <span>JSON</span>
+      </div>
+      <pre><code class="language-javascript">
+      {
+        "detail": {
+          "listener": "delete-message",
+          "event": {
+            "msgId": "abc5ca75-5c0d-4efc-89c3-7e18a1449b61"
+          }
+        }
+      }
+      </code></pre>
+    </div>
+
+
+    <h3><a name="delete-messages" href="#delete-messages" class="anchor-link">Multiple deleted messages (i.e.:
+        timeout)</a></h3>
+    <div class="code-container">
+      <div class="code-header">
+        <span>JSON</span>
+      </div>
+      <pre><code class="language-javascript">
+      {
+        "detail": {
+          "listener": "delete-messages",
+          "event": {
+            "userId": "629674320"
           }
         }
       }
