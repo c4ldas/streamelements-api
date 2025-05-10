@@ -73,10 +73,11 @@
       Except for chat messages and channel points redemptions, all events have will send two objects. One will
       have the obj.detail.listener called "event" and the other will have obj.detail.listener with the type of event.
     </p>
-    
+
     <p>As of May 2025, these are the objects for each event (it can be changed in the future):</p>
 
-    <h3>Chat message without reply</h3>
+
+    <h3><a name="chat-message-without-reply">Chat message without reply</a></h3>
     <div class="code-container">
       <div class="code-header">
         <span>JSON</span>
@@ -126,7 +127,7 @@
                   "description": "cheer 10000"
                 }
               ],
-              "channel": "channelName",
+              "channel": "dannyjones",
               "text": "This is a test message.",
               "isAction": false,
               "emotes": [],
@@ -140,7 +141,7 @@
     </div>
 
 
-    <h3>Chat message with reply</h3>
+    <h3><a name="chat-message-with-reply">Chat message with reply</a></h3>
     <div class="code-container">
       <div class="code-header">
         <span>JSON</span>
@@ -205,7 +206,7 @@
                     "description": "Purple Pixel Heart - Together For Good '24"
                   }
                 ],
-                "channel": "channelName",
+                "channel": "dannyjones",
                 "text": "@Dasantunes N AGUENTO MAIS DASANTUNES",
                 "isAction": false,
                 "emotes": [],
@@ -219,7 +220,7 @@
     </div>
 
 
-    <h3>Channel points redemption</h3>
+    <h3><a name="channel-points-redemption">Channel points redemption</a></h3>
     <div class="code-container">
       <div class="code-header">
         <span>JSON</span>
@@ -231,7 +232,7 @@
             "event": {
               "type": "channelPointsRedemption",
               "provider": "twitch",
-              "channel": "5d1b97ed15d7161600000000",
+              "channel": "5d1b97ed15d716160eb048ec",
               "flagged": false,
               "createdAt": "2025-05-03T05:12:47.326Z",
               "data": {
@@ -254,7 +255,7 @@
       </code></pre>
     </div>
 
-    <h3>Follow</h3>
+    <h3><a name="follow">Follow</a></h3>
     <div class="code-container">
       <div class="code-header">
         <span>JSON</span>
@@ -287,7 +288,7 @@
           "event": {
             "type": "follow",
             "provider": "twitch",
-            "channel": "5d1b97ed15d7161600000000",
+            "channel": "5d1b97ed15d716160eb048ec",
             "flagged": false,
             "createdAt": "2025-05-03T05:04:43.985Z",
             "data": {
@@ -309,7 +310,7 @@
     </div>
 
 
-    <h3>Bits</h3>
+    <h3><a name="bits">Bits</a></h3>
     <div class="code-container">
       <div class="code-header">
         <span>JSON</span>
@@ -344,7 +345,7 @@
           "event": {
             "type": "cheer",
             "provider": "twitch",
-            "channel": "5d1b97ed15d7161600000000",
+            "channel": "5d1b97ed15d716160eb048ec",
             "flagged": false,
             "createdAt": "2025-05-03T05:15:46.811Z",
             "data": {
@@ -367,7 +368,7 @@
     </div>
 
 
-    <h3>First time subscriber</h3>
+    <h3><a name="first-time-subscriber">First time subscriber</a></h3>
     <div class="code-container">
       <div class="code-header">
         <span>JSON</span>
@@ -402,7 +403,7 @@
           "event": {
             "type": "subscriber",
             "provider": "twitch",
-            "channel": "5d1b97ed15d7161600000000",
+            "channel": "5d1b97ed15d716160eb048ec",
             "flagged": false,
             "createdAt": "2025-05-03T05:10:36.916Z",
             "data": {
@@ -425,7 +426,7 @@
     </div>
 
 
-    <h3>Resubscriber</h3>
+    <h3><a name="resubscriber">Resubscriber</a></h3>
     <div class="code-container">
       <div class="code-header">
         <span>JSON</span>
@@ -462,7 +463,7 @@
           "event": {
             "type": "subscriber",
             "provider": "twitch",
-            "channel": "5d1b97ed15d7161600000000",
+            "channel": "5d1b97ed15d716160eb048ec",
             "flagged": false,
             "createdAt": "2025-05-03T06:30:25.211Z",
             "data": {
@@ -487,7 +488,7 @@
     </div>
 
 
-    <h3>Subgift</h3>
+    <h3><a name="subgift">Subgift</a></h3>
     <div class="code-container">
       <div class="code-header">
         <span>JSON</span>
@@ -552,7 +553,7 @@
     </div>
 
 
-    <h3>Community gift</h3>
+    <h3><a name="community-gift">Community gift</a></h3>
     <p>
       Community gifts are kind of special as it triggers multiple events. Two for each gift received and two more for
       the gifter. So, in case you have someone who gifted 5 gifts as community gifts, you will receive 12 events (two
@@ -579,7 +580,7 @@
           "event": {
             "type": "subscriber",
             "provider": "twitch",
-            "channel": "5d1b97ed15d7161600000000",
+            "channel": "5d1b97ed15d716160eb048ec",
             "flagged": false,
             "createdAt": "2025-05-03T07:02:05.521Z",
             "activityGroup": "6809ba7e8d6834c4d95e892f152f8ecf",
@@ -647,7 +648,7 @@
         "event": {
           "type": "subscriber",
           "provider": "twitch",
-          "channel": "5d1b97ed15d7161600000000",
+          "channel": "5d1b97ed15d716160eb048ec",
           "flagged": false,
           "createdAt": "2025-05-03T07:02:05.527Z",
           "activityGroup": "6809ba7e8d6834c4d95e892f152f8ecf",
@@ -716,7 +717,7 @@
           "event": {
             "type": "communityGiftPurchase",
             "provider": "twitch",
-            "channel": "5d1b97ed15d7161600000000",
+            "channel": "5d1b97ed15d716160eb048ec",
             "flagged": false,
             "createdAt": "2025-05-03T07:02:06.007Z",
             "activityGroup": "6809ba7e8d6834c4d95e892f152f8ecf",
@@ -765,8 +766,8 @@
       </code></pre>
     </div>
 
-    
-    <h3>Raid</h3>
+
+    <h3><a name="raid">Raid</a></h3>
     <div class="code-container">
       <div class="code-header">
         <span>JSON</span>
@@ -786,8 +787,7 @@
     </div>
 
 
-
-    <h3>Donation</h3>
+    <h3><a name="donation">Donation</a></h3>
     <div class="code-container">
       <div class="code-header">
         <span>JSON</span>
@@ -822,7 +822,7 @@
           "event": {
             "type": "tip",
             "provider": "twitch",
-            "channel": "5d1b97ed15d7161600000000",
+            "channel": "5d1b97ed15d716160eb048ec",
             "createdAt": "2025-05-03T05:02:43.949Z",
             "data": {
               "amount": 3,
