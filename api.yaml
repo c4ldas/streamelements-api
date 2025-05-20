@@ -24709,6 +24709,218 @@ paths:
           description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
+    put:
+      operationId: 'Put/tips/:channel/:tipId'
+      tags:
+        - tips
+      summary: '/:channel/:tipId'
+      description: Edit an existing tip
+      security:
+        - JWT: []
+        - OAuth2:
+            - 'tips:read'
+            - 'tips:write'
+      parameters:
+        - name: channel
+          in: path
+          required: true
+          schema:
+            type: string
+          description: guid - Channel id
+        - name: tipId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: guid - Tip id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: integer
+                  example: 10
+                currency:
+                  type: string
+                  example: USD
+                message:
+                  type: string
+                  example: Test Message
+                user:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+                      example: testUser
+                    email:
+                      type: string
+                      format: email
+                      example: email@example.com
+                    geo:
+                      type: string
+                      nullable: true
+                paymentMethod:
+                  type: string
+                  example: imported
+            examples:
+              Example:
+                value:
+                  amount: 10
+                  currency: USD
+                  message: Test Message
+                  user:
+                    username: testUser
+                    email: email@example.com
+                    geo: null
+                  paymentMethod: imported
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  donation:
+                    type: object
+                    properties:
+                      user:
+                        type: object
+                        properties:
+                          username:
+                            type: string
+                          email:
+                            type: string
+                          geo:
+                            type: string
+                            nullable: true
+                      message:
+                        type: string
+                      amount:
+                        type: integer
+                      currency:
+                        type: string
+                  _id:
+                    type: string
+                  channel:
+                    type: string
+                  provider:
+                    type: string
+                  transactionId:
+                    type: string
+                  approved:
+                    type: string
+                  status:
+                    type: string
+                  deleted:
+                    type: boolean
+                  createdAt:
+                    type: string
+                  updatedAt:
+                    type: string
+              examples:
+                Example:
+                  value:
+                    donation:
+                      user:
+                        username: testUser
+                        email: email@example.com
+                        geo: null
+                      message: Test Message
+                      amount: 10
+                      currency: USD
+                    _id: 67e425f12dbb4b5294bb7385
+                    channel: 5f2de5dd9a474a2c2daaaaaa
+                    provider: paypal
+                    transactionId: IMPORTED
+                    approved: allowed
+                    status: success
+                    deleted: false
+                    createdAt: '2025-05-20T13:06:09.423Z'
+                    updatedAt: '2025-05-20T13:07:53.983Z'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 400
+                  error:
+                    type: string
+                    example: Bad Request
+                  message:
+                    type: string
+                    example: 'child ''email'' fails because [''email'' must be a valid email]]'
+    delete:
+      operationId: 'Delete/tips/:channel/:tipId'
+      tags:
+        - tips
+      summary: '/:channel/:tipId'
+      description: Delete an existing tip
+      security:
+        - JWT: []
+        - OAuth2:
+            - 'tips:read'
+            - 'tips:write'
+      parameters:
+        - name: channel
+          in: path
+          required: true
+          schema:
+            type: string
+          description: guid - Channel id
+        - name: tipId
+          in: path
+          required: true
+          schema:
+            type: string
+          description: guid - Tip id
+      responses:
+        '200':
+          description: ''
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                    example: 400
+                  error:
+                    type: string
+                    example: Bad Request
+                  message:
+                    type: string
+                  details:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        path:
+                          type: array
+                          items:
+                            type: string
+                        message:
+                          type: string
+              examples:
+                Example:
+                  value:
+                    statusCode: 400
+                    error: Bad Request
+                    message: '"tipId" with value "asdfa2f32f2fwsdfsdfsdf" fails to match the required pattern: /^[0-9a-fA-F]{24}$/'
+                    details:
+                      - path:
+                          - tipId
+                        message: '"tipId" with value "asdfa2f32f2fwsdfsdfsdf" fails to match the required pattern: /^[0-9a-fA-F]{24}$/"'
+
   /users/current:
     get:
       tags:
