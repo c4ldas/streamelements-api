@@ -30088,7 +30088,7 @@ textarea {
 }
 
 
-.closeButton {
+.searchCloseButton {
   position: absolute;
   right: 10px;
   color: white;
@@ -30099,7 +30099,7 @@ textarea {
   cursor: pointer;
 }
 
-.closeButton:hover {
+.searchCloseButton:hover {
   color: red;
 }
 
