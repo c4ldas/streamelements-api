@@ -1,9 +1,66 @@
-// Change some colors from dark mode
-// Select the target element
-const targetElement = document.getElementById('elements-content');
+const elements = document.querySelector("elements-api");
+const fileInput = document.querySelector("#fileInput");
+const savedContent = sessionStorage.getItem("apiFileContent");
 
+const elementsContent = document.getElementById('elements-content');
+const searchPopup = document.getElementById('searchPopup');
+const searchCloseButton = document.getElementById('searchCloseButton');
+
+let apiDoc = null;
+const yamlFile = "api.yaml";
+
+try {
+  if (savedContent) {
+    apiDoc = JSON.parse(savedContent);
+    elements.apiDescriptionDocument = apiDoc;
+    fileInput.style.display = "none";
+  }
+  else {
+    fileInput.style.display = "flex";
+  }
+
+} catch (error) {
+  console.error('Error parsing saved content:', error);
+}
+
+loadYamlFile();
+
+fileInput.addEventListener('change', function (event) {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const content = e.target.result;
+      let parsedData;
+      try {
+        if (file.name.endsWith('.json')) {
+          parsedData = JSON.parse(content);
+        } else if (file.name.endsWith('.yaml') || file.name.endsWith('.yml')) {
+          parsedData = jsyaml.load(content);
+        }
+        console.log(parsedData); // Parsed JSON object
+        elements.apiDescriptionDocument = parsedData;
+        sessionStorage.setItem("apiFileContent", JSON.stringify(parsedData)); // Save the content to local storage
+        fileInput.style.display = "none";
+
+        apiDoc = parsedData;
+      } catch (error) {
+        console.error('Error parsing file:', error);
+      }
+    };
+    reader.readAsText(file);
+  }
+});
+
+
+// Change some colors from dark mode
 // Create a MutationObserver instance
 const observer = new MutationObserver(function (mutationsList) {
+
+  if (elements.apiDescriptionDocument) {
+    document.querySelector("#customFileInput").style.display = "none";
+  }
+
   mutationsList.forEach(function () {
     // Process all <span> elements
     document.querySelectorAll('span').forEach(function (span) {
@@ -32,48 +89,39 @@ const config = {
 };
 
 // Start observing the target element
-observer.observe(targetElement, config);
+observer.observe(elementsContent, config);
 
-///////////////////////////////////////
-//////// Search implementation ////////
-///////////////////////////////////////
-
-let apiDoc = null;
-const yamlFile = "api.yaml";
-const baseUrl = "https://c4ldas.github.io/streamelements-api"
-
-loadYamlFile();
 
 // Load YAML file
 async function loadYamlFile() {
   try {
-    const response = await fetch(yamlFile);
-    if (!response.ok) {
-      throw new Error('Network response was not ok ' + response.statusText);
+    if (location.protocol !== "file:") {
+      fileInput.style.display = "none";
+      const response = await fetch(yamlFile);
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok ' + response.statusText);
+      }
+
+      const yamlText = await response.text();
+      apiDoc = jsyaml.load(yamlText); // Store the parsed YAML in the global variable
+
+      elements.apiDescriptionDocument = apiDoc;
+
+    } else {
+      fileInput.style.display = "flex";
+      return;
     }
-    const yamlText = await response.text();
-    apiDoc = jsyaml.load(yamlText); // Store the parsed YAML in the global variable
-    // console.log('YAML file loaded successfully:', apiDoc);
+
   } catch (error) {
     console.error('Error loading YAML file:', error);
   }
 }
 
 
-// Function to show the search popup
-function showSearchPopup() {
-  const searchPopup = document.getElementById('searchPopup');
-  searchPopup.style.display = 'flex';  
-  document.getElementById('popupSearchTerm').focus(); // Focus on the input inside the popup
-}
-
-
-// Function to close the search popup
-function closeSearchPopup() {
-  const searchPopup = document.getElementById('searchPopup');
-  searchPopup.style.display = 'none';
-}
-
+///////////////////////////////////////
+//////// Search implementation ////////
+///////////////////////////////////////
 
 // Close search bar with ESC key
 document.addEventListener('keydown', function (event) {
@@ -82,14 +130,15 @@ document.addEventListener('keydown', function (event) {
 
 
 // When clicking outside the search popup, call the function to close popup
-document.getElementById('searchPopup').addEventListener('click', function (event) {
+searchPopup.addEventListener('click', function (event) {
+  // document.getElementById('searchPopup').addEventListener('click', function (event) {
   if (event.target === this) closeSearchPopup();
 });
 
 
 // Clear the search term and the results when clicking on X button
 // If clicked when there is no text, close the search bar
-document.getElementById('closeButton').addEventListener("click", function () {
+searchCloseButton.addEventListener("click", function () {
   if (document.getElementById("popupSearchTerm").value == "") {
     closeSearchPopup();
     return;
@@ -98,6 +147,18 @@ document.getElementById('closeButton').addEventListener("click", function () {
   document.getElementById("popupResults").innerHTML = "";
   document.getElementById('popupSearchTerm').focus();
 });
+
+
+// Function to show the search popup
+function showSearchPopup() {
+  searchPopup.style.display = 'flex';
+  document.getElementById('popupSearchTerm').focus(); // Focus on the input inside the popup
+}
+
+// Function to close the search popup
+function closeSearchPopup() {
+  searchPopup.style.display = 'none';
+}
 
 
 // Debounce function to delay search execution
@@ -135,7 +196,7 @@ const performSearch = debounce(function () {
     resultsDiv.appendChild(resultDiv);
   } else {
     results.forEach(result => {
-      const link = `${baseUrl}/#/operations/${result.operationId}`;
+      const link = `#/operations/${result.operationId}`;
       const resultDiv = document.createElement('div');
       resultDiv.classList.add('result');
 
@@ -153,7 +214,7 @@ const performSearch = debounce(function () {
           <p class="description"><strong>Description:</strong> ${description}</p>
           ${bodyData.length > 0 ? "<p class='bodyDescription'><strong>Body description: </strong>" + bodyData + "</p>" : ''}
       `
-      
+
       function filterText(text, searchTerm) {
         const regex = new RegExp(searchTerm, "gi");
         return text.replace(regex, (match) => `<span class="highlight">${match}</span>`);
@@ -201,6 +262,7 @@ function searchApiDoc(apiDoc, searchTerm) {
 
         // Check if the search term matches any field
         if (
+          (operationId && operationId.toLowerCase().includes(searchTerm)) ||
           (summary && summary.toLowerCase().includes(searchTerm)) ||
           (description && description.toLowerCase().includes(searchTerm)) ||
           (requestBodyDescription && requestBodyDescription.toLowerCase().includes(searchTerm)) ||
