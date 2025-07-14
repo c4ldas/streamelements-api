@@ -1,3 +1,26 @@
+
+// Copy button
+document.querySelectorAll('.code-header button').forEach(button => {
+  button.addEventListener('click', () => {
+    const codeContainer = button.closest('.code-container');
+    const codeElement = codeContainer.querySelector('code');
+    const textToCopy = codeElement.textContent.trim();
+
+    navigator.clipboard.writeText(textToCopy)
+      .then(() => {
+        button.textContent = 'Copied!';
+        setTimeout(() => {
+          button.textContent = 'Copy';
+        }, 1500);
+      })
+      .catch(err => {
+        console.error('Failed to copy:', err);
+      });
+  });
+});
+
+
+// Expandable blocks
 document.querySelectorAll('.expandable').forEach(section => {
   const toggle = section.querySelector('.expand-toggle');
   const content = section.querySelector('.expand-content');
@@ -28,3 +51,5 @@ document.querySelectorAll('.expandable').forEach(section => {
     }
   });
 });
+
+
