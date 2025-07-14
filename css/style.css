@@ -30183,13 +30183,17 @@ a.anchor-link:hover::before {
   }
 }
 
+/*****************************
+// Expandable code blocks  //
+****************************/
+
 .expandable {
   border: 1px solid #444;
   border-radius: 6px;
   background: #222;
   color: #eee;
+  margin-top: 15px;
   margin-bottom: 1em;
-  padding: 10px;
 }
 
 .expand-toggle {
@@ -30199,6 +30203,8 @@ a.anchor-link:hover::before {
   display: flex;
   align-items: center;
   gap: 0.5em;
+  width: 100%;
+  padding: 10px 0px 10px 10px;
 }
 
 .expand-toggle .icon {

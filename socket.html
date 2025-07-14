@@ -8,6 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/socket.css">
+  <script src="./js/expandable.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1.25.0/prism.min.js" defer></script>
   <script
     src="https://cdn.jsdelivr.net/npm/prismjs@1.30.0/plugins/normalize-whitespace/prism-normalize-whitespace.min.js"
@@ -46,6 +47,7 @@
       use and works well.
     </p>
     <br />
+
     <p>Unlike Astro (<a href="https://docs.streamelements.com/websockets" target="_blank">StreamElements
         WebSockets</a>), realtime allows you to send events to StreamElements. So, if you have a highly customized
       widget, you can send events to StreamElements and have it respond accordingly.
@@ -63,6 +65,7 @@
     <div class="gif-container" id="gif-container">
       <img src="img/pokemon.gif" alt="pokemon gif" width="400" />
     </div>
+
 
     <h2>Initial information:</h2>
     <p>
@@ -87,6 +90,7 @@
         target="_blank"> Streamelements Developer Portal </a>
     </p>
 
+
     <h2>
       How to connect:
     </h2>
@@ -103,60 +107,71 @@
         href="https://socket.io/docs#client-implementations" target="_blank">Socket.io website</a>
     </p>
 
-    <div class="code-container">
-      <div class="code-header">
-        <span>HTML</span>
-        <!-- <button class="copy-button" onclick="copyCode('javascript')">Copy</button> -->
+    <section class="expandable">
+      <button class="expand-toggle" aria-expanded="false">
+        <span class="icon">▶️</span>
+        <span class="label">Click to expand</span>
+      </button>
+
+      <div class="expand-content" hidden>
+        <div class="code-container">
+          <div class="code-header">
+            <span>HTML</span>
+            <button data-clipboard>Copy</button>
+          </div>
+
+          <pre><code class="language-html">
+            &lt;script src="https://cdn.socket.io/4.5.4/socket.io.min.js"&gt;&lt;/script&gt;
+          </code></pre>
+        </div>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span>Javascript</span>
+            <button data-clipboard>Copy</button>
+          </div>
+          <pre><code class="language-javascript">
+            // This snippet is just an example of how to connect to the StreamElements socket.
+            // For more information on handling events, check the next section
+
+            const url = "https://realtime.streamelements.com";
+            const options = { transports: ["websocket"]};
+            const token = ""; // Your JWT, overlay token (aka apikey) or oAuth2 token
+            const method = ""; // "jwt", "apikey" or "oauth2", based on the token used
+            const socket = io(url, options); // Start the connection
+
+            // Listen for connection and authentication events
+            socket.on("connect", onConnect);
+            socket.on("authenticated", onAuthenticated);
+            socket.on("disconnect", onDisconnect);
+            socket.on("unauthorized", console.error);
+
+            function onConnect() {
+              console.log("Connected to StreamElements socket.");
+              // After connecting, authenticate:
+              socket.emit("authenticate", { method: method, token: token });
+            }
+
+            function onAuthenticated(data) {
+              const { channelId, clientId, message, project } = data; // available fields in the response
+              console.log(`Successfully authenticated to channel ${channelId} with ID ${clientId}`);
+              console.log(message);
+            }
+
+            function onDisconnect(data) {
+              // The client will try to reconnect automatically unless th reason is 
+              // "io server disconnect" and "io client disconnect" (manual disconnections)
+              // If you want to reconnect even when there is a manual disconnects, use:
+              // if (reason === "io server disconnect" || reason === "io client disconnect") {
+              //  socket.connect();
+              // }
+              console.log(`Disconnected from StreamElements. Reason: ${data}`);        
+            }
+          </code></pre>
+        </div>
       </div>
-      <pre><code class="language-html testing">
-        &lt;script src="https://cdn.socket.io/4.5.4/socket.io.min.js"&gt;&lt;/script&gt;
-      </code></pre>
-    </div>
+    </section>
 
-    <div class="code-container">
-      <div class="code-header">
-        <span>JavaScript</span>
-        <!-- <button class="copy-button" onclick="copyCode('javascript')">Copy</button> -->
-      </div>
-      <pre><code class="language-javascript">
-        // This snippet is just an example of how to connect to the StreamElements socket.
-        // For more information on handling events, check the next section
-
-        const url = "https://realtime.streamelements.com";
-        const options = { transports: ["websocket"]};
-        const token = ""; // Your JWT, overlay token (aka apikey) or oAuth2 token
-        const method = ""; // "jwt", "apikey" or "oauth2", based on the token used
-        const socket = io(url, options); // Start the connection
-
-        // Listen for connection and authentication events
-        socket.on("connect", onConnect);
-        socket.on("authenticated", onAuthenticated);
-        socket.on("disconnect", onDisconnect);
-        socket.on("unauthorized", console.error);
-
-        function onConnect() {
-          console.log("Connected to StreamElements socket.");
-          // After connecting, authenticate:
-          socket.emit("authenticate", { method: method, token: token });
-        }
-
-        function onAuthenticated(data) {
-          const { channelId, clientId, message, project } = data; // available fields in the response
-          console.log(`Successfully authenticated to channel ${channelId} with ID ${clientId}`);
-          console.log(message);
-        }
-
-        function onDisconnect(data) {
-          // The client will try to reconnect automatically unless th reason is 
-          // "io server disconnect" and "io client disconnect" (manual disconnections)
-          // If you want to reconnect even when there is a manual disconnects, use:
-          // if (reason === "io server disconnect" || reason === "io client disconnect") {
-          //  socket.connect();
-          // }
-          console.log(`Disconnected from StreamElements. Reason: ${data}`);        
-        }
-      </code></pre>
-    </div>
 
     <h2>
       Events
@@ -168,106 +183,131 @@
     <div class="code-container">
       <div class="code-header">
         <span>Reference</span>
+        <button data-clipboard>Copy</button>
       </div>
       <pre><code class="language-javascript">
-        "event"                       // Standard events like follower, subscribers, channel points redemptions
-        "event:test"                  // Test events and When the "Next Alert" button is clicked (useful for custom events)
-        "event:update"                // Same as "event", but updates data
-        "event:skip"                  // When alert is skipped
-        "session:reset"               // When session data is reset
-        "overlay:mute"                // When overlays are muted or unmuted
-        "overlay:refresh"             // When overlays are refreshed
-        "overlay:update"              // When an overlay is updated
-        "overlay:action"              // When the "Reload overlays" is clicked on Activity feed
-        "overlay:togglequeue"         // When overlays are paused or resumed
-        "kvstore:update"              // When a kvstore data is updated (like overlay paused)
-        "session:update"              // When an session update occurs (new bits, new follower, tips, etc)
-        "bot:counter"                 // When a counter is updated
-        "giveaway:state"              // When a giveaway is created or closed
-        "contest:state"               // When a contest is created or closed
-        "contest:winner"              // When a contest winner is picked
-        "songrequest::mediashare"     // Information on media share
-        "songrequest:play"            // When song request starts playing
-        "songrequest:pause"           // When song request is paused
-        "songrequest:song:next"       // When next song is chosen to be played
-        "songrequest:song:previous"   // When previous song is chosen to be played
-        "songrequest:queue:remove"    // When song is removed from queue (or declined from pending requests)
-        "songrequest:queue:add"       // When song is added to the queue (or approved from pending requests)
-        "songrequest:history:add"     // When song is added to the history
-        "songrequest:volume"          // When volume is set for song
-        "songrequest:settings:update" // When song request settings is changed
-      </code></pre>
+            "event"                       // Standard events like follower, subscribers, channel points redemptions
+            "event:test"                  // Test events and When the "Next Alert" button is clicked (useful for custom events)
+            "event:update"                // Same as "event", but updates data
+            "event:skip"                  // When alert is skipped
+            "session:reset"               // When session data is reset
+            "overlay:mute"                // When overlays are muted or unmuted
+            "overlay:refresh"             // When overlays are refreshed
+            "overlay:update"              // When an overlay is updated
+            "overlay:action"              // When the "Reload overlays" is clicked on Activity feed
+            "overlay:togglequeue"         // When overlays are paused or resumed
+            "kvstore:update"              // When a kvstore data is updated (like overlay paused)
+            "session:update"              // When an session update occurs (new bits, new follower, tips, etc)
+            "bot:counter"                 // When a counter is updated
+            "giveaway:state"              // When a giveaway is created or closed
+            "contest:state"               // When a contest is created or closed
+            "contest:winner"              // When a contest winner is picked
+            "songrequest::mediashare"     // Information on media share
+            "songrequest:play"            // When song request starts playing
+            "songrequest:pause"           // When song request is paused
+            "songrequest:song:next"       // When next song is chosen to be played
+            "songrequest:song:previous"   // When previous song is chosen to be played
+            "songrequest:queue:remove"    // When song is removed from queue (or declined from pending requests)
+            "songrequest:queue:add"       // When song is added to the queue (or approved from pending requests)
+            "songrequest:history:add"     // When song is added to the history
+            "songrequest:volume"          // When volume is set for song
+            "songrequest:settings:update" // When song request settings is changed
+          </code></pre>
     </div>
+
 
 
     <h3>Receiving events</h3>
     <p>In order to receive events, add a <span class="code">socket.on</span> function with the event name you want to
       receive:</p>
     <p>If you want, you can listen to all the events listed above, just register each one in its own code block.</p>
-    <div class="code-container">
-      <div class="code-header">
-        <span>Javascript</span>
-        <!-- <button>Copy</button> -->
+
+    <section class="expandable">
+      <button class="expand-toggle" aria-expanded="false">
+        <span class="icon">▶️</span>
+        <span class="label">Click to expand</span>
+      </button>
+
+      <div class="expand-content" hidden>
+        <div class="code-container">
+          <div class="code-header">
+            <span>Javascript</span>
+            <button data-clipboard>Copy</button>
+          </div>
+          <pre><code class="language-javascript">
+            socket.on("event", (data) => {
+              console.log("event received:", data);
+              // Your logic here
+            });
+
+            socket.on("event:test", (data) => {
+              console.log("event:test received:", data);
+              // Your logic here
+            });
+
+            socket.on("overlay:action", (data) => {
+              console.log("overlay:action received:", data);
+              // Your logic here
+            });
+          </code></pre>
+        </div>
       </div>
-      <pre><code class="language-javascript">
-        socket.on("event", (data) => {
-          console.log("event received:", data);
-          // Your logic here
-        });
+    </section>
 
-        socket.on("event:test", (data) => {
-          console.log("event:test received:", data);
-          // Your logic here
-        })
-
-        socket.on("overlay:action", (data) => {
-          console.log("overlay:action received:", data);
-          // Your logic here
-        })
-      </code></pre>
-    </div>
-
-    <p>Alternatively, you can use <span class="code">socket.onAny()</span> function to listen to all events:
+    <p>
+      Alternatively, you can use <span class="code">socket.onAny()</span> function to listen to all events:
     </p>
-    <div class="code-container">
-      <div class="code-header">
-        <span>Javascript</span>
-        <!-- <button>Copy</button> -->
+
+    <section class="expandable">
+      <button class="expand-toggle" aria-expanded="false">
+        <span class="icon">▶️</span>
+        <span class="label">Click to expand</span>
+      </button>
+
+      <div class="expand-content" hidden>
+        <div class="code-container">
+          <div class="code-header">
+            <span>Javascript</span>
+            <button data-clipboard>Copy</button>
+          </div>
+          <pre><code class="language-javascript">
+            socket.onAny((eventName, ...args) => {
+              console.log("New event:", eventName);
+              console.log("Data:", args[0]);
+              // Your logic here
+            });            
+          </code></pre>
+        </div>
       </div>
-      <pre><code class="language-javascript">
-        socket.onAny((eventName, ...args) => {
-          console.log("New event:", eventName);
-          console.log("Data:", args[0]);
-          // Your logic here
-        });
-      </code></pre>
-    </div>
+    </section>
 
 
     <h2>
       Rooms
     </h2>
-    <p>Some rooms are available to subscribe to via the StreamElements socket. Here are the ones I have found so far
-      (replace <span class="code">ACCOUNT_ID</span> with your actual StreamElements account id):</p>
+    <p>
+      Some rooms are available to subscribe to via the StreamElements socket. Here are the ones I have found so far
+      (replace <span class="code">ACCOUNT_ID</span> with your actual StreamElements account id):
+    </p>
+
     <div class="code-container">
       <div class="code-header">
         <span>Reference</span>
-        <!-- <button></button> -->
+        <button data-clipboard>Copy</button>
       </div>
       <pre><code class="language-javascript">
-        "songrequest::ACCOUNT_ID"
-        "contests::ACCOUNT_ID"
-        "giveaways::ACCOUNT_ID"
-        "store::ACCOUNT_ID"
-        "obs::ACCOUNT_ID"
-        "kvstore::ACCOUNT_ID"
-        "plarium::ACCOUNT_ID"
-        "appsflyer::ACCOUNT_ID"
-        "partner-integrations::ACCOUNT_ID"
-        "audience-queue::ACCOUNT_ID"
-    </code></pre>
+            "songrequest::ACCOUNT_ID"
+            "contests::ACCOUNT_ID"
+            "giveaways::ACCOUNT_ID"
+            "store::ACCOUNT_ID"
+            "obs::ACCOUNT_ID"
+            "kvstore::ACCOUNT_ID"
+            "plarium::ACCOUNT_ID"
+            "appsflyer::ACCOUNT_ID"
+            "partner-integrations::ACCOUNT_ID"
+            "audience-queue::ACCOUNT_ID"
+          </code></pre>
     </div>
-
 
     <p>
       Before you ask, I also don't know exactly what the "plarium" and "appsflyer" rooms are used for. Plarium is the
@@ -288,42 +328,65 @@
       to provide a third parameter: a callback function. So, it should look like this:
     </p>
 
-    <div class="code-container">
-      <div class="code-header">
-        <span>JavaScript</span>
-        <!-- <button class="copy-button" onclick="copyCode('javascript')">Copy</button> -->
+    <section class="expandable">
+      <button class="expand-toggle" aria-expanded="false">
+        <span class="icon">▶️</span>
+        <span class="label">Click to expand</span>
+      </button>
+
+      <div class="expand-content" hidden>
+        <div class="code-container">
+          <div class="code-header">
+            <span>Javascript</span>
+            <button data-clipboard>Copy</button>
+          </div>
+          <pre><code class="language-javascript">
+            const id = "5a2ed5cc9a474a2c2bc4f0aa"; // your account id
+            socket.emit("subscribe" , {"room": `giveaways::${id}`} , (error, data) => console.log(error, data));
+          </code></pre>
+        </div>
       </div>
-      <pre><code class="language-javascript">
-        const id = "5a2ed5cc9a474a2c2bc4f0aa"; // your account id
-        socket.emit("subscribe" , {"room": `giveaways::${id}`} , (error, data) => console.log(error, data));
-      </code></pre>
-    </div>
+    </section>
 
-    <p>Alternatively, you can subscribe to multiple rooms at once:</p>
 
-    <div class="code-container">
-      <div class="code-header">
-        <span>JavaScript</span>
-        <!-- <button class="copy-button" onclick="copyCode('javascript')">Copy</button> -->
+    <p>
+      Alternatively, you can subscribe to multiple rooms at once:
+    </p>
+
+
+    <section class="expandable">
+      <button class="expand-toggle" aria-expanded="false">
+        <span class="icon">▶️</span>
+        <span class="label">Click to expand</span>
+      </button>
+
+      <div class="expand-content" hidden>
+        <div class="code-container">
+          <div class="code-header">
+            <span>Javascript</span>
+            <button data-clipboard>Copy</button>
+          </div>
+          <pre><code class="language-javascript">
+            const id = "5a2ed5cc9a474a2c2bc4f0aa"; // your account id
+            const rooms = [ 
+              "songrequest", "contests", "giveaways", "kvstore", "store", 
+              "obs", "audience-queue", "partner-integrations", "plarium", "appsflyer" 
+            ];
+            
+            rooms.forEach( (room) => {
+              socket.emit("subscribe" , {"room": `${room}::${id}`} , (error, data) => {
+                if(error){
+                  console.error(`Error subscribing to ${room}::${id}:\n ${error.message}`);
+                  return;
+                }
+                console.log(data);
+              });
+            });            
+          </code></pre>
+        </div>
       </div>
-      <pre><code class="language-javascript">
-        const id = "5a2ed5cc9a474a2c2bc4f0aa"; // your account id
-        const rooms = [ 
-          "songrequest", "contests", "giveaways", "kvstore", "store", 
-          "obs", "audience-queue", "partner-integrations", "plarium", "appsflyer" 
-        ];
+    </section>
 
-        rooms.forEach( (room) => {
-          socket.emit("subscribe" , {"room": `${room}::${id}`} , (error, data) => {
-            if(error){
-              console.error(`Error subscribing to ${room}::${id}:\n ${error.message}`);
-              return;
-            }
-            console.log(data);
-          });
-        });
-      </code></pre>
-    </div>
 
     <h2>Other info</h2>
     <p>
