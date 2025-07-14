@@ -51,5 +51,3 @@ document.querySelectorAll('.expandable').forEach(section => {
     }
   });
 });
-
-
