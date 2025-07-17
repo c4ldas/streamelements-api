@@ -24920,7 +24920,6 @@ paths:
                       - path:
                           - tipId
                         message: '"tipId" with value "asdfa2f32f2fwsdfsdfsdf" fails to match the required pattern: /^[0-9a-fA-F]{24}$/"'
-
   /users/current:
     get:
       tags:
@@ -27285,6 +27284,290 @@ paths:
           description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
+  '/bot/quotes/{channel}':
+    parameters:
+      - schema:
+          type: string
+        name: channel
+        in: path
+        description: guid - Channel id
+        required: true
+    get:
+      summary: '/:channel'
+      tags:
+        - quotes
+      responses:
+        2XX:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  quotes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        text:
+                          type: string
+                        createdAt:
+                          type: string
+                  total:
+                    type: integer
+              examples:
+                Example:
+                  value:
+                    quotes:
+                      - id: 5
+                        text: New quote
+                        createdAt: '2025-07-17T16:14:16.206Z'
+                      - createdAt: '2022-09-24T23:24:27.463Z'
+                        id: 2
+                        text: Another quote
+                    total: 2
+      operationId: 'Get/bot/quotes/:channel'
+      description: List quotes
+      parameters:
+        - schema:
+            type: integer
+            default: 25
+            example: 25
+          in: query
+          name: limit
+          description: integer - Amount of items to show
+        - schema:
+            type: integer
+            default: 0
+            example: 0
+          in: query
+          name: offset
+          description: integer - Number of items to be skipped
+        - schema:
+            type: boolean
+          in: query
+          name: highlight
+          description: 'boolean - '
+      security:
+        - JWT: []
+        - OAuth2:
+            - 'bot:read'
+            - 'bot:write'
+    post:
+      summary: '/:channel'
+      tags:
+        - quotes
+      responses:
+        2XX:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  text:
+                    type: string
+                  createdAt:
+                    type: string
+              examples:
+                Example:
+                  value:
+                    id: 5
+                    text: Quote message
+                    createdAt: '2025-07-17T16:14:16.206Z'
+      operationId: 'Post/bot/quotes/:channel'
+      x-stoplight:
+        id: 1edle88nzncni
+      description: Create new quote
+      security:
+        - JWT: []
+        - OAuth2:
+            - 'bot:read'
+            - 'bot:write'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+            examples:
+              Example:
+                value:
+                  text: Quote message
+  '/bot/quotes/{channel}/{quoteId}':
+    parameters:
+      - schema:
+          type: string
+        name: channel
+        in: path
+        description: guid - Channel id
+        required: true
+      - schema:
+          type: string
+        name: quoteId
+        in: path
+        required: true
+        description: 'integer - Quote id number '
+    put:
+      summary: '/:channel/:quoteId'
+      tags:
+        - quotes
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  text:
+                    type: string
+                  createdAt:
+                    type: string
+              examples:
+                Example:
+                  value:
+                    id: 5
+                    text: New quote message
+                    createdAt: '2025-07-17T16:14:16.206Z'
+      operationId: 'Put/bot/quotes/:channel/:quoteId'
+      description: Edit quote
+      security:
+        - JWT: []
+        - OAuth2:
+            - 'bot:read'
+            - 'bot:write'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+            examples:
+              Example:
+                value:
+                  text: New quote message
+    delete:
+      summary: '/:channel/:quoteId'
+      tags:
+        - quotes
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  quote:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      text:
+                        type: string
+                      createdAt:
+                        type: string
+              examples:
+                Example:
+                  value:
+                    message: Quote deleted successfully
+                    quote:
+                      id: 4
+                      text: Another quote
+                      createdAt: '2025-07-17T16:12:35.405Z'
+      operationId: '/:channel/:quoteId'
+      description: Delete quote
+      security:
+        - JWT: []
+        - OAuth2:
+            - 'bot:read'
+            - 'bot:write'
+  '/bot/quotes/{channel}/search':
+    parameters:
+      - schema:
+          type: string
+        name: channel
+        in: path
+        description: guid - Channel id
+        required: true
+    get:
+      summary: '/:channel/search'
+      tags:
+        - quotes
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  quotes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        text:
+                          type: string
+                        createdAt:
+                          type: string
+                  total:
+                    type: integer
+              examples:
+                Example:
+                  value:
+                    quotes:
+                      - id: 2
+                        text: Quote example
+                        createdAt: '2025-07-17T16:31:57.801Z'
+                      - id: 1
+                        text: Another quote example
+                        createdAt: '2025-07-17T16:31:51.150Z'
+                    total: 2
+      operationId: 'Get/bot/quotes/:channel/search'
+      description: Search for a quote
+      parameters:
+        - schema:
+            type: boolean
+          in: query
+          name: highlight
+          description: 'boolean - '
+        - schema:
+            type: integer
+          in: query
+          name: limit
+          description: integer - Amount of items to show
+        - schema:
+            type: integer
+          in: query
+          name: offset
+          description: integer - Number of items to be skipped
+        - schema:
+            type: string
+          in: query
+          name: q
+          required: true
+          description: string - Search term
+      security:
+        - JWT: []
+        - OAuth2:
+            - 'bot:write'
+            - 'bot:read'
 components:
   securitySchemes:
     JWT:
@@ -27347,19 +27630,6 @@ components:
         type: merch
         channel: 5b2e2007760aeb7729487dab
         createdAt: '2018-12-06T01:28:27.648Z'
-      x-examples:
-        Example:
-          _id: 675d1d6431d7e5602a2087e6
-          type: subscriber
-          provider: twitch
-          channel: 5f2de5dd9a474a2c2aaaaaaa
-          data:
-            amount: 3
-            username: MrSim
-            message: This is a message
-            avatar: 'https://link/to/image.png'
-          createdAt: '2024-12-14T05:53:40.958Z'
-          updatedAt: '2024-12-14T05:53:40.958Z'
       properties:
         data:
           $ref: '#/components/schemas/SubscriberEvent'
@@ -43516,6 +43786,8 @@ tags:
     description: Endpoints to manage overlays assigned to channel
   - name: points
     description: Endpoints to manage loyalty points
+  - name: quotes
+    description: Endpoints to manage quotes
   - name: redemptions
     description: Redemptions
   - name: sessions
