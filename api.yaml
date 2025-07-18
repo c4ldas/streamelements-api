@@ -27635,7 +27635,26 @@ paths:
         - twitch ads
       responses:
         '200':
-          description: OK
+          description: PENDING 200 STATUS RESPONSE
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  statusCode:
+                    type: integer
+                  error:
+                    type: string
+                  message:
+                    type: string
+              examples:
+                Example:
+                  value:
+                    statusCode: 400
+                    error: Bad Request
+                    message: Failed to run commercial
       operationId: 'Post/twitch/commercial/:operation'
       description: | 
         Run Twitch ad. 
