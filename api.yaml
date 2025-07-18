@@ -27619,16 +27619,13 @@ paths:
                         last_ad_at: 0
                         preroll_free_time: 0
       operationId: 'Get/twitch/commercial/:operation'
-      description: | 
+      description: |
         Get Twitch ad schedule. 
         * Use operation `schedule` for this endpoint.
         * _This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3_.
       parameters: []
       security:
         - JWT: []
-        - OAuth2:
-            - 'channel:read'
-        - overlayToken: []
     post:
       summary: '/:operation'
       tags:
@@ -27656,15 +27653,12 @@ paths:
                     error: Bad Request
                     message: Failed to run commercial
       operationId: 'Post/twitch/commercial/:operation'
-      description: | 
+      description: |
         Run Twitch ad. 
         * Use operation `run` for this endpoint.
         * _This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3_.
       security:
         - JWT: []
-        - overlayToken: []
-        - OAuth2:
-            - 'channel:read'
       requestBody:
         content:
           application/json:
