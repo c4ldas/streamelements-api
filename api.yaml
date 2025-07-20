@@ -27284,6 +27284,345 @@ paths:
           description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
+  /audience-queues/{channel}:
+    get:
+      summary: /:channel
+      operationId: Get/audience-queues/:channel
+      parameters:
+        - name: channel
+          in: path
+          required: true
+          description: guid - channel 
+          schema:
+            type: string
+      description: "*This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*\r\n\r\nList queue"
+      tags:
+        - queue
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  isSuspended:
+                    type: boolean
+                  title:
+                    type: string
+                  audienceMemberGroups:
+                    type: array
+                    items:
+                      type: string
+                  maxQueueSize:
+                    type: integer
+                  createdAt:
+                    type: string
+                  updatedAt:
+                    type: string
+                  statusChangeLog:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        timeStamp:
+                          type: string
+                        status:
+                          type: string
+              example:
+                isSuspended: false
+                title: Testing queue
+                audienceMemberGroups:
+                  - everyone
+                maxQueueSize: 0
+                createdAt: '2025-03-19T14:57:33.860782Z'
+                updatedAt: '2025-03-19T14:57:33.860782Z'
+                statusChangeLog:
+                  - timeStamp: '2025-03-19T14:57:33.861384Z'
+                    status: opened
+      security:
+        - JWT: []
+      servers:
+        - url: https://api.streamelements.com/kappa/v2
+          description: V2
+        - url: https://api.streamelements.com/kappa/v3
+          description: V3
+    post:
+      summary: /:channel
+      operationId: Post/audience-queues/:channel
+      parameters:
+        - name: channel
+          in: path
+          required: true
+          description: guid - channel id
+          schema:
+            type: string
+      description: "*This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*\r\n\r\nCreate queue"
+      tags:
+        - queue
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                audienceMemberGroups:
+                  type: array
+                  items:
+                    type: string
+                maxQueueSize:
+                  type: integer
+            example:
+              title: Testing queue
+              audienceMemberGroups:
+                - everyone
+              maxQueueSize: 0      
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  isSuspended:
+                    type: boolean
+                  title:
+                    type: string
+                  audienceMemberGroups:
+                    type: array
+                    items:
+                      type: string
+                  maxQueueSize:
+                    type: integer
+                  createdAt:
+                    type: string
+                  updatedAt:
+                    type: string
+                  statusChangeLog:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        timeStamp:
+                          type: string
+                        status:
+                          type: string
+              example:
+                isSuspended: false
+                title: Testing queue
+                audienceMemberGroups:
+                  - everyone
+                maxQueueSize: 0
+                createdAt: '2025-03-19T14:57:33.860782336Z'
+                updatedAt: '2025-03-19T14:57:33.860782336Z'
+                statusChangeLog:
+                  - timeStamp: '2025-03-19T14:57:33.861384646Z'
+                    status: opened
+      security:
+        - JWT: []
+      servers:
+        - url: https://api.streamelements.com/kappa/v2
+          description: V2
+        - url: https://api.streamelements.com/kappa/v3
+          description: V3
+
+    delete:
+      summary: /:channel
+      operationId: Delete/audience-queues/:channel
+      parameters:
+        - name: channel
+          in: path
+          required: true
+          description: guid - Channel id
+          schema:
+            type: string
+      description: "*This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*\r\n\r\nEnd queue"
+      tags:
+        - queue
+      responses:
+        '204':
+          description: No Content
+      security:
+        - JWT: []
+      servers:
+        - url: https://api.streamelements.com/kappa/v2
+          description: V2
+        - url: https://api.streamelements.com/kappa/v3
+          description: V3
+    patch:
+      summary: /:channel
+      operationId: Patch/audience-queues/:channel
+      parameters:
+        - name: channel
+          in: path
+          required: true
+          description: guid - Channel id
+          schema:
+            type: string
+      description: "*This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*\r\n\r\nEdit queue"
+      tags:
+        - queue
+      requestBody:
+        description: |
+          Pause queue Payload: 
+          
+          `{"isSuspended":true}`
+          
+          Resume queue Payload:
+          
+          `{"isSuspended":false}`
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                maxQueueSize:
+                  type: integer
+                audienceMemberGroups:
+                  type: array
+                  items:
+                    type: string
+            example:
+              title: Testing 2
+              maxQueueSize: 0
+              audienceMemberGroups:
+                - everyone
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  isSuspended:
+                    type: boolean
+                  title:
+                    type: string
+                  audienceMemberGroups:
+                    type: array
+                    items:
+                      type: string
+                  maxQueueSize:
+                    type: integer
+                  createdAt:
+                    type: string
+                  updatedAt:
+                    type: string
+                  statusChangeLog:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        timeStamp:
+                          type: string
+                        status:
+                          type: string
+              example:
+                isSuspended: false
+                title: Testing 2
+                audienceMemberGroups:
+                  - everyone
+                maxQueueSize: 0
+                createdAt: '2025-03-19T14:57:33.860782Z'
+                updatedAt: '2025-03-19T15:03:14.224206Z'
+                statusChangeLog:
+                  - timeStamp: '2025-03-19T14:57:33.861384Z'
+                    status: opened
+      security:
+        - JWT: []
+      servers:
+        - url: https://api.streamelements.com/kappa/v2
+          description: V2
+        - url: https://api.streamelements.com/kappa/v3
+          description: V3
+
+  /audience-queues/{channel}/members/queued:
+    get:
+      summary: /:channel/members/queued
+      operationId: Get/:channel/members/queued
+      parameters:
+        - name: channel
+          in: path
+          required: true
+          description: guid - Channel id
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: false
+          description: integer - Amount of items to show
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          required: false
+          description: integer - Number of items to be skipped
+          schema:
+            type: integer
+        - name: search
+          in: query
+          required: false
+          description: string - member to search
+          schema:
+            type: string
+        - name: sortBy
+          in: query
+          required: true
+          description: string - Sort by
+          schema:
+            type: string
+          example: position
+        - name: orderDirection
+          in: query
+          required: false
+          description: string - `ASC` or `DESC`
+          schema:
+            type: string
+      description: "*This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*\r\n\r\nList queue members"
+      tags:
+        - queue
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      type: string
+                  limit:
+                    type: integer
+                  offset:
+                    type: integer
+                  total:
+                    type: integer
+              example:
+                items: []
+                limit: 100
+                offset: 0
+                total: 0
+      security:
+        - JWT: []
+      servers:
+        - url: https://api.streamelements.com/kappa/v2
+          description: V2
+        - url: https://api.streamelements.com/kappa/v3
+          description: V3
+
+
+
+
+
   '/bot/quotes/{channel}':
     parameters:
       - schema:
@@ -43889,6 +44228,8 @@ tags:
     description: Endpoints to manage overlays assigned to channel
   - name: points
     description: Endpoints to manage loyalty points
+  - name: queue
+    description: Endpoints to manage queue
   - name: quotes
     description: Endpoints to manage quotes
   - name: redemptions
