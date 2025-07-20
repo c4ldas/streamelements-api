@@ -27585,7 +27585,7 @@ paths:
           description: string - `ASC` or `DESC`
           schema:
             type: string
-      description: "*This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*\r\n\r\nList queue members"
+      description: "*This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3.*\r\n\r\nList queued members"
       tags:
         - queue
       responses:
