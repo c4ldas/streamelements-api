@@ -27773,7 +27773,7 @@ paths:
       tags:
         - quotes
       responses:
-        200:
+        '200':
           description: OK
           content:
             application/json:
@@ -27849,7 +27849,7 @@ paths:
       tags:
         - quotes
       responses:
-        200:
+        '200':
           description: OK
           content:
             application/json:
