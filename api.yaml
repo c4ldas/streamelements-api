@@ -1500,6 +1500,59 @@ paths:
           description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
+  '/bot/{channel}/beta':
+    post:
+      summary: /:channel/beta
+      operationId: Post/:channel/beta
+      parameters:
+        - name: channel
+          in: path
+          required: true
+          description: guid - Channel id
+          schema:
+            type: string
+      description: "Change chatbot version. Every time the endpoint is called, the version alternates between `v1` and `v2`.\r\n\r\nThis endpoint is related to the page: https://streamelements.com/dashboard/bot/overview"
+      tags:
+        - bot
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  description: string - `beta`
+            example:
+              id: beta      
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  channel:
+                    type: string
+                  message:
+                    type: string
+                  version:
+                    type: string
+              example:
+                channel: 5f2de5dd9a474a2c2aaaaaaa
+                message: Successfully toggled beta
+                version: v2
+      security:
+        - JWT: []
+        - OAuth2:
+            - bot:read
+      servers:
+        - url: https://api.streamelements.com/kappa/v2
+          description: V2
+        - url: https://api.streamelements.com/kappa/v3
+          description: V3
   '/bot/{channel}/join':
     post:
       tags:
@@ -2268,7 +2321,7 @@ paths:
           description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
-  /channels/me:
+  '/channels/me':
     get:
       tags:
         - channels
@@ -6630,7 +6683,7 @@ paths:
           description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
-  /chatstats:
+  '/chatstats':
     get:
       tags:
         - chatstats
@@ -6667,7 +6720,7 @@ paths:
           description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
-  /chatstats/search:
+  '/chatstats/search':
     get:
       tags:
         - chatstats
@@ -10269,7 +10322,7 @@ paths:
           description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
-  /bot/filters/banphrases/search:
+  '/bot/filters/banphrases/search':
     get:
       tags:
         - filters
@@ -19309,7 +19362,7 @@ paths:
           description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
-  /songrequest/playing:
+  '/songrequest/playing':
     get:
       tags:
         - wonky - not working
@@ -19438,7 +19491,7 @@ paths:
           description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
-  /songrequest/youtube:
+  '/songrequest/youtube':
     get:
       tags:
         - songrequest
@@ -22991,7 +23044,7 @@ paths:
           description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
-  /themes:
+  '/themes':
     get:
       tags:
         - themes
@@ -23845,7 +23898,7 @@ paths:
           description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
-  /tipping/rates:
+  '/tipping/rates':
     get:
       tags:
         - tipping
@@ -24920,7 +24973,7 @@ paths:
                       - path:
                           - tipId
                         message: '"tipId" with value "asdfa2f32f2fwsdfsdfsdf" fails to match the required pattern: /^[0-9a-fA-F]{24}$/"'
-  /users/current:
+  '/users/current':
     get:
       tags:
         - users
@@ -24999,7 +25052,7 @@ paths:
           description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
-  /users/channels:
+  '/users/channels':
     get:
       tags:
         - users
@@ -25127,7 +25180,7 @@ paths:
           description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
-  /users/access:
+  '/users/access':
     get:
       tags:
         - users
@@ -25178,7 +25231,7 @@ paths:
           description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
-  /speech:
+  '/speech':
     get:
       tags:
         - speech
@@ -25228,7 +25281,7 @@ paths:
           description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
-  /speech/voices:
+  '/speech/voices':
     get:
       tags:
         - speech
@@ -25306,6 +25359,37 @@ paths:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
+          description: V3
+  '/integrations/{channel}':
+    get:
+      summary: /:channel
+      operationId: Get/integrations/:channel
+      parameters:
+        - name: channel
+          in: path
+          required: true
+          description: guid - channel id
+          schema:
+            type: string
+      description: List integrations
+      tags:
+        - integrations
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+              example: []
+      security:
+        - JWT: []
+      servers:
+        - url: https://api.streamelements.com/kappa/v2
+          description: V2
+        - url: https://api.streamelements.com/kappa/v3
           description: V3
   '/integrations/{channel}/tiltify':
     get:
@@ -26091,6 +26175,71 @@ paths:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
+          description: V3
+  '/widgets/{channel}/subscriber-gifts/leaderboard':
+    get:
+      summary: /:channel/subscriber-gifts/leaderboard
+      operationId: Get/:channel/subscriber-gifts/leaderboard
+      parameters:
+        - name: channel
+          in: path
+          required: true
+          description: guid - Channel id
+          schema:
+            type: string
+        - name: interval
+          in: query
+          required: false
+          description: string - `alltime`
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: false
+          description: integer - Number of items to be shown
+          schema:
+            type: integer
+        - name: offset
+          in: query
+          required: false
+          description: integer - Number of items to be skipped
+          schema:
+            type: integer
+      description: List Subscriber gifters
+      tags:
+        - widgets
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    username:
+                      type: string
+                    gifts:
+                      type: integer
+              example:
+                - username: username1
+                  gifts: 39
+                - username: username2
+                  gifts: 30
+                - username: username3
+                  gifts: 15
+                - username: username4
+                  gifts: 11
+      security:
+        - JWT: []
+        - overlayToken: []
+        - OAuth2:
+            - overlays:read
+      servers:
+        - url: https://api.streamelements.com/kappa/v2
+          description: V2
+        - url: https://api.streamelements.com/kappa/v3
           description: V3
   '/widgets/{channel}/youtube-chat':
     get:
@@ -27284,7 +27433,7 @@ paths:
           description: V2
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
-  /audience-queues/{channel}:
+  '/audience-queues/{channel}':
     get:
       summary: /:channel
       operationId: Get/audience-queues/:channel
@@ -27543,7 +27692,7 @@ paths:
         - url: https://api.streamelements.com/kappa/v3
           description: V3
 
-  /audience-queues/{channel}/members/queued:
+  '/audience-queues/{channel}/members/queued':
     get:
       summary: /:channel/members/queued
       operationId: Get/:channel/members/queued
@@ -27618,26 +27767,14 @@ paths:
           description: V2
         - url: https://api.streamelements.com/kappa/v3
           description: V3
-
-
-
-
-
   '/bot/quotes/{channel}':
-    parameters:
-      - schema:
-          type: string
-        name: channel
-        in: path
-        description: guid - Channel id
-        required: true
     get:
       summary: '/:channel'
       tags:
         - quotes
       responses:
-        2XX:
-          description: Success
+        200:
+          description: OK
           content:
             application/json:
               schema:
@@ -27671,6 +27808,12 @@ paths:
       description: List quotes
       parameters:
         - schema:
+            type: string
+          name: channel
+          in: path
+          description: guid - Channel id
+          required: true      
+        - schema:
             type: integer
             default: 25
             example: 25
@@ -27696,11 +27839,18 @@ paths:
             - 'bot:write'
     post:
       summary: '/:channel'
+      parameters:
+        - schema:
+            type: string
+          name: channel
+          in: path
+          description: guid - Channel id
+          required: true      
       tags:
         - quotes
       responses:
-        2XX:
-          description: Success
+        200:
+          description: OK
           content:
             application/json:
               schema:
@@ -27719,8 +27869,7 @@ paths:
                     text: Quote message
                     createdAt: '2025-07-17T16:14:16.206Z'
       operationId: 'Post/bot/quotes/:channel'
-      x-stoplight:
-        id: 1edle88nzncni
+
       description: Create new quote
       security:
         - JWT: []
@@ -27740,23 +27889,23 @@ paths:
                 value:
                   text: Quote message
   '/bot/quotes/{channel}/{quoteId}':
-    parameters:
-      - schema:
-          type: string
-        name: channel
-        in: path
-        description: guid - Channel id
-        required: true
-      - schema:
-          type: string
-        name: quoteId
-        in: path
-        required: true
-        description: 'integer - Quote id number '
     put:
       summary: '/:channel/:quoteId'
       tags:
         - quotes
+      parameters:
+        - schema:
+            type: string
+          name: channel
+          in: path
+          description: guid - Channel id
+          required: true
+        - schema:
+            type: string
+          name: quoteId
+          in: path
+          required: true
+          description: 'integer - Quote id number'
       responses:
         '200':
           description: OK
@@ -27800,6 +27949,19 @@ paths:
       summary: '/:channel/:quoteId'
       tags:
         - quotes
+      parameters:
+        - schema:
+            type: string
+          name: channel
+          in: path
+          description: guid - Channel id
+          required: true
+        - schema:
+            type: string
+          name: quoteId
+          in: path
+          required: true
+          description: 'integer - Quote id number'        
       responses:
         '200':
           description: OK
@@ -27835,17 +27997,10 @@ paths:
             - 'bot:read'
             - 'bot:write'
   '/bot/quotes/{channel}/search':
-    parameters:
-      - schema:
-          type: string
-        name: channel
-        in: path
-        description: guid - Channel id
-        required: true
     get:
       summary: '/:channel/search'
       tags:
-        - quotes
+        - quotes    
       responses:
         '200':
           description: OK
@@ -27882,6 +28037,12 @@ paths:
       description: Search for a quote
       parameters:
         - schema:
+            type: string
+          name: channel
+          in: path
+          description: guid - Channel id
+          required: true          
+        - schema:
             type: boolean
           in: query
           name: highlight
@@ -27908,16 +28069,7 @@ paths:
             - 'bot:write'
             - 'bot:read'
   '/twitch/commercial/{operation}':
-    parameters:
-      - schema:
-          type: string
-          enum:
-            - schedule
-            - run
-        name: operation
-        in: path
-        required: true
-        description: string - one of `run` for POST or `schedule` for GET
+
     get:
       summary: '/:operation'
       tags:
@@ -27962,13 +28114,30 @@ paths:
         Get Twitch ad schedule. 
         * Use operation `schedule` for this endpoint.
         * _This endpoint is available only in the API version 3. Make sure to use the v3 base URL: https://api.streamelements.com/kappa/v3_.
-      parameters: []
+      parameters:
+        - schema:
+            type: string
+            enum:
+              - schedule
+          name: operation
+          in: path
+          required: true
+          description: string - one of `run` for POST or `schedule` for GET      
       security:
         - JWT: []
     post:
       summary: '/:operation'
       tags:
         - twitch ads
+      parameters:
+        - schema:
+            type: string
+            enum:
+              - run
+          name: operation
+          in: path
+          required: true
+          description: string - one of `run` for POST or `schedule` for GET         
       responses:
         '200':
           description: PENDING 200 STATUS RESPONSE
