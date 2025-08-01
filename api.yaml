@@ -1503,7 +1503,7 @@ paths:
   '/bot/{channel}/beta':
     post:
       summary: /:channel/beta
-      operationId: Post/:channel/beta
+      operationId: Post/bot/:channel/beta
       parameters:
         - name: channel
           in: path
@@ -1559,7 +1559,7 @@ paths:
         - bot
       summary: '/:channel/join'
       description: Join bot to channel
-      operationId: '/:channel/join'
+      operationId: 'Post/bot/:channel/join'
       parameters:
         - name: channel
           in: path
@@ -1611,7 +1611,7 @@ paths:
         - bot
       summary: '/:channel/part'
       description: Leave bot from channel
-      operationId: '/:channel/part'
+      operationId: 'Post/bot/:channel/part'
       parameters:
         - name: channel
           in: path
@@ -1670,7 +1670,7 @@ paths:
         - bot
       summary: '/:channel/mute'
       description: Mute bot
-      operationId: '/:channel/mute'
+      operationId: 'Post/bot/:channel/mute'
       parameters:
         - name: channel
           in: path
@@ -1722,7 +1722,7 @@ paths:
         - bot
       summary: '/:channel/unmute'
       description: Unmute bot
-      operationId: '/:channel/unmute'
+      operationId: 'Post/bot/:channel/unmute'
       parameters:
         - name: channel
           in: path
@@ -1774,7 +1774,7 @@ paths:
         - bot
       summary: '/:channel/say'
       description: Send message to channel as bot
-      operationId: '/:channel/say'
+      operationId: 'Post/bot/:channel/say'
       parameters:
         - name: channel
           in: path
@@ -1828,7 +1828,7 @@ paths:
         - bot
       summary: '/:channel/language'
       description: Set bot language
-      operationId: '/:channel/language'
+      operationId: 'Post/bot/:channel/language'
       parameters:
         - name: channel
           in: path
@@ -1888,7 +1888,7 @@ paths:
         - bot
       summary: '/:channel/users'
       description: List channel permissions for users in User Management table
-      operationId: 'Get/:channel/users'
+      operationId: 'Get/bot/:channel/users'
       parameters:
         - name: channel
           in: path
@@ -1968,7 +1968,7 @@ paths:
         - bot
       summary: '/:channel/users'
       description: 'Add user to permissions table. If user is already set, change its permission.'
-      operationId: 'Post/:channel/users'
+      operationId: 'Post/bot/:channel/users'
       parameters:
         - name: channel
           in: path
@@ -2041,7 +2041,7 @@ paths:
         - bot
       summary: '/:channel/users/:providerId'
       description: "Remove user from permission table\r\n\r\n`providerId` is the ID from service provider (Twitch user ID, youtube channel ID, etc...)"
-      operationId: 'Delete/:channel/users/:providerId'
+      operationId: 'Delete/bot/:channel/users/:providerId'
       parameters:
         - name: channel
           in: path
@@ -2100,7 +2100,7 @@ paths:
         - bot
       summary: '/:channel/counters'
       description: Get list of counters and their values
-      operationId: 'Get/:channel/counters'
+      operationId: 'Get/bot/:channel/counters'
       parameters:
         - name: channel
           in: path
@@ -2157,7 +2157,7 @@ paths:
         - bot
       summary: '/:channel/counters/:counter'
       description: Get counter value
-      operationId: 'Get/:channel/counters/:counter'
+      operationId: 'Get/bot/:channel/counters/:counter'
       parameters:
         - name: channel
           in: path
@@ -2213,7 +2213,7 @@ paths:
         - bot
       summary: '/:channel/counters/:counter'
       description: Update counter value
-      operationId: 'Put/:channel/counters/:counter'
+      operationId: 'Put/bot/:channel/counters/:counter'
       parameters:
         - name: channel
           in: path
@@ -2276,7 +2276,7 @@ paths:
         - bot
       summary: '/:channel/counters/:counter'
       description: Delete counter
-      operationId: 'Delete/:channel/counters/:counter'
+      operationId: 'Delete/bot/:channel/counters/:counter'
       parameters:
         - name: channel
           in: path
@@ -2327,7 +2327,7 @@ paths:
         - channels
       summary: /me
       description: Get channels details linked to provided token
-      operationId: Get/me
+      operationId: Get/channels/me
       responses:
         '200':
           description: ''
@@ -6520,7 +6520,7 @@ paths:
         - channels
       summary: '/:channel/accesstoken'
       description: "Invalidates your current overlay token (apikey). \r\n\r\nIt may take some time until the token stops working.\r\n\r\nYou may need to re-add your overlays, as the URL will change.\r\n\r\n"
-      operationId: 'Delete/:channel/accesstoken'
+      operationId: 'Delete/channels/:channel/accesstoken'
       parameters:
         - name: channel
           in: path
@@ -6689,7 +6689,7 @@ paths:
         - chatstats
       summary: /
       description: Get global chatstats
-      operationId: /
+      operationId: Get/chatstats
       responses:
         '200':
           description: ''
@@ -6726,7 +6726,7 @@ paths:
         - chatstats
       summary: /search
       description: Search for channel by channel name
-      operationId: /search
+      operationId: Get/chatstats/search
       parameters:
         - name: channel
           in: query
@@ -6787,7 +6787,7 @@ paths:
         - chatstats
       summary: '/:username'
       description: "Get stats for channel name\r\n*"
-      operationId: '/:username'
+      operationId: 'Get/chatstats/:username'
       parameters:
         - name: username
           in: path
@@ -7206,7 +7206,7 @@ paths:
         - commands
       summary: '/:channel'
       description: List custom commands
-      operationId: 'Get/:channel'
+      operationId: 'Get/bot/commands/:channel'
       parameters:
         - name: channel
           in: path
@@ -7294,7 +7294,7 @@ paths:
         - commands
       summary: '/:channel'
       description: Create new command
-      operationId: 'Post/:channel'
+      operationId: 'Post/bot/commands/:channel'
       parameters:
         - name: channel
           in: path
@@ -7419,7 +7419,7 @@ paths:
         - commands
       summary: '/:channel/public'
       description: List public commands
-      operationId: 'Get/:channel/public'
+      operationId: 'Get/bot/commands/:channel/public'
       parameters:
         - name: channel
           in: path
@@ -7547,7 +7547,7 @@ paths:
         - commands
       summary: '/:channel/default'
       description: List default commands
-      operationId: 'Get/:channel/default'
+      operationId: 'Get/bot/commands/:channel/default'
       parameters:
         - name: language
           in: query
@@ -9348,7 +9348,7 @@ paths:
         - commands
       summary: '/:channel/default/:commandId'
       description: Update default command
-      operationId: 'Put/:channel/default/:commandId'
+      operationId: 'Put/bot/commands/:channel/default/:commandId'
       parameters:
         - name: channel
           in: path
@@ -9488,7 +9488,7 @@ paths:
         - commands
       summary: '/:channel/:commandId'
       description: Get command details
-      operationId: 'Get/:channel/:commandId'
+      operationId: 'Get/bot/commands/:channel/:commandId'
       parameters:
         - name: channel
           in: path
@@ -9577,7 +9577,7 @@ paths:
         - commands
       summary: '/:channel/:commandId'
       description: Update command details
-      operationId: 'Put/:channel/:commandId'
+      operationId: 'Put/bot/commands/:channel/:commandId'
       parameters:
         - name: channel
           in: path
@@ -9676,7 +9676,7 @@ paths:
         - commands
       summary: '/:channel/:commandId'
       description: Delete custom command
-      operationId: 'Delete/:channel/:commandId1'
+      operationId: 'Delete/bot/commands/:channel/:commandId'
       parameters:
         - name: channel
           in: path
@@ -24979,7 +24979,7 @@ paths:
         - users
       summary: /current
       description: Current user channel
-      operationId: /current
+      operationId: Get/users/current
       responses:
         '200':
           description: ''
@@ -25058,7 +25058,7 @@ paths:
         - users
       summary: /channels
       description: List channel's access list
-      operationId: /channels
+      operationId: Get/users/channels
       parameters:
         - name: type
           in: query
@@ -25186,7 +25186,7 @@ paths:
         - users
       summary: /access
       description: List channel's access list
-      operationId: /access
+      operationId: Get/users/access
       responses:
         '200':
           description: ''
