@@ -1271,6 +1271,7 @@ paths:
           description: V3
   '/activities/{channel}/{activityId}':
     get:
+      deprecated: true    
       tags:
         - wonky - not working
       summary: '/:channel/:activityId'
@@ -1350,6 +1351,7 @@ paths:
         - url: 'https://api.streamelements.com/kappa/v3'
           description: V3
     post:
+      deprecated: true    
       tags:
         - wonky - not working
       summary: '/:channel/:activityId'
@@ -7163,6 +7165,7 @@ paths:
           description: V3
   '/chatstats/{username}/{category}/{item}':
     get:
+      deprecated: true    
       tags:
         - wonky - not working
       summary: '/:username/:category/:item'
@@ -12679,6 +12682,7 @@ paths:
           description: V3
   '/bot/filters/{channel}/{filter}':
     put:
+      deprecated: true    
       tags:
         - wonky - not working
       summary: '/:channel/:filter'
@@ -12714,7 +12718,6 @@ paths:
       responses:
         '200':
           description: ''
-      deprecated: false
       security:
         - JWT: []
         - OAuth2: []
@@ -13572,6 +13575,7 @@ paths:
         - url: 'https://api.streamelements.com/kappa/v2'
           description: V2
     post:
+      deprecated: true    
       tags:
         - wonky - not working
       summary: '/:channel/:giveawayId'
@@ -13637,7 +13641,6 @@ paths:
                     statusCode: 400
                     error: Bad Request
                     message: The giveaway is currently not running
-      deprecated: false
       security:
         - JWT: []
         - OAuth2: []
@@ -13789,6 +13792,7 @@ paths:
           description: V3
   '/giveaways/{channel}/{giveawayId}/joined':
     get:
+      deprecated: true    
       tags:
         - wonky - not working
       summary: '/:channel/:giveawayId/joined'
@@ -13851,7 +13855,6 @@ paths:
                       - path:
                           - giveawayId
                         message: '"giveawayId" with value "11111111" fails to match the required pattern: /^[0-9a-fA-F]{24}$/'
-      deprecated: false
       security:
         - JWT: []
         - OAuth2: []
@@ -14090,6 +14093,7 @@ paths:
           description: V3
   '/giveaways/{channel}/{giveawayId}/start':
     put:
+      deprecated: true    
       tags:
         - wonky - not working
       summary: '/:channel/:giveawayId/start'
@@ -14161,7 +14165,6 @@ paths:
                       - path:
                           - giveawayId
                         message: '"giveawayId" with value "start" fails to match the required pattern: /^[0-9a-fA-F]{24}$/'
-      deprecated: false
       security:
         - JWT: []
         - OAuth2: []
@@ -14173,6 +14176,7 @@ paths:
           description: V3
   '/giveaways/{channel}/{giveawayId}/winner':
     put:
+      deprecated: true    
       tags:
         - wonky - not working
       summary: '/:channel/:giveawayId/winner'
@@ -14213,7 +14217,6 @@ paths:
                       - path:
                           - giveawayId
                         message: '"giveawayId" with value "5c10e383bd1e475b7c3d6eb" fails to match the required pattern: /^[0-9a-fA-F]{24}$/'
-      deprecated: false
       security:
         - JWT: []
         - OAuth2: []
@@ -14225,6 +14228,7 @@ paths:
           description: V3
   '/giveaways/{channel}/{giveawayId}/complete':
     put:
+      deprecated: true    
       tags:
         - wonky - not working
       summary: '/:channel/:giveawayId/complete'
@@ -14284,7 +14288,6 @@ paths:
                       - path:
                           - giveawayId
                         message: '"giveawayId" with value "5c10e383bd1e475b7c3d6eb" fails to match the required pattern: /^[0-9a-fA-F]{24}$/'
-      deprecated: false
       security:
         - JWT: []
         - OAuth2: []
@@ -14296,6 +14299,7 @@ paths:
           description: V3
   '/giveaways/{channel}/{giveawayId}/reopen':
     put:
+      deprecated: true    
       tags:
         - wonky - not working
       summary: '/:channel/:giveawayId/reopen'
@@ -14355,7 +14359,6 @@ paths:
                       - path:
                           - giveawayId
                         message: '"giveawayId" with value "1a1528113asd23sg" fails to match the required pattern: /^[0-9a-fA-F]{24}$/'
-      deprecated: false
       security:
         - JWT: []
         - OAuth2: []
@@ -14367,6 +14370,7 @@ paths:
           description: V3
   '/giveaways/{channel}/{giveawayId}/refund':
     delete:
+      deprecated: true    
       tags:
         - wonky - not working
       summary: '/:channel/:giveawayId/refund'
@@ -14426,7 +14430,6 @@ paths:
                       - path:
                           - giveawayId
                         message: '"giveawayId" with value "5c10e383bd1e475b7c3d6eb" fails to match the required pattern: /^[0-9a-fA-F]{24}$/'
-      deprecated: false
       security:
         - JWT: []
         - OAuth2: []
@@ -14492,6 +14495,7 @@ paths:
           description: V3
   '/giveaways/{channel}/{giveawayId}/close':
     delete:
+      deprecated: true    
       tags:
         - wonky - not working
       summary: '/:channel/:giveawayId/close'
@@ -14551,7 +14555,6 @@ paths:
                       - path:
                           - giveawayId
                         message: '"giveawayId" with value "5c10e383bd1e475b7c3d6eb" fails to match the required pattern: /^[0-9a-fA-F]{24}$/'
-      deprecated: false
       security:
         - JWT: []
         - OAuth2: []
@@ -14779,6 +14782,7 @@ paths:
           description: V3
   '/giveaways/{channel}/history':
     get:
+      deprecated: true    
       tags:
         - wonky - not working
       summary: '/:channel/history'
@@ -14806,7 +14810,6 @@ paths:
               examples:
                 default:
                   value: []
-      deprecated: false
       security:
         - JWT: []
         - OAuth2: []
@@ -16358,6 +16361,7 @@ paths:
           description: V3
   '/overlays/{channel}/action/{action}':
     put:
+      deprecated: true    
       tags:
         - wonky - not working
       summary: '/:channel/action/:action'
@@ -16413,7 +16417,7 @@ paths:
   '/points/{channel}/{user}':
     get:
       tags:
-        - single user
+        - points
       summary: '/:channel/:user'
       description: Get userpoints for specific username
       operationId: 'Get/points/:channel/:user'
@@ -16476,7 +16480,7 @@ paths:
           description: V3
     delete:
       tags:
-        - single user
+        - points
       summary: '/:channel/:user'
       description: Reset user points (remove from table)
       operationId: 'Delete/points/:channel/:user'
@@ -16530,7 +16534,7 @@ paths:
   '/points/{channel}/{user}/rank':
     get:
       tags:
-        - single user
+        - points
       summary: '/:channel/:user/rank'
       description: Get current user rank by username
       operationId: 'Get/points/:channel/:user/rank'
@@ -16582,7 +16586,7 @@ paths:
   '/points/{channel}/{user}/{amount}':
     put:
       tags:
-        - single user
+        - points
       summary: '/:channel/:user/:amount'
       description: Add or remove points from user
       operationId: 'Put/points/:channel/:user/:amount'
@@ -16651,7 +16655,7 @@ paths:
   '/points/{channel}/alltime/{user}/{amount}':
     put:
       tags:
-        - single user
+        - points
       summary: '/:channel/alltime/:user/:amount'
       description: Update alltime points for user
       operationId: 'Put/points/:channel/alltime/:user/:amount'
@@ -16728,7 +16732,7 @@ paths:
   '/points/{channel}/alltime/{user}':
     delete:
       tags:
-        - single user
+        - points
       summary: '/:channel/alltime/:user'
       description: Reset alltime user points (remove from table)
       operationId: 'Delete/points/:channel/alltime/:user'
@@ -19364,6 +19368,7 @@ paths:
           description: V3
   '/songrequest/playing':
     get:
+      deprecated: true    
       tags:
         - wonky - not working
       summary: /playing
@@ -19606,7 +19611,7 @@ paths:
         - songrequest
       summary: '/:channel/settings'
       description: Get songrequest settings
-      operationId: 'Get/channelrequest/:channel/settings'
+      operationId: 'Get/songrequest/:channel/settings'
       parameters:
         - name: channel
           in: path
@@ -24439,7 +24444,7 @@ paths:
         - tips
       summary: '/:channel/top'
       description: Get top tippers for channel
-      operationId: 'Get/:channel/top12'
+      operationId: 'Get/tips/:channel/top'
       parameters:
         - name: channel
           in: path
@@ -24503,7 +24508,7 @@ paths:
         - tips
       summary: '/:channel/leaderboard'
       description: Get tips leaderboard
-      operationId: '/:channel/leaderboard'
+      operationId: 'Get/tips/:channel/leaderboard'
       parameters:
         - name: channel
           in: path
@@ -24560,7 +24565,7 @@ paths:
         - tips
       summary: '/:channel/moderation'
       description: List tips waiting for moderation
-      operationId: '/:channel/moderation'
+      operationId: 'Get/tips/:channel/moderation'
       parameters:
         - name: channel
           in: path
@@ -24670,7 +24675,7 @@ paths:
         - tips
       summary: '/:channel/:tipId'
       description: Get tip details
-      operationId: 'Get/:channel/:tipId'
+      operationId: 'Get/tips/:channel/:tipId'
       parameters:
         - name: channel
           in: path
@@ -25719,7 +25724,7 @@ paths:
         - streams
       summary: '/:channel'
       description: Get stats of recent streams
-      operationId: 'Get:/channel'
+      operationId: 'Get/streams/:channel'
       parameters:
         - name: channel
           in: path
@@ -25794,7 +25799,7 @@ paths:
         - streams
       summary: '/:channel/live'
       description: Get stream live status
-      operationId: 'Get:/channel/live'
+      operationId: 'Get/streams/:channel/live'
       parameters:
         - name: channel
           in: path
@@ -26179,7 +26184,7 @@ paths:
   '/widgets/{channel}/subscriber-gifts/leaderboard':
     get:
       summary: /:channel/subscriber-gifts/leaderboard
-      operationId: Get/:channel/subscriber-gifts/leaderboard
+      operationId: Get/widgets/:channel/subscriber-gifts/leaderboard
       parameters:
         - name: channel
           in: path
