@@ -27869,7 +27869,6 @@ paths:
                     text: Quote message
                     createdAt: '2025-07-17T16:14:16.206Z'
       operationId: 'Post/bot/quotes/:channel'
-
       description: Create new quote
       security:
         - JWT: []
@@ -27889,6 +27888,50 @@ paths:
                 value:
                   text: Quote message
   '/bot/quotes/{channel}/{quoteId}':
+    get:
+      summary: '/:channel/:quoteId'
+      tags:
+        - quotes
+      parameters:
+        - schema:
+            type: string
+          name: channel
+          in: path
+          description: guid - Channel id
+          required: true
+        - schema:
+            type: string
+          name: quoteId
+          in: path
+          required: true
+          description: 'integer - Quote id number'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  text:
+                    type: string
+                  createdAt:
+                    type: string
+              examples:
+                Example:
+                  value:
+                    id: 5
+                    text: New quote message
+                    createdAt: '2025-07-17T16:14:16.206Z'
+      operationId: 'Get/bot/quotes/:channel/:quoteId'
+      description: Get quote by id
+      security:
+        - JWT: []
+        - OAuth2:
+            - 'bot:read'
+            - 'bot:write'
     put:
       summary: '/:channel/:quoteId'
       tags:
