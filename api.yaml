@@ -2099,7 +2099,7 @@ paths:
   '/bot/{channel}/counters':
     get:
       tags:
-        - bot
+        - counters
       summary: '/:channel/counters'
       description: Get list of counters and their values
       operationId: 'Get/bot/:channel/counters'
@@ -2156,7 +2156,7 @@ paths:
   '/bot/{channel}/counters/{counter}':
     get:
       tags:
-        - bot
+        - counters
       summary: '/:channel/counters/:counter'
       description: Get counter value
       operationId: 'Get/bot/:channel/counters/:counter'
@@ -2212,7 +2212,7 @@ paths:
           description: V3
     put:
       tags:
-        - bot
+        - counters
       summary: '/:channel/counters/:counter'
       description: Update counter value
       operationId: 'Put/bot/:channel/counters/:counter'
@@ -2275,7 +2275,7 @@ paths:
           description: V3
     delete:
       tags:
-        - bot
+        - counters
       summary: '/:channel/counters/:counter'
       description: Delete counter
       operationId: 'Delete/bot/:channel/counters/:counter'
@@ -44427,6 +44427,8 @@ tags:
     description: Bot commands management
   - name: contests
     description: Endpoints to interact with contests
+  - name: counters
+    description: Endpoints to manage counters
   - name: emotes
     description: Endpoints related to emotes
   - name: filters
