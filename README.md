@@ -44,9 +44,7 @@ Just a heads-up: I don't have access to Streamelements' servers or backend, so I
 
 ## Pending list
 
-- Add the following endpoints:
-
-  - Install overlay by overlay sharing id
+### Install overlay by overlay sharing id
 
     `https://api.streamelements.com/kappa/v2/overlays/<DESTINATION_ACCOUNT_ID>/share`
 
@@ -66,7 +64,7 @@ Just a heads-up: I don't have access to Streamelements' servers or backend, so I
     `https://streamelements.com/dashboard/overlays/share/<OVERLAY_ID>`
 
 
-  - Request to close account
+### Request to close account
 
     `https://api.streamelements.com/kappa/v2/users/close`
 
@@ -92,7 +90,7 @@ Just a heads-up: I don't have access to Streamelements' servers or backend, so I
 
     It is the same as going to this page: `https://streamelements.com/dashboard/account/security` -> Close My Account
 
-  - Delete media files uploaded to account
+### Delete media files uploaded to account
 
     `https://api.streamelements.com/kappa/v2/uploads/<ACCOUNT_ID>/<MEDIA_ID>`
     
@@ -122,7 +120,7 @@ Just a heads-up: I don't have access to Streamelements' servers or backend, so I
     }
     ```
 
-  - Add new media file to account
+### Add new media file to account
 
     `https://api.streamelements.com/kappa/v2/uploads/<ACCOUNT_ID>`
 
