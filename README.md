@@ -42,17 +42,7 @@ Just a heads-up: I don't have access to Streamelements' servers or backend, so I
 ![image](https://github.com/user-attachments/assets/12fd5486-a4fc-424f-acca-803ddb81d111)
 
 
-## Pending
-
-- Review and fix `operationId` values for the following categories: 
-  - ~~filters~~
-  - ~~modules~~
-  - ~~overlays~~
-  - ~~queue~~
-  - ~~quotes~~
-  - ~~store~~
-  - ~~timers~~
-  - ~~tips~~
+## Pending list
 
 - Add the following endpoints:
 
