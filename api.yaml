@@ -1775,7 +1775,15 @@ paths:
       tags:
         - bot
       summary: '/:channel/say'
-      description: Send message to channel as bot
+      description: |
+        Send message to channel as bot.
+
+        **Note:**
+        The bot's message may not appear if the chat has been inactive for too long, even when a `200` status is returned. 
+        This may be due to Twitch's spam-prevention behaviour.
+        
+        *Sending a few manual messages first can help restore visibility.*
+
       operationId: 'Post/bot/:channel/say'
       parameters:
         - name: channel
