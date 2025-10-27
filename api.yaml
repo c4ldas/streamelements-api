@@ -10339,7 +10339,7 @@ paths:
         - filters
       summary: /banphrases/search
       description: Get details for provided banned phrase id
-      operationId: Get/banphrases/search
+      operationId: Get/filters/banphrases/search
       parameters:
         - name: id
           in: query
@@ -10400,7 +10400,7 @@ paths:
         - filters
       summary: '/:channel'
       description: List filters
-      operationId: 'Get/bot/filters/:channel'
+      operationId: 'Get/filters/:channel'
       parameters:
         - name: channel
           in: path
@@ -10951,7 +10951,7 @@ paths:
         - filters
       summary: '/:channel'
       description: Update channel filter settings
-      operationId: 'Put/filters/:channel'
+      operationId: 'Put/bot/filters/:channel'
       parameters:
         - name: channel
           in: path
@@ -12403,7 +12403,7 @@ paths:
         - filters
       summary: '/:channel/test'
       description: Test a message against filters
-      operationId: 'Post/:channel/test'
+      operationId: 'Post/filters/:channel/test'
       parameters:
         - name: channel
           in: path
@@ -12657,7 +12657,7 @@ paths:
         - filters
       summary: '/:channel/banphrases/:groupId'
       description: Delete banphrases group
-      operationId: 'Delete/:channel/banphrases/:groupId'
+      operationId: 'Delete/filters/:channel/banphrases/:groupId'
       parameters:
         - name: channel
           in: path
@@ -15204,7 +15204,7 @@ paths:
         - overlays
       summary: '/:channel'
       description: List overlays
-      operationId: 'Get/overlays/:channel123456789'
+      operationId: 'Get/overlays/:channel'
       parameters:
         - name: search
           in: query
@@ -22242,7 +22242,7 @@ paths:
         - store
       summary: '/:channel/items'
       description: List store items
-      operationId: 'Get/:channel/items'
+      operationId: 'Get/store/:channel/items'
       parameters:
         - name: source
           in: query
@@ -22417,7 +22417,7 @@ paths:
         - store
       summary: '/:channel/items'
       description: Add new item to store
-      operationId: 'Post/:channel/items'
+      operationId: 'Post/store/:channel/items'
       parameters:
         - name: channel
           in: path
@@ -28045,7 +28045,7 @@ paths:
                       id: 4
                       text: Another quote
                       createdAt: '2025-07-17T16:12:35.405Z'
-      operationId: '/:channel/:quoteId'
+      operationId: 'Delete/bot/quotes/:channel/:quoteId'
       description: Delete quote
       security:
         - JWT: []
