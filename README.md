@@ -45,14 +45,14 @@ Just a heads-up: I don't have access to Streamelements' servers or backend, so I
 ## Pending
 
 - Review and fix `operationId` values for the following categories: 
-  - filters
-  - modules
-  - overlays
-  - queue
-  - quotes
-  - store
-  - timers
-  - tips
+  - ~~filters~~
+  - ~~modules~~
+  - ~~overlays~~
+  - ~~queue~~
+  - ~~quotes~~
+  - ~~store~~
+  - ~~timers~~
+  - ~~tips~~
 
 - Add the following endpoints:
 
