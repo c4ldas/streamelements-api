@@ -10951,7 +10951,7 @@ paths:
         - filters
       summary: '/:channel'
       description: Update channel filter settings
-      operationId: 'Put/bot/filters/:channel'
+      operationId: 'Put/filters/:channel'
       parameters:
         - name: channel
           in: path
